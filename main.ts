@@ -1,0 +1,293 @@
+function base () {
+    miniMenu.close(myMenu)
+    sprites.destroy(myTextSprite)
+    tiles.setCurrentTilemap(tilemap`level1`)
+    tiles.placeOnRandomTile(Ale, sprites.dungeon.floorLight0)
+    tiles.placeOnRandomTile(Cami, sprites.dungeon.floorLight0)
+    tiles.placeOnRandomTile(Chris, sprites.dungeon.floorLight0)
+    tiles.placeOnRandomTile(Nico, sprites.dungeon.floorLight0)
+    game.splash("2026", "La base")
+    controller.moveSprite(Ale)
+    controller.moveSprite(Cami)
+    controller.moveSprite(Chris)
+    controller.moveSprite(Nico)
+}
+let Nico: Sprite = null
+let Chris: Sprite = null
+let Cami: Sprite = null
+let Ale: Sprite = null
+let myMenu: Sprite = null
+let myTextSprite: fancyText.TextSprite = null
+myTextSprite = fancyText.create("ArcadeCAN")
+fancyText.setColor(myTextSprite, 8)
+fancyText.setFont(myTextSprite, fancyText.bold_sans_7)
+myTextSprite.setPosition(119, 110)
+scene.setBackgroundImage(img`
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf2fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbfffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbffffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbffffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    99999999999999999999999999999999999999999999999999999fffffffffffffffffffffffffffffffffffffffffffffffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111bbb
+    99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111bbb
+    99999955555555599999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111bb
+    99995555555555555999999999999999999999999999999999999f555fffffffffffffffffffffffffffffffffffffff555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111bb
+    99955555555555555599999999999999999999999999999999999f555f1111111111111111111111111111111111111f555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111111111b
+    99555555555555555559999999999999999999999999999999999f555f1111111111111111111111111111111111111f555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111111b
+    99555555555555555559999999999999999999999999999999999f555fffffffffffffffffffffffffffffffffffffff555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111111111
+    95555555555555555555999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111111111111
+    95555555555555555555999999999999999999999999999999999f555fffffffffffffffffffffffffffffffffffffff555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111111111111111
+    95555555555555555555999999999999999999999999999999999f555f1111111111111111111111111111111111111f555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111111111111
+    95555555555555555555999999999999999999999999999999999f555f1111111111111111111111111111111111111f555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111111111111111
+    95555555555555555555999999999999999999999999999999999f555fffffffffffffffffffffffffffffffffffffff555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111111111bbbbb1
+    95555555555555555555999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111111bbbbbbbb
+    95555555555555555555999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111111111bbbbbbbbbb
+    95555555555555555555999999999999999999999999999999999f5555ffffffff555ffffffff555ffffffff55ffffffff5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111111bbbbbbbbbbbb
+    95555555555555555555999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111111bbbbbbbbbbbbbb
+    99555555555555555559999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111bbbbbbbbbbbbbbbbb
+    99555555555555555559999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111bbbbbbbbbbbbbbbbbbb
+    99955555555555555599999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111bbbbbbbbbbbbbbbbbbbbb
+    99995555555555555999999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111bbbbbbbbbbbbbbbbbbbbbb
+    99999955555555599999999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111bbbbbbbbbbbbbbbbbbbbbb
+    99999999999999999999999999999999999999999999999999999f5555ffffffff555ffffffff555ffffffff55ffffffff5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    99999999999999999999999999999999999999999999999999999fffffffffffffffffffffffffffffffffffffffffffffffbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    99999999999999999999999999999999999999999999999999999f9999999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999999f7f999999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999999f7f999999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    999999999999999999999999999999999999999999999999999f777f99999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    999999999999999999999999999999999999999999999999999f777f99999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    99999999999999999999999999999999999999999999999999f77777f9999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    99999999999999999999999999999999999999999999999999f77777f9999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999f7777777f999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999f7777777f999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    999999999999999999999999999999999999999999999999f777777777f99999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    999999999999999999999999999999999999999999999999f777777777f99999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    99999999999999999999999999999999999999999999999f77777777777f9999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    99999999999999999999999999999999999999999999999f77777777777f9999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999f7777777777777f999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999f7777777777777f999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    999999999999999999999999999999999999999999999f777777777777777f99999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
+    999999999999999999999999999999999999999999999f777777777777777f99999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    99999999999999999999999999999999999999999999f77777777777777777f9999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    99999999999999999999999999999999999999999999f77777777777777777f9999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    99999999999999999999999999999999999999999999fffffffffffffffffff9999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    77777777fffff777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    77777fff99999fffff7777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    77fff999999999999fff77777777777777777fffffffff777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    fff99999999999999999fffff77fffffffffff9999999ff77777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    999999999999999999999999fff9999999999999999999ff7777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    99999999999999999999999999999999999999999999999ff7777fffffffffffffffff777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    9999999999999999999999999999999999999999999999999ffff99999999999999999ff7777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    999999999999999999999999999999999999999999999999999999999999999999999999fffff77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    9fffffffff99999999999999999999ffffffffff999999999999999999999999999999999999f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    9f7777777ff999999999999999ffff7777777777ffff99999999999999999999999999999999f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    9f77777777ff999999999999fff77777777777777777ffff999999999999fffffff999999999f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    f7777777777ff99999999ffff7777777777777777777777ffff999999ffff77777fff9999999f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777ffffffff77777777777777777777777777777ffffffff7777777777fffffffff77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
+    `)
+game.splash("Bienvenido a:", "Mensaje desde 2126")
+myMenu = miniMenu.createMenu(
+miniMenu.createMenuItem("Ale", img`
+    . . . . . e e e e e e . . . . . 
+    . . . . e e e e e e e e . . . . 
+    . . . . e e e e d d d e . . . . 
+    . . . . e 1 f d d 1 f e . . . . 
+    . . . e e d d d d d d e e . . . 
+    . . . e e d f d d f d e e . . . 
+    . . e e . d d f f d d . e e . . 
+    . . . . 6 6 6 d d 6 6 6 . . . . 
+    . . . . 6 6 6 6 1 1 6 6 . . . . 
+    . . . . d . 6 6 6 6 . d . . . . 
+    . . . . d . 6 6 6 6 . d . . . . 
+    . . . . . . b b b b . . . . . . 
+    . . . . . . b f f b . . . . . . 
+    . . . . . . f d d f . . . . . . 
+    . . . . . f f f f f f . . . . . 
+    . . . . f 1 1 f f 1 1 f . . . . 
+    `),
+miniMenu.createMenuItem("Cami", img`
+    . . . . . . . . . . . . . . . . 
+    . . . . 4 4 4 4 4 4 4 4 . . . . 
+    . . . . 4 4 4 d d d d 4 . . . . 
+    . . . . 4 1 e d d 1 e 4 . . . . 
+    . . . . 4 d d d d d d 4 . . . . 
+    . . . . 4 d f d d f d 4 4 . . . 
+    . . . 4 4 d d f f d d 4 4 . . . 
+    . . . 4 a a a d d a a a 4 . . . 
+    . . . . a a a a a a a a 4 . . . 
+    . . . . d . a a a a . d 4 4 . . 
+    . . . . d . a a a a . d . . . . 
+    . . . . . . 9 9 9 9 . . . . . . 
+    . . . . . . 9 f f 9 . . . . . . 
+    . . . . . . f d d f . . . . . . 
+    . . . . . f a f f a f . . . . . 
+    . . . . f a a f f a a f . . . . 
+    `),
+miniMenu.createMenuItem("Chris", img`
+    . . . . . f f f f f f . . . . . 
+    . . . . f f f f f f f f . . . . 
+    . . . . f e e e e e e f . . . . 
+    . . . . . 1 f e e 1 f . . . . . 
+    . . . . . e e e e e e . . . . . 
+    . . . . . e f e e f e . . . . . 
+    . . . . . e e f f e e . . . . . 
+    . . . . 2 8 2 e e 8 2 8 . . . . 
+    . . . . 2 8 2 8 2 5 2 8 . . . . 
+    . . . . e . 2 8 2 8 . e . . . . 
+    . . . . e . 2 8 2 8 . e . . . . 
+    . . . . . . 8 8 8 8 . . . . . . 
+    . . . . . . 8 f f 8 . . . . . . 
+    . . . . . . f e e f . . . . . . 
+    . . . . . f f f f f f . . . . . 
+    . . . . f 1 1 f f 1 1 f . . . . 
+    `),
+miniMenu.createMenuItem("Nico", img`
+    . . . . . e e e e e e . . . . . 
+    . . . . e e e e e e e e . . . . 
+    . . . . e e e d e e d e . . . . 
+    . . . . e 1 6 d d 1 6 e . . . . 
+    . . . . . d d d d d d . . . . . 
+    . . . . . d f d d f d . . . . . 
+    . . . . . d d f f d d . . . . . 
+    . . . . f f f d d f f f . . . . 
+    . . . . f f 1 1 1 1 f f . . . . 
+    . . . . d . f f f f . d . . . . 
+    . . . . d . f f f f . d . . . . 
+    . . . . . . 8 8 8 8 . . . . . . 
+    . . . . . . 8 f f 8 . . . . . . 
+    . . . . . . f d d f . . . . . . 
+    . . . . . f 2 f f 2 f . . . . . 
+    . . . . f 1 1 f f 1 1 f . . . . 
+    `)
+)
+miniMenu.setMenuStyleProperty(myMenu, miniMenu.MenuStyleProperty.BackgroundColor, 0)
+miniMenu.onButtonPressed(myMenu, miniMenu.Button.A, function (selection, selectedIndex) {
+    if (selectedIndex == 0) {
+        Ale = sprites.create(img`
+            . . . . . e e e e e e . . . . . 
+            . . . . e e e e e e e e . . . . 
+            . . . . e e e e d d d e . . . . 
+            . . . . e 1 f d d 1 f e . . . . 
+            . . . e e d d d d d d e e . . . 
+            . . . e e d f d d f d e e . . . 
+            . . e e . d d f f d d . e e . . 
+            . . . . 6 6 6 d d 6 6 6 . . . . 
+            . . . . 6 6 6 6 1 1 6 6 . . . . 
+            . . . . d . 6 6 6 6 . d . . . . 
+            . . . . d . 6 6 6 6 . d . . . . 
+            . . . . . . b b b b . . . . . . 
+            . . . . . . b f f b . . . . . . 
+            . . . . . . f d d f . . . . . . 
+            . . . . . f f f f f f . . . . . 
+            . . . . f 1 1 f f 1 1 f . . . . 
+            `, SpriteKind.Player)
+        scene.cameraFollowSprite(Ale)
+        music.play(music.stringPlayable("C D E F G - G - ", 180), music.PlaybackMode.UntilDone)
+    } else if (selectedIndex == 1) {
+        Cami = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . 4 4 4 4 4 4 4 4 . . . . 
+            . . . . 4 4 4 d d d d 4 . . . . 
+            . . . . 4 1 e d d 1 e 4 . . . . 
+            . . . . 4 d d d d d d 4 . . . . 
+            . . . . 4 d f d d f d 4 4 . . . 
+            . . . 4 4 d d f f d d 4 4 . . . 
+            . . . 4 a a a d d a a a 4 . . . 
+            . . . . a a a a a a a a 4 . . . 
+            . . . . d . a a a a . d 4 4 . . 
+            . . . . d . a a a a . d . . . . 
+            . . . . . . 9 9 9 9 . . . . . . 
+            . . . . . . 9 f f 9 . . . . . . 
+            . . . . . . f d d f . . . . . . 
+            . . . . . f a f f a f . . . . . 
+            . . . . f a a f f a a f . . . . 
+            `, SpriteKind.Player)
+        scene.cameraFollowSprite(Cami)
+        music.play(music.stringPlayable("C D E F G - G - ", 180), music.PlaybackMode.UntilDone)
+    } else if (selectedIndex == 2) {
+        Chris = sprites.create(assets.image`chris`, SpriteKind.Player)
+        scene.cameraFollowSprite(Chris)
+        music.play(music.stringPlayable("C D E F G - G - ", 180), music.PlaybackMode.UntilDone)
+    } else if (selectedIndex == 3) {
+        Nico = sprites.create(img`
+            . . . . . e e e e e e . . . . . 
+            . . . . e e e e e e e e . . . . 
+            . . . . e e e d e e d e . . . . 
+            . . . . e 1 6 d d 1 6 e . . . . 
+            . . . . . d d d d d d . . . . . 
+            . . . . . d f d d f d . . . . . 
+            . . . . . d d f f d d . . . . . 
+            . . . . f f f d d f f f . . . . 
+            . . . . f f 1 1 1 1 f f . . . . 
+            . . . . d . f f f f . d . . . . 
+            . . . . d . f f f f . d . . . . 
+            . . . . . . 8 8 8 8 . . . . . . 
+            . . . . . . 8 f f 8 . . . . . . 
+            . . . . . . f d d f . . . . . . 
+            . . . . . f 2 f f 2 f . . . . . 
+            . . . . f 1 1 f f 1 1 f . . . . 
+            `, SpriteKind.Player)
+        scene.cameraFollowSprite(Nico)
+        music.play(music.stringPlayable("C D E F G - G - ", 180), music.PlaybackMode.UntilDone)
+    }
+    base()
+})
