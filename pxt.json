@@ -4,7 +4,9 @@
     "dependencies": {
         "device": "*",
         "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.1.0",
-        "arcade-fancy-text": "github:riknoll/arcade-fancy-text#v0.2.2"
+        "arcade-fancy-text": "github:riknoll/arcade-fancy-text#v0.2.2",
+        "Color Fading": "github:jwunderl/pxt-color#v0.2.3",
+        "pxt-button-combos": "github:jwunderl/pxt-button-combos#v0.0.24"
     },
     "files": [
         "main.blocks",
@@ -20,7 +22,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "4.2.1",
+        "target": "4.1.25",
         "targetId": "arcade"
     },
     "supportedTargets": [

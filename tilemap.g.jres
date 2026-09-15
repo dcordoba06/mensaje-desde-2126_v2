@@ -1,9 +1,4 @@
 {
-    "*": {
-        "mimeType": "image/x-mkcd-f4",
-        "dataEncoding": "base64",
-        "namespace": "myTiles"
-    },
     "transparency16": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -195,6 +190,96 @@
         "tilemapTile": true,
         "displayName": "myTile29"
     },
+    "cesped": {
+        "data": "hwQQABAAAAB3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dnd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d2d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "cesped0"
+    },
+    "acera": {
+        "data": "hwQQABAAAADMzMzMzMzMzNzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3dzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3dzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3dzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3dzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3Q==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "acera0"
+    },
+    "calle": {
+        "data": "hwQQABAAAAD//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "calle0"
+    },
+    "calleConLinea": {
+        "data": "hwQQABAAAAD///////////////////////////////////9VVf///////1VV////////VVX///////9VVf///////1VV////////VVX///////9VVf///////1VV////////VVX///////9VVf///////////////////////////////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "calleConLinea0"
+    },
+    "pared": {
+        "data": "hwQQABAAAADLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzLu7u7vLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMu7u7u8vMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "pared0"
+    },
+    "sueloBase": {
+        "data": "hwQQABAAAADd3d3d3d3d3R0RERERERERHREREREREREdERERERERER0RERERERERHREREREREREdERERERERER0RERERERERHREREREREREdERERERERER0RERERERERHREREREREREdERERERERER0RERERERERHREREREREREdEREREREREQ==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "sueloBase0"
+    },
+    "techoEscuela": {
+        "data": "hwQQABAAAABCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkRERA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "techoEscuela0"
+    },
+    "techoReciclaje": {
+        "data": "hwQQABAAAABnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZg==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "techoReciclaje0"
+    },
+    "ventana": {
+        "data": "hwQQABAAAADMzMzMzMzMzMzMzMzMzMzMzJyZmZmZyczMnJmZmZnJzMycmZmZmcnMzJyZmZmZyczMnJmZmZnJzMwcEREREcHMzJyZmZmZyczMnJmZmZnJzMycmZmZmcnMzJyZmZmZyczMnJmZmZnJzMycmZmZmcnMzMzMzMzMzMzMzMzMzMzMzA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "ventana0"
+    },
+    "puerta": {
+        "data": "hwQQABAAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM7u7u7u7u7szu7u7u7u7uzO7u7u7u7u7M7u7u7u7u7szu7u7u7u7uzO7u7u7u7u7M7u7u7u7u7szu7u5e7u7uzO7u7u7u7u7M7u7u7u7u7szMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "puerta0"
+    },
+    "arbol": {
+        "data": "hwQQABAAAAB3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3Z2ZmZnd3d3dmZmZmdnd3Z2ZmZmZmd3dnZmZmZmZ3d2dmZmZmZu7uZ2ZmZmZm7u5nZmZmZmbu7mdmZmZmZnd3Z2ZmZmZmd3d3ZmZmZnZ3d3dnZmZmd3d3d3d3d3d3d3d3d3d3d3d3dw==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "arbol0"
+    },
+    "agua": {
+        "data": "hwQQABAAAACIiIiIiIiIiIiIiYiIiIiIiIiJiIiIiIiIiImIiIiIiIiIiYiIiIiIiIiJiIiIiIiIiImIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiJiIiIiIiIiImIiIiIiIiIiYiIiIiIiIiJiIiIiIiIiImIiIiIiIiIiYiIiIiIiIiIiIiA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "agua0"
+    },
+    "marcaPieza": {
+        "data": "hwQQABAAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3du7u7u93d3d27u7u73d3d3bu7u7vd3d3du7u7u93d3d27u7u73d3d3bu7u7vd3d3du7u7u93d3d27u7u73d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3Q==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "marcaPieza0"
+    },
+    "marcaMoneda": {
+        "data": "hwQQABAAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dVVVVVd3d3d1VVVVV3d3d3VVVVVXd3d3dVVVVVd3d3d1VVVVV3d3d3VVVVVXd3d3dVVVVVd3d3d1VVVVV3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3Q==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "marcaMoneda0"
+    },
+    "marcaPeligro": {
+        "data": "hwQQABAAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dZmZmZt3d3d1mZmZm3d3d3WZmZmbd3d3dZmZmZt3d3d1mZmZm3d3d3WZmZmbd3d3dZmZmZt3d3d1mZmZm3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3Q==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "marcaPeligro0"
+    },
     "level1": {
         "id": "level1",
         "mimeType": "application/mkcd-tilemap",
@@ -330,94 +415,9 @@
         ],
         "displayName": "ciudadNaturaleza"
     },
-    "cesped": {
-        "data": "hwQQABAAAAB3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dnd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d2d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==",
+    "*": {
         "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "cesped"
-    },
-    "acera": {
-        "data": "hwQQABAAAADMzMzMzMzMzNzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3dzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3dzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3dzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3dzd3d3d3d3d3N3d3d3d3d3c3d3d3d3d3Q==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "acera"
-    },
-    "calle": {
-        "data": "hwQQABAAAAD//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "calle"
-    },
-    "calleConLinea": {
-        "data": "hwQQABAAAAD///////////////////////////////////9VVf///////1VV////////VVX///////9VVf///////1VV////////VVX///////9VVf///////1VV////////VVX///////9VVf///////////////////////////////////w==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "calleConLinea"
-    },
-    "pared": {
-        "data": "hwQQABAAAADLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzLu7u7vLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzMvMzMzLzMzMu7u7u8vMzMzLzMzMy8zMzMvMzMzLzMzMy8zMzA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "pared"
-    },
-    "sueloBase": {
-        "data": "hwQQABAAAADd3d3d3d3d3R0RERERERERHREREREREREdERERERERER0RERERERERHREREREREREdERERERERER0RERERERERHREREREREREdERERERERER0RERERERERHREREREREREdERERERERER0RERERERERHREREREREREdEREREREREQ==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "sueloBase"
-    },
-    "techoEscuela": {
-        "data": "hwQQABAAAABCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkREREJERERCREREQkRERA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "techoEscuela"
-    },
-    "techoReciclaje": {
-        "data": "hwQQABAAAABnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZmdmZmZnZmZmZ2ZmZg==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "techoReciclaje"
-    },
-    "ventana": {
-        "data": "hwQQABAAAADMzMzMzMzMzMzMzMzMzMzMzJyZmZmZyczMnJmZmZnJzMycmZmZmcnMzJyZmZmZyczMnJmZmZnJzMwcEREREcHMzJyZmZmZyczMnJmZmZnJzMycmZmZmcnMzJyZmZmZyczMnJmZmZnJzMycmZmZmcnMzMzMzMzMzMzMzMzMzMzMzA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "ventana"
-    },
-    "puerta": {
-        "data": "hwQQABAAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM7u7u7u7u7szu7u7u7u7uzO7u7u7u7u7M7u7u7u7u7szu7u7u7u7uzO7u7u7u7u7M7u7u7u7u7szu7u5e7u7uzO7u7u7u7u7M7u7u7u7u7szMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "puerta"
-    },
-    "arbol": {
-        "data": "hwQQABAAAAB3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3Z2ZmZnd3d3dmZmZmdnd3Z2ZmZmZmd3dnZmZmZmZ3d2dmZmZmZu7uZ2ZmZmZm7u5nZmZmZmbu7mdmZmZmZnd3Z2ZmZmZmd3d3ZmZmZnZ3d3dnZmZmd3d3d3d3d3d3d3d3d3d3d3d3dw==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "arbol"
-    },
-    "agua": {
-        "data": "hwQQABAAAACIiIiIiIiIiIiIiYiIiIiIiIiJiIiIiIiIiImIiIiIiIiIiYiIiIiIiIiJiIiIiIiIiImIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiJiIiIiIiIiImIiIiIiIiIiYiIiIiIiIiJiIiIiIiIiImIiIiIiIiIiYiIiIiIiIiIiIiA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "agua"
-    },
-    "marcaPieza": {
-        "data": "hwQQABAAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3du7u7u93d3d27u7u73d3d3bu7u7vd3d3du7u7u93d3d27u7u73d3d3bu7u7vd3d3du7u7u93d3d27u7u73d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3Q==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "marcaPieza"
-    },
-    "marcaMoneda": {
-        "data": "hwQQABAAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dVVVVVd3d3d1VVVVV3d3d3VVVVVXd3d3dVVVVVd3d3d1VVVVV3d3d3VVVVVXd3d3dVVVVVd3d3d1VVVVV3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3Q==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "marcaMoneda"
-    },
-    "marcaPeligro": {
-        "data": "hwQQABAAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dZmZmZt3d3d1mZmZm3d3d3WZmZmbd3d3dZmZmZt3d3d1mZmZm3d3d3WZmZmbd3d3dZmZmZt3d3d1mZmZm3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3Q==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "marcaPeligro"
+        "dataEncoding": "base64",
+        "namespace": "myTiles"
     }
 }
