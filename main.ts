@@ -7,13 +7,6 @@ namespace SpriteKind {
     export const Interfaz = SpriteKind.create()
 }
 /**
- * 1. INICIO Y PERSONAJES
- * 
- * Empieza aquí.
- * 
- * Abre prepararPersonaje para cambiar las habilidades.
- */
-/**
  * 2. CIUDAD Y MISIÓN 1
  * 
  * Edita ciudadReciclaje en Recursos.
@@ -41,24 +34,45 @@ namespace SpriteKind {
  * 
  * Las piezas se gastan solo al acertar.
  */
+/**
+ * 6. TU TALLER
+ * 
+ * Aquí continúan ustedes: niveles 2, 3 y 4.
+ * 
+ * Cada función tiene su propio mapa.
+ * 
+ * Clic derecho → Expandir bloque para ver su contenido.
+ */
+/**
+ * 1. INICIO Y PERSONAJES
+ * 
+ * Empieza aquí.
+ * 
+ * Abre prepararPersonaje para cambiar las habilidades.
+ */
 // POR CONSTRUIR: restaura el parque y escribe la revelación de la máquina.
 function cargarNivel4 () {
     tiles.setCurrentTilemap(tilemap`ciudadNaturaleza`)
     ponerCartel("PARQUE: TALLER", 8, 23)
 }
-// BOTÓN B: fuera del minijuego vuelve a mostrar la misión.
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (estado == "reparacion") {
-        comprobarBoton("B")
-    } else if (estado == "exploracion") {
-        consultarMensaje()
-    }
-})
+function function_estilo_menu () {
+    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Default, miniMenu.StyleProperty.Margin, 3)
+    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Default, miniMenu.StyleProperty.Background, -1)
+    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Default, miniMenu.StyleProperty.Foreground, -5)
+    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Selected, miniMenu.StyleProperty.Background, 4)
+    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Selected, miniMenu.StyleProperty.Foreground, 1)
+    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Selected, miniMenu.StyleProperty.Border, 1)
+}
 function continuarExplorando () {
     estado = "exploracion"
     controller.moveSprite(jugador, velocidad, velocidad)
     actualizarContador()
 }
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (estado == "reparacion") {
+        comprobarBoton("ARRIBA")
+    }
+})
 // TIENDA: la mochila cuesta 20 y llega hasta 5 piezas. Nico conserva su ventaja inicial.
 function mejorarMochila () {
     estado = "mensaje"
@@ -95,6 +109,14 @@ function mejorarHerramienta () {
     }
     continuarExplorando()
 }
+// BOTÓN B: fuera del minijuego vuelve a mostrar la misión.
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (estado == "reparacion") {
+        comprobarBoton("B")
+    } else if (estado == "exploracion") {
+        consultarMensaje()
+    }
+})
 // SECUENCIA: cambia estas cuatro comparaciones para crear otra reparación.
 function comprobarBoton (boton: string) {
     if (pasoReparacion == 0 && boton == "A" || pasoReparacion == 1 && boton == "B" || pasoReparacion == 2 && boton == "A" || pasoReparacion == 3 && boton == "ARRIBA") {
@@ -131,16 +153,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             	
             } else {
                 myTextSprite = fancyText.create("\"A\" para interactuar")
-                Text_sprite_2 = fancyText.create("\"B\" para misión")
                 Created = true
-                fancyText.setFont(Text_sprite_2, fancyText.geometric_sans_6)
-                fancyText.setColor(Text_sprite_2, fancyText.twoToneColor(15, 15))
                 myTextSprite.setPosition(72, 18)
                 fancyText.setColor(myTextSprite, fancyText.twoToneColor(15, 15))
                 fancyText.setFont(myTextSprite, fancyText.geometric_sans_6)
             }
             myTextSprite.setFlag(SpriteFlag.RelativeToCamera, true)
-            Text_sprite_2.setFlag(SpriteFlag.RelativeToCamera, true)
             myTextSprite.setFlag(SpriteFlag.Invisible, false)
             fancyText.animateAtSpeed(myTextSprite, fancyText.TextSpeed.Fast, fancyText.AnimationPlayMode.UntilDone)
             pause(2000)
@@ -155,33 +173,16 @@ function volverALaBase () {
     protegidoHasta = game.runtime() + 1500
     continuarExplorando()
 }
-// RECOGER: una mochila llena deja la pieza en el suelo y no da puntos repetidos.
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Pieza, function (sprite, otraPieza) {
-    if (estado == "exploracion") {
-        if (piezas < capacidadPiezas) {
-            sprites.destroy(otraPieza)
-            piezas += 1
-            info.changeScoreBy(10)
-            actualizarContador()
-        } else {
-            jugador.sayText("Mochila llena", 500, false)
-        }
-    }
-})
-/**
- * 6. TU TALLER
- * 
- * Aquí continúan ustedes: niveles 2, 3 y 4.
- * 
- * Cada función tiene su propio mapa.
- * 
- * Clic derecho → Expandir bloque para ver su contenido.
- */
 // POR CONSTRUIR: diseña la misión del agua y coloca sus piezas y dispositivos.
 function cargarNivel2 () {
     tiles.setCurrentTilemap(tilemap`ciudadAgua`)
     ponerCartel("AGUA: TALLER", 29, 21)
 }
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (estado == "reparacion") {
+        comprobarBoton("IZQUIERDA")
+    }
+})
 // INICIO: cambia aquí los textos de la historia. El dibujo original está en "portada".
 function presentarHistoria () {
     scene.setBackgroundImage(img`
@@ -311,9 +312,13 @@ function presentarHistoria () {
     game.showLongText("Somos sus nietos y nietas. Nuestra ciudad necesita ayuda: hay residuos, falta agua y casi no quedan zonas verdes. Sus acciones de hoy pueden cambiar nuestro futuro.", DialogLayout.Full)
     game.showLongText("Elige tu personaje. Flechas: caminar. A: usar una maquina o un equipo cercano. B: consultar la mision. No hay combates.", DialogLayout.Full)
 }
-info.onLifeZero(function () {
-    volverALaBase()
-    jugador.sayText("A salvo! Conservas tus recursos.", 2000, false)
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Moneda, function (sprite, moneda) {
+    if (estado == "exploracion") {
+        sprites.destroy(moneda)
+        dinero += 10
+        info.changeScoreBy(5)
+        actualizarContador()
+    }
 })
 // HABILIDADES: los cuatro comienzan iguales; solo cambia una ventaja pequeña.
 function prepararPersonaje () {
@@ -364,6 +369,19 @@ function consultarMensaje () {
     }
     continuarExplorando()
 }
+// RECOGER: una mochila llena deja la pieza en el suelo y no da puntos repetidos.
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Pieza, function (sprite, otraPieza) {
+    if (estado == "exploracion") {
+        if (piezas < capacidadPiezas) {
+            sprites.destroy(otraPieza)
+            piezas += 1
+            info.changeScoreBy(10)
+            actualizarContador()
+        } else {
+            jugador.sayText("Mochila llena", 500, false)
+        }
+    }
+})
 // CARTELES: usa esta función con un texto, una columna y una fila del mapa.
 function ponerCartel (texto: string, columna: number, fila: number) {
     cartel = fancyText.create(texto)
@@ -389,6 +407,11 @@ function colocarRecursosYPeligros () {
         tiles.setTileAt(lugar3, assets.tile`acera0`)
     }
 }
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (estado == "reparacion") {
+        comprobarBoton("DERECHA")
+    }
+})
 // HUD: corazones y puntos usan Arcade. Aquí mostramos piezas y dinero.
 function actualizarContador () {
     if (estado == "reparacion") {
@@ -403,11 +426,6 @@ function cargarNivel3 () {
     tiles.setCurrentTilemap(tilemap`ciudadAire`)
     ponerCartel("AIRE: TALLER", 29, 21)
 }
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (estado == "reparacion") {
-        comprobarBoton("IZQUIERDA")
-    }
-})
 // BASE FÍSICA: está en la esquina superior izquierda. Usa A junto a cada equipo.
 function colocarBase () {
     maquina = sprites.create(assets.image`maquina0`, SpriteKind.Equipo)
@@ -420,17 +438,10 @@ function colocarBase () {
     tiles.placeOnTile(herramienta, tiles.getTileLocation(10, 7))
     ponerCartel("BASE", 7, 2)
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Moneda, function (sprite, moneda) {
-    if (estado == "exploracion") {
-        sprites.destroy(moneda)
-        dinero += 10
-        info.changeScoreBy(5)
-        actualizarContador()
-    }
-})
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (estado == "reparacion") {
-        comprobarBoton("DERECHA")
+        pasoReparacion = 0
+        continuarExplorando()
     }
 })
 // PREMIO Y PISTA: aquí pueden escribir cómo cambió 2126 y la primera pista.
@@ -448,6 +459,10 @@ function completarMision () {
     nivelActual += 1
     cargarNivel()
 }
+info.onLifeZero(function () {
+    volverALaBase()
+    jugador.sayText("A salvo! Conservas tus recursos.", 2000, false)
+})
 // COSTO: la reparación básica cuesta 3 piezas, con un mínimo de 1.
 function calcularCosto () {
     costoReparacion = Math.max(1, 3 - descuentoPiezas - nivelHerramienta)
@@ -498,15 +513,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Peligro, function (sprite, pelig
         jugador.sayText("Cuidado con los residuos!", 800, false)
     }
 })
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (estado == "reparacion") {
-        pasoReparacion = 0
-        continuarExplorando()
-    }
-})
 // NIVEL 1: este es el ejemplo jugable. Mueve los marcadores de colores en el mapa.
 function cargarNivel1 () {
-    tiles.setCurrentTilemap(tilemap`ciudadReciclaje`)
+    tiles.setCurrentTilemap(tilemap`ciudadNaturaleza`)
     colocarRecursosYPeligros()
     dispositivo = sprites.create(assets.image`recolector0`, SpriteKind.Equipo)
     tiles.placeOnTile(dispositivo, tiles.getTileLocation(29, 18))
@@ -514,27 +523,13 @@ function cargarNivel1 () {
     ponerCartel("RECICLAJE", 30, 19)
     ponerCartel("PARQUE", 8, 23)
 }
-function function_estilo_menu () {
-    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Default, miniMenu.StyleProperty.Margin, 3)
-    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Default, miniMenu.StyleProperty.Background, -1)
-    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Default, miniMenu.StyleProperty.Foreground, -5)
-    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Selected, miniMenu.StyleProperty.Background, 4)
-    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Selected, miniMenu.StyleProperty.Foreground, 1)
-    miniMenu.setStyleProperty(menuPersonajes, miniMenu.StyleKind.Selected, miniMenu.StyleProperty.Border, 1)
-}
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (estado == "reparacion") {
-        comprobarBoton("ARRIBA")
-    }
-})
 let objeto: Sprite = null
 let cartel: fancyText.TextSprite = null
+let piezas = 0
 let contador: fancyText.TextSprite = null
 let fondoContador: Sprite = null
 let descuentoPiezas = 0
-let piezas = 0
 let protegidoHasta = 0
-let Text_sprite_2: fancyText.TextSprite = null
 let myTextSprite: fancyText.TextSprite = null
 let Created = false
 let misionCompletada = false
@@ -549,6 +544,7 @@ let dinero = 0
 let jugador: Sprite = null
 let personajeSeleccionado = ""
 let menuPersonajes: Sprite = null
+let TestMode = 0
 let costoReparacion = 0
 let puntosReparacion = 0
 let velocidad = 0
@@ -565,7 +561,6 @@ let myTextSprite2 = fancyText.create("arcadeCAN")
 fancyText.setColor(myTextSprite2, 8)
 fancyText.setFont(myTextSprite2, fancyText.bold_sans_7)
 myTextSprite2.setPosition(121, 117)
-let TestMode = false
 if (TestMode) {
 	
 } else {
@@ -581,6 +576,7 @@ miniMenu.createMenuItem("Cami: ahorra 1 pieza", assets.image`cami0`),
 miniMenu.createMenuItem("Cris: +25 al reparar", assets.image`cris`),
 miniMenu.createMenuItem("Nico: carga 1 mas", assets.image`nico0`)
 )
+menuPersonajes.setPosition(77, 53)
 function_estilo_menu()
 miniMenu.onButtonPressed(menuPersonajes, miniMenu.Button.A, function (selection, selectedIndex) {
     miniMenu.close(menuPersonajes)
