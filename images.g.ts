@@ -98,6 +98,25 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 `;
+            case "recolector":
+            case "recolector0":return img`
+. . 7 7 7 7 7 7 7 7 7 7 7 7 . . 
+. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
+. 7 6 6 1 1 1 1 1 1 1 1 6 6 7 . 
+. 7 6 6 1 f f f f f f 1 6 6 7 . 
+. 7 6 6 1 f f f f f f 1 6 6 7 . 
+. 7 6 6 1 1 1 1 1 1 1 1 6 6 7 . 
+. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
+. 7 6 6 6 2 2 2 2 6 6 6 6 6 7 . 
+. 7 6 6 6 2 2 2 2 6 6 6 6 6 7 . 
+. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
+. 7 6 6 6 5 5 5 5 6 6 6 6 6 7 . 
+. 7 6 6 6 5 5 5 5 6 6 6 6 6 7 . 
+. 7 7 7 7 7 7 7 7 7 7 7 7 7 7 . 
+. . f f . . . . . . . . f f . . 
+. . f f . . . . . . . . f f . . 
+. . . . . . . . . . . . . . . . 
+`;
             case "portada":
             case "portada0":return img`
 9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf2fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -220,25 +239,6 @@ f7777777777ff99999999ffff7777777777777777777777ffff999999ffff77777fff9999999f777
 7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
 7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
 7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-`;
-            case "recolector":
-            case "recolector0":return img`
-. . 7 7 7 7 7 7 7 7 7 7 7 7 . . 
-. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
-. 7 6 6 1 1 1 1 1 1 1 1 6 6 7 . 
-. 7 6 6 1 f f f f f f 1 6 6 7 . 
-. 7 6 6 1 f f f f f f 1 6 6 7 . 
-. 7 6 6 1 1 1 1 1 1 1 1 6 6 7 . 
-. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
-. 7 6 6 6 2 2 2 2 6 6 6 6 6 7 . 
-. 7 6 6 6 2 2 2 2 6 6 6 6 6 7 . 
-. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
-. 7 6 6 6 5 5 5 5 6 6 6 6 6 7 . 
-. 7 6 6 6 5 5 5 5 6 6 6 6 6 7 . 
-. 7 7 7 7 7 7 7 7 7 7 7 7 7 7 . 
-. . f f . . . . . . . . f f . . 
-. . f f . . . . . . . . f f . . 
-. . . . . . . . . . . . . . . . 
 `;
             case "maquina":
             case "maquina0":return img`
