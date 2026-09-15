@@ -41,15 +41,6 @@ namespace SpriteKind {
  * 
  * Las piezas se gastan solo al acertar.
  */
-/**
- * 6. TU TALLER
- * 
- * Aquí continúan ustedes: niveles 2, 3 y 4.
- * 
- * Cada función tiene su propio mapa.
- * 
- * Clic derecho → Expandir bloque para ver su contenido.
- */
 // POR CONSTRUIR: restaura el parque y escribe la revelación de la máquina.
 function cargarNivel4 () {
     tiles.setCurrentTilemap(tilemap`ciudadNaturaleza`)
@@ -177,6 +168,15 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Pieza, function (sprite, otraPie
         }
     }
 })
+/**
+ * 6. TU TALLER
+ * 
+ * Aquí continúan ustedes: niveles 2, 3 y 4.
+ * 
+ * Cada función tiene su propio mapa.
+ * 
+ * Clic derecho → Expandir bloque para ver su contenido.
+ */
 // POR CONSTRUIR: diseña la misión del agua y coloca sus piezas y dispositivos.
 function cargarNivel2 () {
     tiles.setCurrentTilemap(tilemap`ciudadAgua`)
