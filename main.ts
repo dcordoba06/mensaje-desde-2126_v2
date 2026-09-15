@@ -561,7 +561,11 @@ capacidadPiezas = 3
 velocidad = 90
 puntosReparacion = 100
 costoReparacion = 3
-let TestMode = true
+let myTextSprite2 = fancyText.create("arcadeCAN")
+fancyText.setColor(myTextSprite2, 8)
+fancyText.setFont(myTextSprite2, fancyText.bold_sans_7)
+myTextSprite2.setPosition(121, 117)
+let TestMode = false
 if (TestMode) {
 	
 } else {
