@@ -1,6 +1,6 @@
 {
     "name": "Mensaje desde 2126",
-    "description": "",
+    "description": "Aventura educativa: recibe mensajes de 2126, explora la ciudad y repara sistemas. Misión 1 jugable y mapas de trabajo para los niveles 2–4.",
     "dependencies": {
         "device": "*",
         "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.1.0",
@@ -20,7 +20,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "4.1.25",
+        "target": "4.2.1",
         "targetId": "arcade"
     },
     "supportedTargets": [

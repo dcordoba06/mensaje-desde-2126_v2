@@ -1,258 +1,3931 @@
-<xml xmlns="https://developers.google.com/blockly/xml" xmlns:html="http://www.w3.org/1999/xhtml"><variables><variable id="MAUDqx_,4tX2D14:kC(s">mySprite</variable><variable id="YA}+2OlSO.)+`]7x}:J/">mySprite2</variable><variable id="A*1++1nkiQ[FujCucdCA">mySprite3</variable><variable id="u`yio8*InMSZ)}?@64}?">mySprite4</variable><variable id="o8[ta*lc35Fc=2b7%^5G">myMenu</variable><variable id="KBR9N%;^UAzM/j~N(6Z$">selectedIndex</variable><variable id="M1!XV8y@EVV|]TM73bpR">personajes</variable><variable id="MsORCYEr3@PhYaub[8M5">personaje seleccionado</variable><variable id="eS0{l_%}3nqIU5.6dcX+">myTextSprite</variable><variable type="KIND_SpriteKind" id="U8X+a8R9{!9g-$)ag-9m">Player</variable><variable type="KIND_SpriteKind" id="$KfBvb!(:G1e(d_`e)B8">Projectile</variable><variable type="KIND_SpriteKind" id="56j`Z,.2W*^ph}XnWv_]">Food</variable><variable type="KIND_SpriteKind" id="zA*G25{hSo-%ZTr~xd;I">Enemy</variable><variable type="KIND_SpriteKind" id="~IQc]ryYCVE-zuHt!SKz">MiniMenu</variable><variable id="jugador-seleccionado">jugador</variable></variables><block type="pxt-on-start" id="W!PG=FN6j^(p8rEduNT-" x="0" y="0"><statement name="HANDLER"><block type="variables_set" id="=!b7@QJI.8vhaC[P]0$E"><field name="VAR" id="eS0{l_%}3nqIU5.6dcX+">myTextSprite</field><value name="VALUE"><shadow type="math_number" id="FAxqRds`($}pn%|urcRO"><field name="NUM">0</field></shadow><block type="fancy_text_create" id="a.-NzMp;|n4)f7D-@mY:"><html:mutation _expanded="0" _input_init="true" /><value name="text"><shadow type="text" id="EdR*b}[=nkShm#2Ui1:@"><field name="TEXT">ArcadeCAN</field></shadow></value><value name="maxWidth"><shadow type="math_number" id="g)ayJ%c{BKmQ7fU_o*Mc"><field name="NUM">0</field></shadow></value><value name="color"><shadow type="colorindexpicker" id="5b)1;-(E2EJ@uVQPsOhQ"><field name="index">0</field></shadow></value><value name="font"><shadow type="fancy_text__fontPicker" id="n?g6f}.2B9vSlKs{wvD("><field name="font">fancyText.defaultArcade</field></shadow></value></block></value><next><block type="fancy_text_set_color" id="dEQ,R0+N1br(hi`Kin0@"><value name="sprite"><block type="variables_get" id="M!%h|Rt.f(YGiUw1eeJ3"><field name="VAR" id="eS0{l_%}3nqIU5.6dcX+">myTextSprite</field></block></value><value name="color"><shadow type="colorindexpicker" id="+K[xl^P:2E5{EnO9cYC$"><field name="index">8</field></shadow></value><next><block type="fancy_text_set_font" id="]6J:;Hjl8)Lh_8.))Nf0"><value name="sprite"><block type="variables_get" id="adR*fS_81R)GE_IS7iP3"><field name="VAR" id="eS0{l_%}3nqIU5.6dcX+">myTextSprite</field></block></value><value name="font"><shadow type="fancy_text__fontPicker" id="MI=7[:;#Jrx}G;MDLL}l"><field name="font">fancyText.bold_sans_7</field></shadow></value><next><block type="spritesetpos" id="52O~|a%zeGZ[c,QG6!0e"><value name="sprite"><block type="variables_get" id="dE0vG{1x*.l3nYdU:}V`"><field name="VAR" id="eS0{l_%}3nqIU5.6dcX+">myTextSprite</field></block></value><value name="x"><shadow type="positionPicker" id="?VAqHnGxy?n^WeG:%A*@"><field name="index">119</field></shadow></value><value name="y"><shadow type="positionPicker" id="?`D8($vXVcawYGF@ydBE"><field name="index">110</field></shadow></value><next><block type="gamesetbackgroundimage" id="}ge`%G4tNTyV/$|RI0GT"><value name="img"><shadow type="background_image_picker" id="mtK,+.zGu+]mtoS,_1qH"><field name="img">img`
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf2fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbfffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbffffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbf55fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbffffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-99999999999999999999999999999999999999999999999999999fffffffffffffffffffffffffffffffffffffffffffffffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111bbb
-99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111bbb
-99999955555555599999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111bb
-99995555555555555999999999999999999999999999999999999f555fffffffffffffffffffffffffffffffffffffff555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111bb
-99955555555555555599999999999999999999999999999999999f555f1111111111111111111111111111111111111f555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111111111b
-99555555555555555559999999999999999999999999999999999f555f1111111111111111111111111111111111111f555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111111b
-99555555555555555559999999999999999999999999999999999f555fffffffffffffffffffffffffffffffffffffff555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111111111
-95555555555555555555999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111111111111
-95555555555555555555999999999999999999999999999999999f555fffffffffffffffffffffffffffffffffffffff555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111111111111111
-95555555555555555555999999999999999999999999999999999f555f1111111111111111111111111111111111111f555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111111111111
-95555555555555555555999999999999999999999999999999999f555f1111111111111111111111111111111111111f555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111111111111111
-95555555555555555555999999999999999999999999999999999f555fffffffffffffffffffffffffffffffffffffff555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111111111bbbbb1
-95555555555555555555999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111111111bbbbbbbb
-95555555555555555555999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111111111bbbbbbbbbb
-95555555555555555555999999999999999999999999999999999f5555ffffffff555ffffffff555ffffffff55ffffffff5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111111111111bbbbbbbbbbbb
-95555555555555555555999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111111bbbbbbbbbbbbbb
-99555555555555555559999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111111bbbbbbbbbbbbbbbbb
-99555555555555555559999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111bbbbbbbbbbbbbbbbbbb
-99955555555555555599999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbb11111111111bbbbbbbbbbbbbbbbbbbbb
-99995555555555555999999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111bbbbbbbbbbbbbbbbbbbbbb
-99999955555555599999999999999999999999999999999999999f5555f111111f555f111111f555f111111f55f111111f5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbb111111111bbbbbbbbbbbbbbbbbbbbbb
-99999999999999999999999999999999999999999999999999999f5555ffffffff555ffffffff555ffffffff55ffffffff5fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-99999999999999999999999999999999999999999999999999999f555555555555555555555555555555555555555555555fbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-99999999999999999999999999999999999999999999999999999fffffffffffffffffffffffffffffffffffffffffffffffbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffffffffbbbbbbbbbbbbbbbbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999999999999999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-99999999999999999999999999999999999999999999999999999f9999999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999999f7f999999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999999f7f999999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-999999999999999999999999999999999999999999999999999f777f99999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-999999999999999999999999999999999999999999999999999f777f99999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-99999999999999999999999999999999999999999999999999f77777f9999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-99999999999999999999999999999999999999999999999999f77777f9999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999f7777777f999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999f7777777f999999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-999999999999999999999999999999999999999999999999f777777777f99999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-999999999999999999999999999999999999999999999999f777777777f99999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-99999999999999999999999999999999999999999999999f77777777777f9999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-99999999999999999999999999999999999999999999999f77777777777f9999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999f7777777777777f999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999f7777777777777f999999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-999999999999999999999999999999999999999999999f777777777777777f99999999999999fbbbbbbbbbbfffffffffffffff4444444444444ffffff4444444444444fffffffffffffffffffbbbbbbb
-999999999999999999999999999999999999999999999f777777777777777f99999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-99999999999999999999999999999999999999999999f77777777777777777f9999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-99999999999999999999999999999999999999999999f77777777777777777f9999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-99999999999999999999999999999999999999999999fffffffffffffffffff9999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-9999999999999999999999999999999999999999999999999feeeeeeef999999999999999999fbbbbbbbbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbbbbb
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-77777777fffff777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-77777fff99999fffff7777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-77fff999999999999fff77777777777777777fffffffff777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-fff99999999999999999fffff77fffffffffff9999999ff77777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-999999999999999999999999fff9999999999999999999ff7777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-99999999999999999999999999999999999999999999999ff7777fffffffffffffffff777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-9999999999999999999999999999999999999999999999999ffff99999999999999999ff7777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-999999999999999999999999999999999999999999999999999999999999999999999999fffff77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-9fffffffff99999999999999999999ffffffffff999999999999999999999999999999999999f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-9f7777777ff999999999999999ffff7777777777ffff99999999999999999999999999999999f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-9f77777777ff999999999999fff77777777777777777ffff999999999999fffffff999999999f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-f7777777777ff99999999ffff7777777777777777777777ffff999999ffff77777fff9999999f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777ffffffff77777777777777777777777777777ffffffff7777777777fffffffff77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-7777777777777777777777777777777777777777777777777777777777777777777777777777f77777777777777777777777777777777777777777777777777777777777777777777777777777777777
-`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><next><block type="gameSplash" id="LR?@9yzzdlaZ2G|5y(Lz"><html:mutation _expanded="1" _input_init="true" /><value name="title"><shadow type="text" id="__|tUi@BS(`p10bJoedC"><field name="TEXT">Bienvenido a:</field></shadow></value><value name="subtitle"><shadow type="text" id=";VG,]+GW8rf`iUjfW=/."><field name="TEXT">Mensaje desde 2126</field></shadow></value><next><block type="variables_set" id="uh|3W4hVo}{tT5O=2qn5"><field name="VAR" id="o8[ta*lc35Fc=2b7%^5G">myMenu</field><value name="VALUE"><shadow type="math_number" id="omhkRP[uLg/mB;kJ?7~f"><field name="NUM">0</field></shadow><block type="mini_menu_show_menu" id="*q[3C*)bQ@5WW5.w{{.;"><html:mutation _expanded="3" _input_init="true" /><value name="item1"><shadow type="mini_menu_create_menu_item" id="Wj9StV_gGTxajz0^?W[;"><html:mutation _expanded="1" _input_init="true" /><value name="text"><shadow type="text" id="C:@!Fs,nF_mV_,L/abxH"><field name="TEXT">Ale</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="DHqQGI!B|qe@:oN8xBWV"><field name="img">assets.image`ale`</field><data>{"commentRefs":[],"fieldData":{"img":"ale"}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id="8eV|Ea/GK}Hd78ro8MCN"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item2"><shadow type="mini_menu_create_menu_item" id="t/qx0[bXtbd.6zpoqwBO"><html:mutation _expanded="1" _input_init="true" /><value name="text"><shadow type="text" id="?`oNDnFPWwvMtB=.K~Tv"><field name="TEXT">Cami</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="tm0qa4sEFbjFFm=.@E2^"><field name="img">assets.image`cami`</field><data>{"commentRefs":[],"fieldData":{"img":"cami"}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id="wCW1hTmt6P8@qgfrd^LP"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item3"><shadow type="mini_menu_create_menu_item" id="]7rYdqv[ES@|df,85;tB"><html:mutation _expanded="1" _input_init="true" /><value name="text"><shadow type="text" id="Uud_aShfk$u2/LTd-0j0"><field name="TEXT">Chris</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="$e7X?gM~Di3Rs@[[q_to"><field name="img">assets.image`chris`</field><data>{"commentRefs":[],"fieldData":{"img":"image1"}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id="hdavh2KK+sbzBX~,x9}T"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item4"><shadow type="mini_menu_create_menu_item" id="fV![6Eq5(]Y%X)l5fUm/"><html:mutation _expanded="1" _input_init="true" /><value name="text"><shadow type="text" id="~1w%F;S,Mf~0!`6[E!BJ"><field name="TEXT">Nico</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="TgoX}@Ow$D?@}_XM*[Y{"><field name="img">assets.image`nico`</field><data>{"commentRefs":[],"fieldData":{"img":"nico"}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id=";K-6Y(_c6I2@MG;;9|U$"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item5"><shadow type="mini_menu_create_menu_item" id=":(k=T7I9n2jM2YVAb9f5"><html:mutation _expanded="0" _input_init="true" /><value name="text"><shadow type="text" id="zKjx+u4+M9y1oO!qC4po"><field name="TEXT">abc</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="`(rJ6uLNaTr%3Xq,6tbj"><field name="img">img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id="C.}.lN;9P+%/K6F@9Zfh"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item6"><shadow type="mini_menu_create_menu_item" id="RzeM8HK3yw)SwFU:.yR["><html:mutation _expanded="0" _input_init="true" /><value name="text"><shadow type="text" id="/~Vq[=0=cY}YUb(_jEVA"><field name="TEXT">abc</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="+Qf=(qbZInVjzLc~~jW/"><field name="img">img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id="$Dm`yU}4G?%q+4;`xCh*"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item7"><shadow type="mini_menu_create_menu_item" id=".ro`x90WV?Io_zNc=BoM"><html:mutation _expanded="0" _input_init="true" /><value name="text"><shadow type="text" id="RlPPX]%6Xe.IoSn0[%Qr"><field name="TEXT">abc</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="fKSOQ_y/Y4zbg-O#5qQl"><field name="img">img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id="Vc(wA_M6e36cIM,ioSm#"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item8"><shadow type="mini_menu_create_menu_item" id="ZW3ZV`STZ6x9d;,PEJ(c"><html:mutation _expanded="0" _input_init="true" /><value name="text"><shadow type="text" id="gP1ubDG1u16JQi*d.arS"><field name="TEXT">abc</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="g(fZ/)|+sb4cGqg2SL#y"><field name="img">img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id=";.2MH%M*wC*i@p(m!aCO"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item9"><shadow type="mini_menu_create_menu_item" id="2Lo}_ZiZ]H_ii763tY*v"><html:mutation _expanded="0" _input_init="true" /><value name="text"><shadow type="text" id="]-jdLRcf1{(k(vpN;p=$"><field name="TEXT">abc</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="[TkzU*#I_%zpDiOc}ME3"><field name="img">img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id="Z{?P2SoiFT[wCWeKKwyG"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item10"><shadow type="mini_menu_create_menu_item" id="|ammj0tGKKN~?MWWy+S`"><html:mutation _expanded="0" _input_init="true" /><value name="text"><shadow type="text" id="[{}w0K)WeI=LWj@Ky)dz"><field name="TEXT">abc</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="Os[*S]{TkVxum9ep{**;"><field name="img">img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id="{06*5KMa~OD1P$/7yS24"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item11"><shadow type="mini_menu_create_menu_item" id="Bn,p=+WODu+9u-ns.x.a"><html:mutation _expanded="0" _input_init="true" /><value name="text"><shadow type="text" id="7s`b)hs]/+MAqXda7}_%"><field name="TEXT">abc</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="T8b]fS3|um7pWBJ$VZQb"><field name="img">img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id="g(-(JtR@C}ba:)56.vlZ"><field name="BOOL">FALSE</field></shadow></value></shadow></value><value name="item12"><shadow type="mini_menu_create_menu_item" id="Me1yQtyp7Ns=]3hnPaXq"><html:mutation _expanded="0" _input_init="true" /><value name="text"><shadow type="text" id="Y81=Vq3Wp6G?=GD+r,yd"><field name="TEXT">abc</field></shadow></value><value name="image"><shadow type="screen_image_picker" id="JIW+3wj$;K!]Nc~_A!5i"><field name="img">img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><value name="disabled"><shadow type="logic_boolean" id=",z@:}Q5rp0~64H6t]ia6"><field name="BOOL">FALSE</field></shadow></value></shadow></value></block></value><next><block type="mini_menu_set_menu_style_property_new" id="e@8$.l$jPewBg$mS!EaW"><field name="property">miniMenu.MenuStyleProperty.BackgroundColor</field><value name="menu"><block type="variables_get" id="rT%pp:wD3RPyKS#%ZmPe"><field name="VAR" id="o8[ta*lc35Fc=2b7%^5G">myMenu</field></block></value><value name="value"><shadow type="math_number" id="0[hG[[cM5Fge3a2/L+^B"><field name="NUM">0</field></shadow></value><next><block type="mini_menu_on_button_pressed_new" id="$r]^Kz9DzNEVZp[ql[85"><field name="button">miniMenu.Button.A</field><value name="menu"><block type="variables_get" id="fWR%^4ZNygDBX$bB$`ny"><field name="VAR" id="o8[ta*lc35Fc=2b7%^5G">myMenu</field></block></value><value name="HANDLER_DRAG_PARAM_selection"><block type="argument_reporter_string" id="GVLLTpYm-ajKn*JWgS3X" deletable="false"><mutation localizationname="miniMenu.onButtonPressed|handlerParam|selection" /><field name="VALUE">selection</field></block></value><value name="HANDLER_DRAG_PARAM_selectedIndex"><block type="argument_reporter_number" id="ssf*x.TX[#.*u?O+0?sD" deletable="false"><mutation localizationname="miniMenu.onButtonPressed|handlerParam|selectedIndex" /><field name="VALUE">selectedIndex</field></block></value><statement name="HANDLER"><block type="mini_menu_sprite_close_menu_new" id="XsKl^7@wY2;|M(95aJX~"><value name="menu"><block type="variables_get" id="XWBca(*r%9It7JO(j_%*"><field name="VAR" id="o8[ta*lc35Fc=2b7%^5G">myMenu</field></block></value><next><block type="controls_if" id="9!v%@7bqkGUSNwQE*IkC"><mutation elseif="3" /><value name="IF0"><shadow type="logic_boolean" id="s@g%U9!f6EJB{@2Ad1.d"><field name="BOOL">TRUE</field></shadow><block type="logic_compare" id="pS1{]k-w@IP=QL5JZX:k"><field name="OP">EQ</field><value name="A"><shadow type="math_number" id="(WyCG3E{oo_+yjkNjZY7"><field name="NUM">0</field></shadow><block type="argument_reporter_number" id="PO(Fo%i`Jn@k*Rr^(}-o"><mutation localizationname="miniMenu.onButtonPressed|handlerParam|selectedIndex" /><field name="VALUE">selectedIndex</field></block></value><value name="B"><shadow type="math_number" id="7tCXQPDGwzSycPw7N/AX"><field name="NUM">0</field></shadow></value></block></value><statement name="DO0"><block type="variables_set" id="??AfejMuVg}=)6yNTwNS"><field name="VAR" id="jugador-seleccionado">jugador</field><value name="VALUE"><shadow type="math_number" id="-U3kq$u$Fts=,R=)%LZZ"><field name="NUM">0</field></shadow><block type="spritescreate" id="GH]zQ%iA@`+MCj?*=*yo"><value name="img"><shadow type="screen_image_picker" id="o8G1Uq.`bXv2Yd0L[7ud"><field name="img">assets.image`ale`</field><data>{"commentRefs":[],"fieldData":{"img":"ale"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="d.Ca52*%/MylB*c2bx0|"><field name="MEMBER">Player</field></shadow></value></block></value></block></statement><value name="IF1"><shadow type="logic_boolean" id="t[m7Ho!Ft{(K;`j_8~[Q"><field name="BOOL">FALSE</field></shadow><block type="logic_compare" id="oNiu5B^K,9uYk-nRv*71"><field name="OP">EQ</field><value name="A"><shadow type="math_number" id="fhslP#v!35ftW7~{A[}A"><field name="NUM">0</field></shadow><block type="argument_reporter_number" id="S}U!pQ/x1b@gxL-EF#%r"><mutation localizationname="miniMenu.onButtonPressed|handlerParam|selectedIndex" /><field name="VALUE">selectedIndex</field></block></value><value name="B"><shadow type="math_number" id="jVf,EpB@@Z?s)J`)LL?t"><field name="NUM">1</field></shadow></value></block></value><statement name="DO1"><block type="variables_set" id=".u02dgBjuPV!;wmC{VXk"><field name="VAR" id="jugador-seleccionado">jugador</field><value name="VALUE"><shadow type="math_number" id="jIy8)[a7YRG{C76I,xnl"><field name="NUM">0</field></shadow><block type="spritescreate" id="|w{WZONVI^8+.c_xyY}g"><value name="img"><shadow type="screen_image_picker" id="9:xAwrWL#$,F9];K$z4Z"><field name="img">assets.image`cami`</field><data>{"commentRefs":[],"fieldData":{"img":"cami"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id=",Vvja@ySjXGa-GN^-kw`"><field name="MEMBER">Player</field></shadow></value></block></value></block></statement><value name="IF2"><shadow type="logic_boolean" id="q5XEb}@H@~YP4xIP6Z~]"><field name="BOOL">FALSE</field></shadow><block type="logic_compare" id="hlrELPYSk;]zR*f84R%G"><field name="OP">EQ</field><value name="A"><shadow type="math_number" id="9,W+]u50^V}iH#e1bg*p"><field name="NUM">0</field></shadow><block type="argument_reporter_number" id="!sF`NHhX4J(7-ijeMy#a"><mutation localizationname="miniMenu.onButtonPressed|handlerParam|selectedIndex" /><field name="VALUE">selectedIndex</field></block></value><value name="B"><shadow type="math_number" id="iC3]9t~A$ciyY%+mz(@d"><field name="NUM">2</field></shadow></value></block></value><statement name="DO2"><block type="variables_set" id="0~w;FH1c6xJk3X[ksf8X"><field name="VAR" id="jugador-seleccionado">jugador</field><value name="VALUE"><shadow type="math_number" id="L@y2$*kzy_prI2dm5rcJ"><field name="NUM">0</field></shadow><block type="spritescreate" id="JaD^T]bw6K6J}cedkp7m"><value name="img"><shadow type="screen_image_picker" id="g~^WqRUa9v`/Y6^x{$?~"><field name="img">assets.image`chris`</field><data>{"commentRefs":[],"fieldData":{"img":"image1"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="bVpELUkwG^%Vp|jp^2co"><field name="MEMBER">Player</field></shadow></value></block></value></block></statement><value name="IF3"><shadow type="logic_boolean" id="X13J@GJq6~Dwei%ZlTYl"><field name="BOOL">FALSE</field></shadow><block type="logic_compare" id="S0`#D5cgb7MjH5|tyx~0"><field name="OP">EQ</field><value name="A"><shadow type="math_number" id="_}h7[6QZllsJrPYy:xr4"><field name="NUM">0</field></shadow><block type="argument_reporter_number" id="-hUr1Z3/~/B3qI?^b*Lu"><mutation localizationname="miniMenu.onButtonPressed|handlerParam|selectedIndex" /><field name="VALUE">selectedIndex</field></block></value><value name="B"><shadow type="math_number" id="Vb=pkzTFSY=3H?#lZr*C"><field name="NUM">3</field></shadow></value></block></value><statement name="DO3"><block type="variables_set" id="2_3qoJC/S:GW!b@q`q;8"><field name="VAR" id="jugador-seleccionado">jugador</field><value name="VALUE"><shadow type="math_number" id="eg0!x1Wb^mZ!FAyniV;U"><field name="NUM">0</field></shadow><block type="spritescreate" id="#E/YA@_X?c}G5]-1c/ca"><value name="img"><shadow type="screen_image_picker" id="sB(.COi;{W}~Z1($eFeH"><field name="img">assets.image`nico`</field><data>{"commentRefs":[],"fieldData":{"img":"nico"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="Wv:QZX.S$(X]b?IgBq?6"><field name="MEMBER">Player</field></shadow></value></block></value></block></statement><next><block type="music_playable_play" id="w_~[k@WcTuAY%2.4^kpt"><field name="playbackMode">music.PlaybackMode.InBackground</field><value name="toPlay"><shadow type="music_string_playable" id="y}#qN+#NSv/(i7ZJK4yt"><value name="melody"><shadow type="melody_editor" id="Sz3X-N5N~3N|2*smiH[7"><field name="melody">"C D E F G - G - "</field></shadow></value><value name="tempo"><shadow type="math_number_minmax" id="4ccmq^Y7BI]$3[JZz-vC"><mutation min="40" max="500" label="Tempo" precision="0" /><field name="SLIDER">180</field></shadow></value></shadow></value><next><block type="function_call" id="2CApvuQb2hpcOz^mUdov"><mutation name="base" functionid="OJ)CVY`iItXY`g)7rcJl" /></block></next></block></next></block></next></block></statement></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="function_definition" id="2Pe0SwDSR6S=vKcC$3Jr" x="684" y="843"><mutation name="base" functionid="OJ)CVY`iItXY`g)7rcJl" /><field name="function_name">base</field><statement name="STACK"><block type="spritedestroy2" id="uaBR5Gi[;Q4:(gjIO79n"><html:mutation _expanded="0" _input_init="true" /><field name="effect">effects.spray</field><value name="sprite"><block type="variables_get" id="yb#7apka7r1PKleA)M@F"><field name="VAR" id="eS0{l_%}3nqIU5.6dcX+">myTextSprite</field></block></value><value name="duration"><shadow type="timePicker" id="I3}qzzDw^pZAZyzlz.T]"><field name="ms">500</field></shadow></value><next><block type="set_current_tilemap" id="IIjPI9#AE8F{(42[QOO,"><value name="tilemap"><shadow type="tiles_tilemap_editor" id="R~iC%G:6gn?NNVsDpn}i"><field name="tilemap">tilemap`level1`</field><data>{"commentRefs":[],"fieldData":{"tilemap":"level1"}}</data></shadow></value><next><block type="mapplaceonrandomtile" id="t?+eULCvQbMBy^)8y*|W"><value name="sprite"><block type="variables_get" id="lWfr4)g:7a8STlf:#8/*"><field name="VAR" id="jugador-seleccionado">jugador</field></block></value><value name="tile"><shadow type="tileset_tile_picker" id=":8u(h}*7!YY@Bf`c:FMo"><field name="tile">sprites.dungeon.floorLight0</field></shadow></value><next><block type="camerafollow" id="^C!Sto(H~zj[ekQwMSf8"><value name="sprite"><block type="variables_get" id="}kXdGF1EKp%9.}*uC`Zt"><field name="VAR" id="jugador-seleccionado">jugador</field></block></value><next><block type="gameSplash" id="=IOPj*.+.)ZaY6a!,JHn"><html:mutation _expanded="1" _input_init="true" /><value name="title"><shadow type="text" id="R=Z`Z+3hYbIF|@QX2QP]"><field name="TEXT">2026</field></shadow></value><value name="subtitle"><shadow type="text" id="~*E%2_Q`rPDKT(k}m}6*"><field name="TEXT">La base</field></shadow></value><next><block type="gameSplash" id="help-0"><html:mutation _expanded="1" _input_init="true" /><value name="title"><shadow type="text" id="help-3"><field name="TEXT">Usa las flechas para moverte</field></shadow></value><value name="subtitle"><shadow type="text" id="help-6"><field name="TEXT">Explora la base. Salida cerrada.</field></shadow></value><next><block type="game_control_sprite" id="help-9"><html:mutation _expanded="0" _input_init="true" /><value name="sprite"><block type="variables_get" id="help-12"><field name="VAR" id="jugador-seleccionado">jugador</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="help-15"><field name="speed">100</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="help-18"><field name="speed">100</field></shadow></value></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>
+<xml xmlns="http://www.w3.org/1999/xhtml">
+<variables>
+<variable type="KIND_SpriteKind">Pieza</variable>
+<variable type="KIND_SpriteKind">Moneda</variable>
+<variable type="KIND_SpriteKind">Peligro</variable>
+<variable type="KIND_SpriteKind">Equipo</variable>
+<variable type="KIND_SpriteKind">Cartel</variable>
+<variable type="KIND_SpriteKind">Interfaz</variable>
+</variables>
+<block id="InS]{JW;CQuE=W|kMyAF" type="function_definition" x="40" y="210" collapsed="true">
+<mutation name="presentarHistoria">
+</mutation>
+<statement name="STACK">
+<block id="9MgW4ckaWL].iZ}F9x;y" type="gamesetbackgroundimage">
+<value name="img">
+<shadow type="background_image_picker">
+<field name="img">assets.image`portada`</field>
+</shadow>
+</value>
+<next>
+<block id="?j#61Y|o5u3q(*t}tM;4" type="gameSplash">
+<mutation _expanded="1" />
+<value name="title">
+<shadow type="text">
+<field name="TEXT">Mensaje desde 2126</field>
+</shadow>
+</value>
+<value name="subtitle">
+<shadow type="text">
+<field name="TEXT">Ayuda hoy al futuro</field>
+</shadow>
+</value>
+<next>
+<block id="fipxHQV,9Xm~hkcnCj/{" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">2026. Nico, Cami, Ale y Cris encuentran una maquina misteriosa. De pronto, recibe un mensaje fechado en 2126...</field>
+</shadow>
+</value>
+<next>
+<block id="sM%{2x+@CFx!.0[2L$+x" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">Somos sus nietos y nietas. Nuestra ciudad necesita ayuda: hay residuos, falta agua y casi no quedan zonas verdes. Sus acciones de hoy pueden cambiar nuestro futuro.</field>
+</shadow>
+</value>
+<next>
+<block id="Ct1!7?#bd2%f5ad?o=l4" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">Elige tu personaje. Flechas: caminar. A: usar una maquina o un equipo cercano. B: consultar la mision. No hay combates.</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">INICIO: cambia aquí los textos de la historia. El dibujo original está en "portada".</comment>
+</block>
+<block id="{WI%seg++O2s3hY3zgJg" type="function_definition" x="40" y="295" collapsed="true">
+<mutation name="prepararPersonaje">
+</mutation>
+<statement name="STACK">
+<block id="dQ8%h{AwX]=_c`D-Vl?m" type="variables_set">
+<field name="VAR">capacidadPiezas</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+<next>
+<block id="Jn@K)-,UvX3A-_J]lTf:" type="variables_set">
+<field name="VAR">velocidad</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">90</field>
+</shadow>
+</value>
+<next>
+<block id="tLWw`L1m0KF5H88=Mzb6" type="variables_set">
+<field name="VAR">descuentoPiezas</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block id="gA[0c?e+LMD^+F1$_ful" type="variables_set">
+<field name="VAR">puntosReparacion</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block id=".h]}Q:5Jm+uv9PkI9iE)" type="controls_if">
+<mutation elseif="2" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">personajeSeleccionado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">Nico</field>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">personajeSeleccionado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">Cami</field>
+</block>
+</value>
+</block>
+</value>
+<value name="IF2">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">personajeSeleccionado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">Ale</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="WrzGYaQ#`s1`@@=6Rh;[" type="variables_set">
+<field name="VAR">jugador</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`nico`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="u;`S+r]L+@TGcw~Ig!Qo" type="variables_set">
+<field name="VAR">capacidadPiezas</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">4</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<statement name="DO1">
+<block id="h|+6f5I*906VgV+GNy~Y" type="variables_set">
+<field name="VAR">jugador</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`cami`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="W7;KM~9=Kk;)FubGTt:x" type="variables_set">
+<field name="VAR">descuentoPiezas</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<statement name="DO2">
+<block id="k9r)XT^PIGzQjl4/w-8}" type="variables_set">
+<field name="VAR">jugador</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`ale`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="Hg_o2Wq#=aCsy;6W1y-D" type="variables_set">
+<field name="VAR">velocidad</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">110</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="uDA@oH/Mf#eLr;QvxI!K" type="variables_set">
+<field name="VAR">jugador</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`cris`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="l+KTtx(V9o!mY-1y-cA-" type="variables_set">
+<field name="VAR">puntosReparacion</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">125</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block id="C)EJpVfqI#pB6=$k;K_|" type="gamesetbackgroundcolor">
+<value name="color">
+<shadow type="colorindexpicker">
+<field name="index">15</field>
+</shadow>
+</value>
+<next>
+<block id="=O+|ETyO%x[iH`NDKWS." type="camerafollow">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<next>
+<block id="ESf%%3:?v(AL{?5M11FQ" type="hudsetScore">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block id="u]M(;iN|.Jp+mYb%Bq{W" type="hudSetLife">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+<next>
+<block id=";qA3{_[z7yH~kB];c%*t" type="variables_set">
+<field name="VAR">fondoContador</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`barraEstado`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Interfaz</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="#}RVEj/Q[,L$ov3_q+oM" type="spritesetsetflag">
+<field name="flag">SpriteFlag.RelativeToCamera</field>
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">fondoContador</field>
+</block>
+</value>
+<value name="on">
+<shadow type="toggleOnOff">
+<field name="on">true</field>
+</shadow>
+</value>
+<next>
+<block id="p@tOwbxG~ar#o{Ue%-Dp" type="spritesetpos">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">fondoContador</field>
+</block>
+</value>
+<value name="x">
+<shadow type="positionPicker">
+<field name="index">80</field>
+</shadow>
+</value>
+<value name="y">
+<shadow type="positionPicker">
+<field name="index">112</field>
+</shadow>
+</value>
+<next>
+<block id="OTP38ta/Mp-B}$XcLF6?" type="Sprite_blockCombine_set">
+<field name="property">Sprite.z</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">fondoContador</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">99</field>
+</shadow>
+</value>
+<next>
+<block id="Pei8a}O(3h3NKUVb`hc}" type="variables_set">
+<field name="VAR">contador</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="fancy_text_create">
+<value name="text">
+<shadow type="text">
+<field name="TEXT" />
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="{5bZ8*L_iB5o6wr$kmJz" type="spritesetsetflag">
+<field name="flag">SpriteFlag.RelativeToCamera</field>
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">contador</field>
+</block>
+</value>
+<value name="on">
+<shadow type="toggleOnOff">
+<field name="on">true</field>
+</shadow>
+</value>
+<next>
+<block id="HX9B)5mQF;~6DC`~6}_]" type="spritesetpos">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">contador</field>
+</block>
+</value>
+<value name="x">
+<shadow type="positionPicker">
+<field name="index">80</field>
+</shadow>
+</value>
+<value name="y">
+<shadow type="positionPicker">
+<field name="index">112</field>
+</shadow>
+</value>
+<next>
+<block id="mo55%ef1i=gV+x-~Sqjm" type="Sprite_blockCombine_set">
+<field name="property">Sprite.z</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">contador</field>
+</block>
+</value>
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block id="]{Ai(HU`63Nb6TsJkMLd" type="fancy_text_set_color">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">contador</field>
+</shadow>
+</value>
+<value name="color">
+<shadow type="colorindexpicker">
+<field name="index">1</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">HABILIDADES: los cuatro comienzan iguales; solo cambia una ventaja pequeña.</comment>
+</block>
+<block id="bXkz}QxCR(^Z9Y+4#I;4" type="function_definition" x="690" y="210" collapsed="true">
+<mutation name="cargarNivel">
+</mutation>
+<statement name="STACK">
+<block id="@X_gH^TpPW+z=6ZlL7(=" type="variables_set">
+<field name="VAR">estado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">mensaje</field>
+</block>
+</value>
+<next>
+<block id="dQ)Jid,QIGZWpu`QXdV-" type="game_control_sprite">
+<mutation _expanded="2" />
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="vx">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<value name="vy">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<next>
+<block id="_dY0x]98`K%2|A^[lyw$" type="function_call">
+<mutation name="limpiarEscenario" />
+<next>
+<block id="Vglk?aQ{y2,[D1r_s@CW" type="variables_set">
+<field name="VAR">misionCompletada</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</block>
+</value>
+<next>
+<block id="R]sbTnd*|C+A}xsFyx;H" type="controls_if">
+<mutation elseif="2" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">nivelActual</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">nivelActual</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF2">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">nivelActual</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="/.nKgyQP!|T%ei]%KxUi" type="function_call">
+<mutation name="cargarNivel1" />
+</block>
+</statement>
+<statement name="DO1">
+<block id="Rth?^kK~{;;$JS[@Fp`m" type="function_call">
+<mutation name="cargarNivel2" />
+</block>
+</statement>
+<statement name="DO2">
+<block id="~M%zp^;/WPUvs=vp`R/g" type="function_call">
+<mutation name="cargarNivel3" />
+</block>
+</statement>
+<statement name="ELSE">
+<block id=";a+RO6_N*-rILbhYb=!0" type="function_call">
+<mutation name="cargarNivel4" />
+</block>
+</statement>
+<next>
+<block id="[)7SjgcaMi)3],Wr3q9j" type="function_call">
+<mutation name="colocarBase" />
+<next>
+<block id="IVsL$1O_ur8~7S8^V=K{" type="function_call">
+<mutation name="volverALaBase" />
+<next>
+<block id="_jp#$Y/|Nnc`ur?}/O$H" type="function_call">
+<mutation name="consultarMensaje" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">MAPAS: cada nivel tiene su propia función. Empieza editando ciudadReciclaje.</comment>
+</block>
+<block id="w#Y@5:by]jYztfQ,~K7j" type="function_definition" x="690" y="295" collapsed="true">
+<mutation name="cargarNivel1">
+</mutation>
+<statement name="STACK">
+<block id="({lEOT;X!^0GTYe8-GjC" type="set_current_tilemap">
+<value name="tilemap">
+<shadow type="tiles_tilemap_editor">
+<field name="tilemap">tilemap`ciudadReciclaje`</field>
+</shadow>
+</value>
+<next>
+<block id="45f~G?R#xv2,L1[^xyV^" type="function_call">
+<mutation name="colocarRecursosYPeligros" />
+<next>
+<block id="*.]B=^+y0YJI3:#nY[Ql" type="variables_set">
+<field name="VAR">dispositivo</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`recolector`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Equipo</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="mUz8[9*!,)8o[.G20n=G" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">dispositivo</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile">
+<value name="col">
+<shadow type="math_number">
+<field name="NUM">29</field>
+</shadow>
+</value>
+<value name="row">
+<shadow type="math_number">
+<field name="NUM">18</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<next>
+<block id="*hd~e1UIw})h3*6Y[^~@" type="function_call">
+<mutation name="ponerCartel">
+<arg name="texto" type="string" id="wciizmze5jcim4xsya8e" />
+<arg name="columna" type="number" id="0ymuc29n4tzuqjoa0yup" />
+<arg name="fila" type="number" id="t49of7rruh6ti5ref8sd9" />
+</mutation>
+<value name="wciizmze5jcim4xsya8e">
+<shadow type="text">
+<field name="TEXT">ESCUELA</field>
+</shadow>
+</value>
+<value name="0ymuc29n4tzuqjoa0yup">
+<shadow type="math_number">
+<field name="NUM">29</field>
+</shadow>
+</value>
+<value name="t49of7rruh6ti5ref8sd9">
+<shadow type="math_number">
+<field name="NUM">6</field>
+</shadow>
+</value>
+<next>
+<block id="WYFlKM|=c_=!_x(GE5L," type="function_call">
+<mutation name="ponerCartel">
+<arg name="texto" type="string" id="wciizmze5jcim4xsya8e" />
+<arg name="columna" type="number" id="0ymuc29n4tzuqjoa0yup" />
+<arg name="fila" type="number" id="t49of7rruh6ti5ref8sd9" />
+</mutation>
+<value name="wciizmze5jcim4xsya8e">
+<shadow type="text">
+<field name="TEXT">RECICLAJE</field>
+</shadow>
+</value>
+<value name="0ymuc29n4tzuqjoa0yup">
+<shadow type="math_number">
+<field name="NUM">30</field>
+</shadow>
+</value>
+<value name="t49of7rruh6ti5ref8sd9">
+<shadow type="math_number">
+<field name="NUM">19</field>
+</shadow>
+</value>
+<next>
+<block id=".SIeosTiMgh;1]$dxErv" type="function_call">
+<mutation name="ponerCartel">
+<arg name="texto" type="string" id="wciizmze5jcim4xsya8e" />
+<arg name="columna" type="number" id="0ymuc29n4tzuqjoa0yup" />
+<arg name="fila" type="number" id="t49of7rruh6ti5ref8sd9" />
+</mutation>
+<value name="wciizmze5jcim4xsya8e">
+<shadow type="text">
+<field name="TEXT">PARQUE</field>
+</shadow>
+</value>
+<value name="0ymuc29n4tzuqjoa0yup">
+<shadow type="math_number">
+<field name="NUM">8</field>
+</shadow>
+</value>
+<value name="t49of7rruh6ti5ref8sd9">
+<shadow type="math_number">
+<field name="NUM">23</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">NIVEL 1: este es el ejemplo jugable. Mueve los marcadores de colores en el mapa.</comment>
+</block>
+<block id="T`EMCUejGBF)yjTk`JM`" type="function_definition" x="3290" y="210" collapsed="true">
+<mutation name="cargarNivel2">
+</mutation>
+<statement name="STACK">
+<block id="7S%L%*1/`:=R3*iSQz9%" type="set_current_tilemap">
+<value name="tilemap">
+<shadow type="tiles_tilemap_editor">
+<field name="tilemap">tilemap`ciudadAgua`</field>
+</shadow>
+</value>
+<next>
+<block id="IHdNaAWq1xtl2|Gn-0*z" type="function_call">
+<mutation name="ponerCartel">
+<arg name="texto" type="string" id="wciizmze5jcim4xsya8e" />
+<arg name="columna" type="number" id="0ymuc29n4tzuqjoa0yup" />
+<arg name="fila" type="number" id="t49of7rruh6ti5ref8sd9" />
+</mutation>
+<value name="wciizmze5jcim4xsya8e">
+<shadow type="text">
+<field name="TEXT">AGUA: TALLER</field>
+</shadow>
+</value>
+<value name="0ymuc29n4tzuqjoa0yup">
+<shadow type="math_number">
+<field name="NUM">29</field>
+</shadow>
+</value>
+<value name="t49of7rruh6ti5ref8sd9">
+<shadow type="math_number">
+<field name="NUM">21</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">POR CONSTRUIR: diseña la misión del agua y coloca sus piezas y dispositivos.</comment>
+</block>
+<block id="NaG]ZTP.NdYc{I?@b0]a" type="function_definition" x="3290" y="295" collapsed="true">
+<mutation name="cargarNivel3">
+</mutation>
+<statement name="STACK">
+<block id="u3tGfo^Apm3`c{%,2mq}" type="set_current_tilemap">
+<value name="tilemap">
+<shadow type="tiles_tilemap_editor">
+<field name="tilemap">tilemap`ciudadAire`</field>
+</shadow>
+</value>
+<next>
+<block id="id5ihO6vSh6)iZg@[Q9#" type="function_call">
+<mutation name="ponerCartel">
+<arg name="texto" type="string" id="wciizmze5jcim4xsya8e" />
+<arg name="columna" type="number" id="0ymuc29n4tzuqjoa0yup" />
+<arg name="fila" type="number" id="t49of7rruh6ti5ref8sd9" />
+</mutation>
+<value name="wciizmze5jcim4xsya8e">
+<shadow type="text">
+<field name="TEXT">AIRE: TALLER</field>
+</shadow>
+</value>
+<value name="0ymuc29n4tzuqjoa0yup">
+<shadow type="math_number">
+<field name="NUM">29</field>
+</shadow>
+</value>
+<value name="t49of7rruh6ti5ref8sd9">
+<shadow type="math_number">
+<field name="NUM">21</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">POR CONSTRUIR: añade humo y dos componentes antes de la reparación final.</comment>
+</block>
+<block id="Rurx5k|8VU!.Qhvu:Rn3" type="function_definition" x="3290" y="380" collapsed="true">
+<mutation name="cargarNivel4">
+</mutation>
+<statement name="STACK">
+<block id="C|V._5uh#F11.PN:RM9n" type="set_current_tilemap">
+<value name="tilemap">
+<shadow type="tiles_tilemap_editor">
+<field name="tilemap">tilemap`ciudadNaturaleza`</field>
+</shadow>
+</value>
+<next>
+<block id="Zd/w`y+@m`nx+#Mw@5@^" type="function_call">
+<mutation name="ponerCartel">
+<arg name="texto" type="string" id="wciizmze5jcim4xsya8e" />
+<arg name="columna" type="number" id="0ymuc29n4tzuqjoa0yup" />
+<arg name="fila" type="number" id="t49of7rruh6ti5ref8sd9" />
+</mutation>
+<value name="wciizmze5jcim4xsya8e">
+<shadow type="text">
+<field name="TEXT">PARQUE: TALLER</field>
+</shadow>
+</value>
+<value name="0ymuc29n4tzuqjoa0yup">
+<shadow type="math_number">
+<field name="NUM">8</field>
+</shadow>
+</value>
+<value name="t49of7rruh6ti5ref8sd9">
+<shadow type="math_number">
+<field name="NUM">23</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">POR CONSTRUIR: restaura el parque y escribe la revelación de la máquina.</comment>
+</block>
+<block id="nN!rMX#T~9bN(|qmdB%V" type="function_definition" x="690" y="380" collapsed="true">
+<mutation name="limpiarEscenario">
+</mutation>
+<statement name="STACK">
+<block id="8%Kd[IN72tv8vQ/(k{?n" type="sprites_destroy_all_sprites_of_kind">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Pieza</field>
+</shadow>
+</value>
+<next>
+<block id="*CG.Xl1(q{TzX,TM;`GU" type="sprites_destroy_all_sprites_of_kind">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Moneda</field>
+</shadow>
+</value>
+<next>
+<block id="v=i:UB_`qRc6^4{04/V^" type="sprites_destroy_all_sprites_of_kind">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Peligro</field>
+</shadow>
+</value>
+<next>
+<block id="Y80d]9buW?6#x}{U7AkY" type="sprites_destroy_all_sprites_of_kind">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Equipo</field>
+</shadow>
+</value>
+<next>
+<block id="?*VQuE^bD]}5sUqLxNSp" type="sprites_destroy_all_sprites_of_kind">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Cartel</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">LIMPIEZA: se usa al cambiar de nivel; regresar a la base NO repone los recursos.</comment>
+</block>
+<block id=".y~HNvX+2IWEoGDJg=l^" type="function_definition" x="690" y="465" collapsed="true">
+<mutation name="colocarBase">
+</mutation>
+<statement name="STACK">
+<block id="v#/j!9DG{6EtIJb._qnc" type="variables_set">
+<field name="VAR">maquina</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`maquina`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Equipo</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="2aSpTvm*$R.Qn4@F-IRL" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">maquina</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile">
+<value name="col">
+<shadow type="math_number">
+<field name="NUM">4</field>
+</shadow>
+</value>
+<value name="row">
+<shadow type="math_number">
+<field name="NUM">4</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<next>
+<block id="sG78S+6-bN^xC=iF2a,L" type="variables_set">
+<field name="VAR">botiquin</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`botiquin`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Equipo</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="!.`(cs,9KMu?TqdN$niR" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">botiquin</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile">
+<value name="col">
+<shadow type="math_number">
+<field name="NUM">7</field>
+</shadow>
+</value>
+<value name="row">
+<shadow type="math_number">
+<field name="NUM">4</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<next>
+<block id=":I3}_,0PxUl9yEh;uH;%" type="variables_set">
+<field name="VAR">mochila</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`mochila`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Equipo</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="~z{jfKw8b4Q4j-AM6m.x" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">mochila</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile">
+<value name="col">
+<shadow type="math_number">
+<field name="NUM">10</field>
+</shadow>
+</value>
+<value name="row">
+<shadow type="math_number">
+<field name="NUM">4</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<next>
+<block id="/Py`APZL%qu6NRY#]F6q" type="variables_set">
+<field name="VAR">herramienta</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`herramienta`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Equipo</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="~;N---@V=xV0Kmj~qEz+" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">herramienta</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile">
+<value name="col">
+<shadow type="math_number">
+<field name="NUM">10</field>
+</shadow>
+</value>
+<value name="row">
+<shadow type="math_number">
+<field name="NUM">7</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<next>
+<block id="|PafXANNV.P#ZXYwQaIc" type="function_call">
+<mutation name="ponerCartel">
+<arg name="texto" type="string" id="wciizmze5jcim4xsya8e" />
+<arg name="columna" type="number" id="0ymuc29n4tzuqjoa0yup" />
+<arg name="fila" type="number" id="t49of7rruh6ti5ref8sd9" />
+</mutation>
+<value name="wciizmze5jcim4xsya8e">
+<shadow type="text">
+<field name="TEXT">BASE</field>
+</shadow>
+</value>
+<value name="0ymuc29n4tzuqjoa0yup">
+<shadow type="math_number">
+<field name="NUM">7</field>
+</shadow>
+</value>
+<value name="t49of7rruh6ti5ref8sd9">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">BASE FÍSICA: está en la esquina superior izquierda. Usa A junto a cada equipo.</comment>
+</block>
+<block id="-_~nju%2.GzjP+pXwG,@" type="function_definition" x="690" y="550" collapsed="true">
+<mutation name="ponerCartel">
+<arg name="texto" type="string" id="wciizmze5jcim4xsya8e" />
+<arg name="columna" type="number" id="0ymuc29n4tzuqjoa0yup" />
+<arg name="fila" type="number" id="t49of7rruh6ti5ref8sd9" />
+</mutation>
+<statement name="STACK">
+<block id="If4a4^K{*7pN@xHd;ec(" type="variables_set">
+<field name="VAR">cartel</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="fancy_text_create">
+<value name="text">
+<block type="argument_reporter_string">
+<field name="VALUE">texto</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="7,7u[Ca9ic[;L(Ch4dAK" type="spritesetkind">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">cartel</field>
+</block>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Cartel</field>
+</shadow>
+</value>
+<next>
+<block id="?F)^P(@er2MboBYT|c^$" type="fancy_text_set_color">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">cartel</field>
+</shadow>
+</value>
+<value name="color">
+<shadow type="colorindexpicker">
+<field name="index">1</field>
+</shadow>
+</value>
+<next>
+<block id="lb}9cN-:e6vlqLsVyhFh" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">cartel</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile" />
+<block type="mapgettile">
+<value name="col">
+<block type="argument_reporter_number">
+<field name="VALUE">columna</field>
+</block>
+</value>
+<value name="row">
+<block type="argument_reporter_number">
+<field name="VALUE">fila</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">CARTELES: usa esta función con un texto, una columna y una fila del mapa.</comment>
+</block>
+<block id=";C{o-TNXy9@@@mJj#3+n" type="function_definition" x="690" y="635" collapsed="true">
+<mutation name="colocarRecursosYPeligros">
+</mutation>
+<statement name="STACK">
+<block id="h4/SZ|%~@-KC=kpDFG4," type="pxt_controls_for_of">
+<value name="LIST">
+<block type="mapgettilestype">
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">marcaPieza</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="VAR">
+<block type="variables_get_reporter">
+<mutation duplicateondrag="true" />
+<field name="VAR">lugar</field>
+</block>
+</value>
+<statement name="DO">
+<block id="w_30E4!!e1SIY^1B38o;" type="variables_set">
+<field name="VAR">objeto</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`pieza`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Pieza</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="6Khv1_#!lEd~^YojjQuU" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">objeto</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile" />
+<block type="variables_get">
+<field name="VAR">lugar</field>
+</block>
+</value>
+<next>
+<block id="mInOvGam+Uq;.w(032Qt" type="mapsettileat">
+<value name="loc">
+<shadow type="mapgettile" />
+<block type="variables_get">
+<field name="VAR">lugar</field>
+</block>
+</value>
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">acera</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block id="~2AeAT;.2P=~Nn.Bz]}k" type="pxt_controls_for_of">
+<value name="LIST">
+<block type="mapgettilestype">
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">marcaMoneda</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="VAR">
+<block type="variables_get_reporter">
+<mutation duplicateondrag="true" />
+<field name="VAR">lugar2</field>
+</block>
+</value>
+<statement name="DO">
+<block id="%uSFE#4YGI-14J9hyue`" type="variables_set">
+<field name="VAR">objeto</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`moneda`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Moneda</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="mvzJLN]N4OM)DnG2@$dL" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">objeto</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile" />
+<block type="variables_get">
+<field name="VAR">lugar2</field>
+</block>
+</value>
+<next>
+<block id="le3lcy$aKsIkbtVU1p~I" type="mapsettileat">
+<value name="loc">
+<shadow type="mapgettile" />
+<block type="variables_get">
+<field name="VAR">lugar2</field>
+</block>
+</value>
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">acera</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block id="7mNnWga?yo#vP+1lUWTg" type="pxt_controls_for_of">
+<value name="LIST">
+<block type="mapgettilestype">
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">marcaPeligro</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="VAR">
+<block type="variables_get_reporter">
+<mutation duplicateondrag="true" />
+<field name="VAR">lugar3</field>
+</block>
+</value>
+<statement name="DO">
+<block id="fb(9H0j%jY/$CGj8[_um" type="variables_set">
+<field name="VAR">objeto</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`peligro`</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Peligro</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="=kqT{+;iH+/z$2LUJJ?A" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">objeto</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile" />
+<block type="variables_get">
+<field name="VAR">lugar3</field>
+</block>
+</value>
+<next>
+<block id="r):Llbg)=pKdm95~DQ?u" type="mapsettileat">
+<value name="loc">
+<shadow type="mapgettile" />
+<block type="variables_get">
+<field name="VAR">lugar3</field>
+</block>
+</value>
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">acera</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">MARCADORES: gris = pieza, amarillo = moneda, verde = peligro. Se vuelven acera.</comment>
+</block>
+<block id="oK2L?6mRBIWN2;igD/U|" type="function_definition" x="1340" y="210" collapsed="true">
+<mutation name="volverALaBase">
+</mutation>
+<statement name="STACK">
+<block id=".3JjSRd9)O~eHQ9%V4rg" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile">
+<value name="col">
+<shadow type="math_number">
+<field name="NUM">6</field>
+</shadow>
+</value>
+<value name="row">
+<shadow type="math_number">
+<field name="NUM">6</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<next>
+<block id="3h[jcz{~sL$r()URdlXB" type="hudSetLife">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+<next>
+<block id="HY~0`ob(Lgj;+U1iMvYe" type="variables_set">
+<field name="VAR">protegidoHasta</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="arcade_game_runtime">
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1500</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="i?-U^v5QJt`ub`|vjp3o" type="function_call">
+<mutation name="continuarExplorando" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">VIDA: conserva piezas, dinero y puntaje al volver. No hay pérdida definitiva.</comment>
+</block>
+<block id="{$g%1v%0^@wEs3qMl]=D" type="function_definition" x="1340" y="295" collapsed="true">
+<mutation name="continuarExplorando">
+</mutation>
+<statement name="STACK">
+<block id="@C7]c9Ygk*!rOp%f%Soz" type="variables_set">
+<field name="VAR">estado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">exploracion</field>
+</block>
+</value>
+<next>
+<block id="+9x`*;,wp(r[f{W/aj]2" type="game_control_sprite">
+<mutation _expanded="2" />
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="vx">
+<shadow type="spriteSpeedPicker" />
+<block type="variables_get">
+<field name="VAR">velocidad</field>
+</block>
+</value>
+<value name="vy">
+<shadow type="spriteSpeedPicker" />
+<block type="variables_get">
+<field name="VAR">velocidad</field>
+</block>
+</value>
+<next>
+<block id="b^DG(jm3`qY.SstN-^VB" type="function_call">
+<mutation name="actualizarContador" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block id="P./by|-Um[t*|psB6:ed" type="function_definition" x="1340" y="380" collapsed="true">
+<mutation name="actualizarContador">
+</mutation>
+<statement name="STACK">
+<block id="(QMIM@Tzkhbbc|+9Kq[k" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">reparacion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="aR%@Bq1pi[dvpwCV|s{A" type="fancy_text_set_text">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">contador</field>
+</shadow>
+</value>
+<value name="text">
+<block type="text_join">
+<mutation items="3" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">A B A ^  |  Paso </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">pasoReparacion</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">/4</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="ybUQ+YUod0g^U6pv;sIA" type="fancy_text_set_text">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">contador</field>
+</shadow>
+</value>
+<value name="text">
+<block type="text_join">
+<mutation items="6" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">Piezas </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="variables_get">
+<field name="VAR">piezas</field>
+</block>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT">/</field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="variables_get">
+<field name="VAR">capacidadPiezas</field>
+</block>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">  $</field>
+</shadow>
+</value>
+<value name="ADD5">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="variables_get">
+<field name="VAR">dinero</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<next>
+<block id="p8C,7OU)``:[#?=-xJcg" type="spritesetpos">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">contador</field>
+</block>
+</value>
+<value name="x">
+<shadow type="positionPicker">
+<field name="index">80</field>
+</shadow>
+</value>
+<value name="y">
+<shadow type="positionPicker">
+<field name="index">112</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">HUD: corazones y puntos usan Arcade. Aquí mostramos piezas y dinero.</comment>
+</block>
+<block id="w[]~/EfZ[z^[%7:TV2;e" type="function_definition" x="1990" y="210" collapsed="true">
+<mutation name="consultarMensaje">
+</mutation>
+<statement name="STACK">
+<block id="TA$ZK|j/(8wgf,@8;xk^" type="variables_set">
+<field name="VAR">estado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">mensaje</field>
+</block>
+</value>
+<next>
+<block id="fS.fyU`U?-{W[h|URG~T" type="game_control_sprite">
+<mutation _expanded="2" />
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="vx">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<value name="vy">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<next>
+<block id="5h?!?Iq~4?M9TcK`vB;F" type="controls_if">
+<mutation elseif="2" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">nivelActual</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">nivelActual</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF2">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">nivelActual</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="G)Rmr_g5oi7E}+`rnxLt" type="function_call">
+<mutation name="calcularCosto" />
+<next>
+<block id="bm$*y[A21hdZh?vvNvIO" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="text_join">
+<mutation items="3" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">2126: el centro de reciclaje no funciona. Reune </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="variables_get">
+<field name="VAR">costoReparacion</field>
+</block>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT"> piezas y repara el recolector al sureste de la ciudad. Evita los residuos verdes. La maquina, el botiquin y las mejoras estan en la base.</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<statement name="DO1">
+<block id="|^w_m4PQ)lB7FL=ZZW#]" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">NIVEL 2 - TALLER PARA CREAR. Proxima mision: recuperar el agua de la ciudad. Este mapa aun no tiene una mision jugable. Edita cargarNivel2 para continuar el proyecto.</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="DO2">
+<block id="h26=o]/X`~dO5si}Y+0)" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">NIVEL 3 - TALLER PARA CREAR. Proxima mision: mejorar el aire. Agrega zonas de humo y componentes en cargarNivel3.</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="?CzAikzeyikbuEW7?@~;" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">NIVEL 4 - TALLER PARA CREAR. Proxima mision: recuperar el parque. Agrega la restauracion y el secreto de la maquina en cargarNivel4.</field>
+</shadow>
+</value>
+</block>
+</statement>
+<next>
+<block id="5nt:NI_a}fH(Z2U4Ph7k" type="function_call">
+<mutation name="continuarExplorando" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">MENSAJES: escribe aquí las misiones y pistas. B permite volver a leerlas.</comment>
+</block>
+<block id="ksd4UTY}iV)G`IId-KZT" type="function_definition" x="1990" y="295" collapsed="true">
+<mutation name="estaCerca">
+<arg name="equipo" type="Sprite" id="ueyjgnrh82hv74x781jpl" />
+</mutation>
+<statement name="STACK">
+<block id="aRudr*OMhsAAK}p=Q|rf" type="function_return">
+<value name="RETURN_VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_op3">
+<value name="x">
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">jugador</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.x</field>
+<value name="mySprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" />
+<field name="VALUE">equipo</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">22</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_op3">
+<value name="x">
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="variables_get">
+<field name="VAR">jugador</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="Sprite_blockCombine_get">
+<field name="property">Sprite.y</field>
+<value name="mySprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" />
+<field name="VALUE">equipo</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">22</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<comment pinned="false">DISTANCIA: 22 píxeles permite usar un equipo estando a su lado.</comment>
+</block>
+<block id="gXUxgUZoR2}7_!D{oGJI" type="function_definition" x="1990" y="380" collapsed="true">
+<mutation name="mejorarMochila">
+</mutation>
+<statement name="STACK">
+<block id="vQzf%dezFih^W#y=[J@L" type="variables_set">
+<field name="VAR">estado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">mensaje</field>
+</block>
+</value>
+<next>
+<block id="^h]?V^@t7OG(b*Aq]PI;" type="game_control_sprite">
+<mutation _expanded="2" />
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="vx">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<value name="vy">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<next>
+<block id="!anM[1J7]sSKD[JhnKg]" type="controls_if">
+<mutation elseif="2" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GTE</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">capacidadPiezas</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">5</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">dinero</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">20</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF2">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="gameask">
+<mutation _expanded="1" />
+<value name="title">
+<shadow type="text">
+<field name="TEXT">Mochila +1: $20</field>
+</shadow>
+</value>
+<value name="subtitle">
+<shadow type="text">
+<field name="TEXT">A: comprar / B: volver</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="$i/dXGVcs17cg*KGzS.5" type="game_show_long_text">
+<field name="layout">DialogLayout.Bottom</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">Tu mochila ya puede cargar 5 piezas.</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="DO1">
+<block id="LH+Oi;kpUgf3PZ?)(ak#" type="game_show_long_text">
+<field name="layout">DialogLayout.Bottom</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">Mochila +1: cuesta 20 monedas. Encuentra monedas amarillas en la ciudad.</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="DO2">
+<block id="fM{niX5;3CgTV-E+eq[4" type="variables_change">
+<field name="VAR">dinero</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">-20</field>
+</shadow>
+</value>
+<next>
+<block id="@FFFG=HUIKKg(uUXHYB." type="variables_change">
+<field name="VAR">capacidadPiezas</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block id=".OFgA`}olb#j|m.QzJVM" type="function_call">
+<mutation name="continuarExplorando" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">TIENDA: la mochila cuesta 20 y llega hasta 5 piezas. Nico conserva su ventaja inicial.</comment>
+</block>
+<block id="~xVc:-Wd;w.5cmltO8Vm" type="function_definition" x="1990" y="465" collapsed="true">
+<mutation name="mejorarHerramienta">
+</mutation>
+<statement name="STACK">
+<block id="e^6Hl]eRJaWfb)2%}ib%" type="variables_set">
+<field name="VAR">estado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">mensaje</field>
+</block>
+</value>
+<next>
+<block id="Xys*=mS]=]ff_Cg.*A4r" type="game_control_sprite">
+<mutation _expanded="2" />
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="vx">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<value name="vy">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<next>
+<block id="ABA?kb@QA^d)v@w^ND)$" type="controls_if">
+<mutation elseif="2" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">nivelHerramienta</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">dinero</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">30</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF2">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="gameask">
+<mutation _expanded="1" />
+<value name="title">
+<shadow type="text">
+<field name="TEXT">Herramienta: $30</field>
+</shadow>
+</value>
+<value name="subtitle">
+<shadow type="text">
+<field name="TEXT">A: comprar / B: volver</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="+0$}1)/T2**vPH7DJ1$o" type="game_show_long_text">
+<field name="layout">DialogLayout.Bottom</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">Ya tienes la herramienta mejorada.</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="DO1">
+<block id="7u9n:JRdJp|uaQKePW3{" type="game_show_long_text">
+<field name="layout">DialogLayout.Bottom</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">Herramienta: cuesta 30 monedas. Permite reparar usando una pieza menos.</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="DO2">
+<block id="9xP*cd3n{k;Bt7?;6Y5}" type="variables_change">
+<field name="VAR">dinero</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">-30</field>
+</shadow>
+</value>
+<next>
+<block id="4OVCaVI2tO(]H}rz7}~R" type="variables_set">
+<field name="VAR">nivelHerramienta</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block id="^lYBK-IlCig`#58yXPka" type="function_call">
+<mutation name="continuarExplorando" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">HERRAMIENTA: una sola mejora de 30 monedas. Cami también conserva su descuento.</comment>
+</block>
+<block id="N(*C|X]Ig38RHrf-JS{k" type="function_definition" x="2640" y="210" collapsed="true">
+<mutation name="calcularCosto">
+</mutation>
+<statement name="STACK">
+<block id="-Rzp+xLhgKr:mvNTNcZm" type="variables_set">
+<field name="VAR">costoReparacion</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_op2">
+<field name="op">max</field>
+<value name="x">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<value name="y">
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">descuentoPiezas</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">nivelHerramienta</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<comment pinned="false">COSTO: la reparación básica cuesta 3 piezas, con un mínimo de 1.</comment>
+</block>
+<block id="^o*IS~S/QxXD,d6C),yg" type="function_definition" x="2640" y="295" collapsed="true">
+<mutation name="iniciarReparacion">
+</mutation>
+<statement name="STACK">
+<block id="x$T89]hgC2Vx*M(|Cc9)" type="function_call">
+<mutation name="calcularCosto" />
+<next>
+<block id="8`A!)o_hE^QJr.f}|mD6" type="variables_set">
+<field name="VAR">estado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">mensaje</field>
+</block>
+</value>
+<next>
+<block id="K)FshyH9i7?@JM}eMfny" type="game_control_sprite">
+<mutation _expanded="2" />
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="vx">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<value name="vy">
+<shadow type="spriteSpeedPicker">
+<field name="speed">0</field>
+</shadow>
+</value>
+<next>
+<block id="WZbeDjlQwY{VyF1XEGTq" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">piezas</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">costoReparacion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="%a8s*rR~y|ti4w*J(~6V" type="game_show_long_text">
+<field name="layout">DialogLayout.Bottom</field>
+<value name="str">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="text_join">
+<mutation items="5" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">Necesitas </field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="variables_get">
+<field name="VAR">costoReparacion</field>
+</block>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT"> piezas. Llevas </field>
+</shadow>
+</value>
+<value name="ADD3">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="variables_get">
+<field name="VAR">piezas</field>
+</block>
+</value>
+<value name="ADD4">
+<shadow type="text">
+<field name="TEXT">. Busca las piezas grises en las aceras.</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="u+VFO_!b,g)vt/*_A?]X" type="function_call">
+<mutation name="continuarExplorando" />
+</block>
+</next>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="+zSD)3YO4usl!Ot^r:%W" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">Repara pulsando: A, B, A, ARRIBA. Si fallas, vuelve al primer paso. ABAJO cancela. Solo gastas piezas al completar la secuencia.</field>
+</shadow>
+</value>
+<next>
+<block id="pwlQ}cX;.SK5i7rG_0~9" type="variables_set">
+<field name="VAR">pasoReparacion</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block id="hBB`8F;sj4o3faIJ!J/y" type="variables_set">
+<field name="VAR">estado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">reparacion</field>
+</block>
+</value>
+<next>
+<block id="EJe1K_pY*=uK)-/elhYf" type="function_call">
+<mutation name="actualizarContador" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">REPARACIÓN: iniciar con A no cuenta como el primer paso de la secuencia.</comment>
+</block>
+<block id=":b1!,:(Q[GI.7yUbrofd" type="function_definition" x="2640" y="380" collapsed="true">
+<mutation name="comprobarBoton">
+<arg name="boton" type="string" id="6qbemk1qkscqdj9zacjkh" />
+</mutation>
+<statement name="STACK">
+<block id="Psfi{i)AB5C3yZtlPC-U" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">OR</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">OR</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">OR</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">pasoReparacion</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="argument_reporter_string">
+<field name="VALUE">boton</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">A</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">pasoReparacion</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="argument_reporter_string">
+<field name="VALUE">boton</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">B</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">pasoReparacion</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="argument_reporter_string">
+<field name="VALUE">boton</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">A</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">pasoReparacion</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="argument_reporter_string">
+<field name="VALUE">boton</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">ARRIBA</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="qjkv/T6AM[0pZ#uPN%eS" type="variables_change">
+<field name="VAR">pasoReparacion</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id="#tOyX3,21{:KUe=3~Z[v" type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">pasoReparacion</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">4</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="98_++N(%fxkb^^#?B-WT" type="function_call">
+<mutation name="completarMision" />
+</block>
+</statement>
+<statement name="ELSE">
+<block id="[vw8wTP(euGBbAfaZ3l@" type="function_call">
+<mutation name="actualizarContador" />
+</block>
+</statement>
+</block>
+</next>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="`GsW9UsNLp$kA(Zd(YYI" type="variables_set">
+<field name="VAR">pasoReparacion</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block id="N4C{SJ.q[!bCY5NMV5l#" type="spritesaytext">
+<mutation _expanded="2" />
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="text">
+<shadow type="text">
+<field name="TEXT">Otra vez: A B A ARRIBA</field>
+</shadow>
+</value>
+<value name="timeOnScreen">
+<shadow type="timePicker">
+<field name="ms">1200</field>
+</shadow>
+</value>
+<value name="animated">
+<shadow type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</shadow>
+</value>
+<next>
+<block id="@Chcsd5,z[bv^sbNlfKl" type="function_call">
+<mutation name="actualizarContador" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+<comment pinned="false">SECUENCIA: cambia estas cuatro comparaciones para crear otra reparación.</comment>
+</block>
+<block id="v_S~_h_V+2}u4cR+Uct3" type="function_definition" x="2640" y="465" collapsed="true">
+<mutation name="completarMision">
+</mutation>
+<statement name="STACK">
+<block id="!z=!|tK1Ho6}/v(uVC,u" type="variables_set">
+<field name="VAR">estado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">mensaje</field>
+</block>
+</value>
+<next>
+<block id="R[*h}Cnf/GgVbQg2t`mh" type="variables_set">
+<field name="VAR">misionCompletada</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="logic_boolean">
+<field name="BOOL">TRUE</field>
+</block>
+</value>
+<next>
+<block id="eda1M2]UvnmcaJ`0CxlM" type="variables_change">
+<field name="VAR">piezas</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">costoReparacion</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block id="N[]0E/s~-o!!LSM;?)OF" type="variables_change">
+<field name="VAR">dinero</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">20</field>
+</shadow>
+</value>
+<next>
+<block id=",_v-J0+n.N2*4Q/XrquN" type="hudChangeScoreBy">
+<value name="value">
+<block type="variables_get">
+<field name="VAR">puntosReparacion</field>
+</block>
+</value>
+<next>
+<block id="vWo.gscBK`U?EfcI_8RO" type="spritesetimage">
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">dispositivo</field>
+</block>
+</value>
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`recolectorListo`</field>
+</shadow>
+</value>
+<next>
+<block id="LQ#Gms[TkBsL/GT%*j+4" type="function_call">
+<mutation name="actualizarContador" />
+<next>
+<block id="RRy_LD/2gGj`Je0D*lQ:" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">2126: funciona! El centro de reciclaje vuelve a recuperar materiales. Reutilizarlos ayuda a reducir residuos y la necesidad de fabricar materiales nuevos. Gracias!</field>
+</shadow>
+</value>
+<next>
+<block id="sW;ftMe|!03+jdDn@SS." type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text">
+<field name="TEXT">Primera pista: detras del recolector aparece el mismo simbolo que tiene la maquina. Quien lo puso ahi?</field>
+</shadow>
+</value>
+<next>
+<block id="2{Y/a@?W,3Ei9Qvd_uP1" type="game_show_long_text">
+<field name="layout">DialogLayout.Full</field>
+<value name="str">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="text_join">
+<mutation items="3" />
+<value name="ADD0">
+<shadow type="text">
+<field name="TEXT">Mision 1 completa: +20 monedas y +</field>
+</shadow>
+</value>
+<value name="ADD1">
+<shadow type="text"><field name="TEXT" /></shadow>
+<block type="variables_get">
+<field name="VAR">puntosReparacion</field>
+</block>
+</value>
+<value name="ADD2">
+<shadow type="text">
+<field name="TEXT"> puntos. Ahora visitaras el mapa de trabajo del nivel 2. Las siguientes misiones quedan para que ustedes las creen.</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="D(}N|,XcO-g^#NwIr/6T" type="variables_change">
+<field name="VAR">nivelActual</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id="M1r*c=YMz#k~3Z?kKq2N" type="function_call">
+<mutation name="cargarNivel" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<comment pinned="false">PREMIO Y PISTA: aquí pueden escribir cómo cambió 2126 y la primera pista.</comment>
+</block>
+<block id="`MR86!9)`-#+zwwzA}_O" type="spritesoverlap" x="1340" y="465" collapsed="true">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+<value name="otherKind">
+<shadow type="spritekind">
+<field name="MEMBER">Pieza</field>
+</shadow>
+</value>
+<value name="HANDLER_DRAG_PARAM_sprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">sprite</field>
+</block>
+</value>
+<value name="HANDLER_DRAG_PARAM_otherSprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">otraPieza</field>
+</block>
+</value>
+<statement name="HANDLER">
+<block id="2Xxn@r#Pg/z^C`,mgh=l" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">exploracion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="];#7+G%+~n#7Yn5;jT8." type="controls_if">
+<mutation elseif="0" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">piezas</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">capacidadPiezas</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="uy}fEHwMf*V[F|tSZH}M" type="spritedestroy2">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">otraPieza</field>
+</shadow>
+</value>
+<next>
+<block id="JG4r/=ownUAm(JvJ_bLX" type="variables_change">
+<field name="VAR">piezas</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id="cfcJ{^}kKm.4~|csKhKL" type="hudChangeScoreBy">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">10</field>
+</shadow>
+</value>
+<next>
+<block id="lz+)*2VllZxHkigbA0v6" type="function_call">
+<mutation name="actualizarContador" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="a#Kp~9;f.L7ElE6wmxxT" type="spritesaytext">
+<mutation _expanded="2" />
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="text">
+<shadow type="text">
+<field name="TEXT">Mochila llena</field>
+</shadow>
+</value>
+<value name="timeOnScreen">
+<shadow type="timePicker">
+<field name="ms">500</field>
+</shadow>
+</value>
+<value name="animated">
+<shadow type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</shadow>
+</value>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+</statement>
+<comment pinned="false">RECOGER: una mochila llena deja la pieza en el suelo y no da puntos repetidos.</comment>
+</block>
+<block id="dJxr/-Q4uORkhrqB4D@H" type="spritesoverlap" x="1340" y="550" collapsed="true">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+<value name="otherKind">
+<shadow type="spritekind">
+<field name="MEMBER">Moneda</field>
+</shadow>
+</value>
+<value name="HANDLER_DRAG_PARAM_sprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">sprite</field>
+</block>
+</value>
+<value name="HANDLER_DRAG_PARAM_otherSprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">moneda</field>
+</block>
+</value>
+<statement name="HANDLER">
+<block id=",wQ%[^/F@N{!TD7J5RGR" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">exploracion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="!6DR+bxf@n3{Se~(1fcH" type="spritedestroy2">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">moneda</field>
+</shadow>
+</value>
+<next>
+<block id="m81?6S3a;WD0BxY7|p*o" type="variables_change">
+<field name="VAR">dinero</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">10</field>
+</shadow>
+</value>
+<next>
+<block id="-9~D59gE2;WIn=FS*N[7" type="hudChangeScoreBy">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">5</field>
+</shadow>
+</value>
+<next>
+<block id="Gm24X#=/FgV/[TYLkhuV" type="function_call">
+<mutation name="actualizarContador" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="epQmu}uXyLyzoYK8vpr]" type="spritesoverlap" x="1340" y="635" collapsed="true">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+<value name="otherKind">
+<shadow type="spritekind">
+<field name="MEMBER">Peligro</field>
+</shadow>
+</value>
+<value name="HANDLER_DRAG_PARAM_sprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">sprite</field>
+</block>
+</value>
+<value name="HANDLER_DRAG_PARAM_otherSprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">peligro</field>
+</block>
+</value>
+<statement name="HANDLER">
+<block id="b@mvJ^tsi+hfD`yHkSE5" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">exploracion</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">GTE</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="arcade_game_runtime">
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">protegidoHasta</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id=";fUa=7}(}rW53yBdWzs5" type="variables_set">
+<field name="VAR">protegidoHasta</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="math_arithmetic">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="arcade_game_runtime">
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1500</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="i)Z~LpPoNsEBF@B|J8AG" type="hudChangeLifeBy">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+<next>
+<block id="m`sGXrFSPua~hrf+5~R#" type="spritesaytext">
+<mutation _expanded="2" />
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="text">
+<shadow type="text">
+<field name="TEXT">Cuidado con los residuos!</field>
+</shadow>
+</value>
+<value name="timeOnScreen">
+<shadow type="timePicker">
+<field name="ms">800</field>
+</shadow>
+</value>
+<value name="animated">
+<shadow type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+<comment pinned="false">PELIGROS: como máximo un corazón cada 1,5 segundos. No hay enemigos.</comment>
+</block>
+<block id=",w:Z1fp4r1J?os,(CpT;" type="gamelifeevent" x="1340" y="720" collapsed="true">
+<statement name="HANDLER">
+<block id="i`lt(,OD`U,{QQddF7l1" type="function_call">
+<mutation name="volverALaBase" />
+<next>
+<block id="`+i+CJ(J;XBBWxsP8F=m" type="spritesaytext">
+<mutation _expanded="2" />
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="text">
+<shadow type="text">
+<field name="TEXT">A salvo! Conservas tus recursos.</field>
+</shadow>
+</value>
+<value name="timeOnScreen">
+<shadow type="timePicker">
+<field name="ms">2000</field>
+</shadow>
+</value>
+<value name="animated">
+<shadow type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block id="`ZZ|for9Z2hIm0rrqf(z" type="keyonevent" x="1990" y="550" collapsed="true">
+<field name="button">controller.A</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="=w_Tj*C4sYoDjCF6(kD{" type="controls_if">
+<mutation elseif="1" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">reparacion</field>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">exploracion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="Y;]60}onC//c;.)jn+UG" type="function_call">
+<mutation name="comprobarBoton">
+<arg name="boton" type="string" id="6qbemk1qkscqdj9zacjkh" />
+</mutation>
+<value name="6qbemk1qkscqdj9zacjkh">
+<shadow type="text">
+<field name="TEXT">A</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="DO1">
+<block id="=Wr|Du3[s;;w?Q~tX$ZO" type="controls_if">
+<mutation elseif="4" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block id="~`Gr#yU(Z8i=@}dl:`Z!" type="function_call_output">
+<mutation name="estaCerca">
+<arg name="equipo" type="Sprite" id="ueyjgnrh82hv74x781jpl" />
+</mutation>
+<value name="ueyjgnrh82hv74x781jpl">
+<block type="variables_get">
+<field name="VAR">maquina</field>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block id="-T5l^02jW2u,I]up=DrX" type="function_call_output">
+<mutation name="estaCerca">
+<arg name="equipo" type="Sprite" id="ueyjgnrh82hv74x781jpl" />
+</mutation>
+<value name="ueyjgnrh82hv74x781jpl">
+<block type="variables_get">
+<field name="VAR">botiquin</field>
+</block>
+</value>
+</block>
+</value>
+<value name="IF2">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block id="=Z-=|oWY*!=ZVsX$N[k6" type="function_call_output">
+<mutation name="estaCerca">
+<arg name="equipo" type="Sprite" id="ueyjgnrh82hv74x781jpl" />
+</mutation>
+<value name="ueyjgnrh82hv74x781jpl">
+<block type="variables_get">
+<field name="VAR">mochila</field>
+</block>
+</value>
+</block>
+</value>
+<value name="IF3">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block id="K|K6.DAungLRsG=XRI-d" type="function_call_output">
+<mutation name="estaCerca">
+<arg name="equipo" type="Sprite" id="ueyjgnrh82hv74x781jpl" />
+</mutation>
+<value name="ueyjgnrh82hv74x781jpl">
+<block type="variables_get">
+<field name="VAR">herramienta</field>
+</block>
+</value>
+</block>
+</value>
+<value name="IF4">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_operation">
+<field name="OP">AND</field>
+<value name="A">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">nivelActual</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block id="nl]}y17Fcs8fruQ8P*G-" type="function_call_output">
+<mutation name="estaCerca">
+<arg name="equipo" type="Sprite" id="ueyjgnrh82hv74x781jpl" />
+</mutation>
+<value name="ueyjgnrh82hv74x781jpl">
+<block type="variables_get">
+<field name="VAR">dispositivo</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_negate">
+<value name="BOOL">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="variables_get">
+<field name="VAR">misionCompletada</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="=T_`9`xtuR%^c1d$#Yxc" type="function_call">
+<mutation name="consultarMensaje" />
+</block>
+</statement>
+<statement name="DO1">
+<block id="tK!Lhg`$]A}il8fg;R,%" type="hudSetLife">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+<next>
+<block id="2M_gr8z8g=jSY[nBG2:M" type="spritesaytext">
+<mutation _expanded="2" />
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="text">
+<shadow type="text">
+<field name="TEXT">Tres corazones!</field>
+</shadow>
+</value>
+<value name="timeOnScreen">
+<shadow type="timePicker">
+<field name="ms">1200</field>
+</shadow>
+</value>
+<value name="animated">
+<shadow type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+<statement name="DO2">
+<block id="Y{$muLd4ifTO,q]SXW~!" type="function_call">
+<mutation name="mejorarMochila" />
+</block>
+</statement>
+<statement name="DO3">
+<block id="af9X0;~!]Ba(*DsBMS~w" type="function_call">
+<mutation name="mejorarHerramienta" />
+</block>
+</statement>
+<statement name="DO4">
+<block id="BGm8vPVi4gm,*UM@.#]d" type="function_call">
+<mutation name="iniciarReparacion" />
+</block>
+</statement>
+<statement name="ELSE">
+<block id="Id#GJOc05zVO}}b74S!f" type="spritesaytext">
+<mutation _expanded="2" />
+<value name="this">
+<shadow type="variables_get">
+<field name="VAR">jugador</field>
+</shadow>
+</value>
+<value name="text">
+<shadow type="text">
+<field name="TEXT">Acercate a un equipo y pulsa A</field>
+</shadow>
+</value>
+<value name="timeOnScreen">
+<shadow type="timePicker">
+<field name="ms">1200</field>
+</shadow>
+</value>
+<value name="animated">
+<shadow type="logic_boolean">
+<field name="BOOL">FALSE</field>
+</shadow>
+</value>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+</statement>
+<comment pinned="false">BOTÓN A: cada equipo tiene una acción. Durante la reparación solo comprueba A.</comment>
+</block>
+<block id="^t%q#;6/)o+=u{cvH*G9" type="keyonevent" x="1990" y="635" collapsed="true">
+<field name="button">controller.B</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="2XDYCy/y^^fb^`d1Id]N" type="controls_if">
+<mutation elseif="1" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">reparacion</field>
+</block>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">exploracion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="P.38,VOC(G4#uz*p+Ql6" type="function_call">
+<mutation name="comprobarBoton">
+<arg name="boton" type="string" id="6qbemk1qkscqdj9zacjkh" />
+</mutation>
+<value name="6qbemk1qkscqdj9zacjkh">
+<shadow type="text">
+<field name="TEXT">B</field>
+</shadow>
+</value>
+</block>
+</statement>
+<statement name="DO1">
+<block id="7LT}0e6lQg(:mWA`+CB4" type="function_call">
+<mutation name="consultarMensaje" />
+</block>
+</statement>
+</block>
+</statement>
+<comment pinned="false">BOTÓN B: fuera del minijuego vuelve a mostrar la misión.</comment>
+</block>
+<block id="3^Uf6ThNnV3_i7J1xns}" type="keyonevent" x="1990" y="720" collapsed="true">
+<field name="button">controller.up</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="SwEa3$#T/-5O~d2cj`D?" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">reparacion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id=",7n,#LIuhtCFa)lz**8i" type="function_call">
+<mutation name="comprobarBoton">
+<arg name="boton" type="string" id="6qbemk1qkscqdj9zacjkh" />
+</mutation>
+<value name="6qbemk1qkscqdj9zacjkh">
+<shadow type="text">
+<field name="TEXT">ARRIBA</field>
+</shadow>
+</value>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="jm0{vWDay[N;[B]zdoHc" type="keyonevent" x="1990" y="805" collapsed="true">
+<field name="button">controller.down</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="UQ@]-F.!uV+!r3LxCAmx" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">reparacion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="qp3t/z.wRwM?z:$qr)5z" type="variables_set">
+<field name="VAR">pasoReparacion</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block id="|Oks5{TnaxHMv4IqiB8t" type="function_call">
+<mutation name="continuarExplorando" />
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="y$=l4{X,QmmpPc+l?c3w" type="keyonevent" x="1990" y="890" collapsed="true">
+<field name="button">controller.left</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="S#93NzzMWYwftPPnDd#+" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">reparacion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="gA@~Uu%4BlOLm5jzPn_k" type="function_call">
+<mutation name="comprobarBoton">
+<arg name="boton" type="string" id="6qbemk1qkscqdj9zacjkh" />
+</mutation>
+<value name="6qbemk1qkscqdj9zacjkh">
+<shadow type="text">
+<field name="TEXT">IZQUIERDA</field>
+</shadow>
+</value>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="][Z+Mvar+QF+XJ3/t7*S" type="keyonevent" x="1990" y="975" collapsed="true">
+<field name="button">controller.right</field>
+<field name="event">ControllerButtonEvent.Pressed</field>
+<statement name="HANDLER">
+<block id="NJ_~NN9:_rd2_dd7zZ-{" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="variables_get">
+<field name="VAR">estado</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">reparacion</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="uE2G^p*Oj*SrWh3UZd(n" type="function_call">
+<mutation name="comprobarBoton">
+<arg name="boton" type="string" id="6qbemk1qkscqdj9zacjkh" />
+</mutation>
+<value name="6qbemk1qkscqdj9zacjkh">
+<shadow type="text">
+<field name="TEXT">DERECHA</field>
+</shadow>
+</value>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="xRRgvHNlG#rZ^u`HECiY" type="pxt-on-start" x="40" y="380" collapsed="true">
+<statement name="HANDLER">
+<block id="StPT!IGF$1X~|2:mi;7C" type="variables_set">
+<field name="VAR">estado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">seleccion</field>
+</block>
+</value>
+<next>
+<block id="8a{+UJOh*8bT@K$h+L2a" type="variables_set">
+<field name="VAR">nivelActual</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id=".[_en[ksi%ao7];ViyjQ" type="variables_set">
+<field name="VAR">capacidadPiezas</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+<next>
+<block id=";2.0pIhY;lpsEI;}_3K6" type="variables_set">
+<field name="VAR">velocidad</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">90</field>
+</shadow>
+</value>
+<next>
+<block id="~QieT0},e{EgpRfC17-7" type="variables_set">
+<field name="VAR">puntosReparacion</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">100</field>
+</shadow>
+</value>
+<next>
+<block id="nhM]v{=m#V3/7YzvO*Za" type="variables_set">
+<field name="VAR">costoReparacion</field>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+<next>
+<block id="DsR]6!vv=0]GhFlE.kMO" type="function_call">
+<mutation name="presentarHistoria" />
+<next>
+<block id="|.Kv3}ZsxKpng?a5CR,|" type="variables_set">
+<field name="VAR">menuPersonajes</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="mini_menu_show_menu">
+<mutation _expanded="3" />
+<value name="item1">
+<shadow type="mini_menu_create_menu_item">
+<mutation _expanded="1" />
+<value name="text">
+<shadow type="text">
+<field name="TEXT">Ale: mas velocidad</field>
+</shadow>
+</value>
+<value name="image">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`ale`</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<value name="item2">
+<shadow type="mini_menu_create_menu_item">
+<mutation _expanded="1" />
+<value name="text">
+<shadow type="text">
+<field name="TEXT">Cami: ahorra 1 pieza</field>
+</shadow>
+</value>
+<value name="image">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`cami`</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<value name="item3">
+<shadow type="mini_menu_create_menu_item">
+<mutation _expanded="1" />
+<value name="text">
+<shadow type="text">
+<field name="TEXT">Cris: +25 al reparar</field>
+</shadow>
+</value>
+<value name="image">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`cris`</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<value name="item4">
+<shadow type="mini_menu_create_menu_item">
+<mutation _expanded="1" />
+<value name="text">
+<shadow type="text">
+<field name="TEXT">Nico: carga 1 mas</field>
+</shadow>
+</value>
+<value name="image">
+<shadow type="screen_image_picker">
+<field name="img">assets.image`nico`</field>
+</shadow>
+</value>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="FMZtZO^b]V{,+qX%4kp[" type="mini_menu_on_button_pressed_new">
+<field name="button">miniMenu.Button.A</field>
+<value name="menu">
+<shadow type="variables_get">
+<field name="VAR">menuPersonajes</field>
+</shadow>
+</value>
+<value name="HANDLER_DRAG_PARAM_selection">
+<block type="argument_reporter_string">
+<mutation duplicateondrag="true" />
+<field name="VALUE">selection</field>
+</block>
+</value>
+<value name="HANDLER_DRAG_PARAM_selectedIndex">
+<block type="argument_reporter_number">
+<mutation duplicateondrag="true" />
+<field name="VALUE">selectedIndex</field>
+</block>
+</value>
+<statement name="HANDLER">
+<block id="MPwLLcyc/~RR_/.[cI~e" type="mini_menu_sprite_close_menu_new">
+<value name="menu">
+<shadow type="variables_get">
+<field name="VAR">menuPersonajes</field>
+</shadow>
+</value>
+<next>
+<block id="zunibh{X1Qi?I7k;{?`?" type="controls_if">
+<mutation elseif="2" else="1" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="argument_reporter_number">
+<field name="VALUE">selectedIndex</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF1">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="argument_reporter_number">
+<field name="VALUE">selectedIndex</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="IF2">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">EQ</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="argument_reporter_number">
+<field name="VALUE">selectedIndex</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="cTcXg1`i6s|O.Q;8Wm~|" type="variables_set">
+<field name="VAR">personajeSeleccionado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">Ale</field>
+</block>
+</value>
+</block>
+</statement>
+<statement name="DO1">
+<block id="/kg#C^F/pr)=vM#Q*70p" type="variables_set">
+<field name="VAR">personajeSeleccionado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">Cami</field>
+</block>
+</value>
+</block>
+</statement>
+<statement name="DO2">
+<block id="A.=f5D!^hl9%KRWF/|ow" type="variables_set">
+<field name="VAR">personajeSeleccionado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">Cris</field>
+</block>
+</value>
+</block>
+</statement>
+<statement name="ELSE">
+<block id="qKq}f|]^j?MAj1zE?ad/" type="variables_set">
+<field name="VAR">personajeSeleccionado</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="text">
+<field name="TEXT">Nico</field>
+</block>
+</value>
+</block>
+</statement>
+<next>
+<block id="bwamS6]XM)VVB6rWP0L~" type="function_call">
+<mutation name="prepararPersonaje" />
+<next>
+<block id="Urzy4a^A]wsy%zYxz6aO" type="function_call">
+<mutation name="cargarNivel" />
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<comment id="guia-0" x="30" y="20" w="570" h="140">1. INICIO Y PERSONAJES
+
+Empieza aquí.
+Abre prepararPersonaje para cambiar las habilidades.</comment><comment id="guia-1" x="680" y="20" w="570" h="140">2. CIUDAD Y MISIÓN 1
+
+Edita ciudadReciclaje en Recursos.
+Los marcadores colocan piezas, monedas y peligros.</comment><comment id="guia-2" x="1330" y="20" w="570" h="140">3. RECURSOS Y VIDA
+
+Recoger, proteger y volver a la base.
+Los recursos recogidos no reaparecen al volver.</comment><comment id="guia-3" x="1980" y="20" w="570" h="140">4. BOTONES Y MEJORAS
+
+A usa un equipo cercano. B consulta la misión.
+Durante la reparación, los botones tienen otra función.</comment><comment id="guia-4" x="2630" y="20" w="570" h="140">5. REPARAR Y AVANZAR
+
+Secuencia: A, B, A, arriba. Abajo cancela.
+Las piezas se gastan solo al acertar.</comment><comment id="guia-5" x="3280" y="20" w="570" h="140">6. TU TALLER
+
+Aquí continúan ustedes: niveles 2, 3 y 4.
+Cada función tiene su propio mapa.
+Clic derecho → Expandir bloque para ver su contenido.</comment></xml>

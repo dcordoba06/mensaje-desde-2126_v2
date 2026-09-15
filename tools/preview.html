@@ -1,0 +1,15 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>Mensaje desde 2126 — prueba local</title>
+<style>body{margin:0;background:#111c23;color:#e2ece9;font:16px system-ui;display:grid;place-items:center;min-height:100vh}main{text-align:center}h1{font-size:22px}canvas{width:640px;height:480px;max-width:90vw;image-rendering:pixelated;box-shadow:0 0 0 8px #263e47;border-radius:2px}p{color:#adc0c1;font-size:14px}.hidden{display:none}button{padding:8px 16px;background:#25444b;color:white;border:1px solid #6c9795;border-radius:6px;cursor:pointer}#debug-stats{display:none}</style>
+<body id="root"><main><h1>Mensaje desde 2126</h1><div id="wrap" class="game-player"><canvas id="game-screen" width="160" height="120"></canvas></div><p>Flechas: caminar · Z / espacio: A · X: B<br>Reparación: A → B → A → ↑ · ↓ cancela</p><button onclick="location.reload()">Volver al inicio</button> <a style="color:#a7e7d6;margin-left:16px" href="/proyecto.mkcd" download="Mensaje-desde-2126.mkcd">Descargar para MakeCode</a><p id="status">Cargando simulador local…</p></main>
+<div class="hidden"><div id="debug-stats"></div><div id="safari-enable-game"></div><div id="game-buttons-container"><svg class="game-button-svg"><circle class="button-a"/><text class="label-a"/><circle class="button-b"/><text class="label-b"/></svg></div><div id="joystick-container"><svg class="game-joystick-svg"><path class="dpad-up"/><path class="dpad-down"/><path class="dpad-left"/><path class="dpad-right"/><circle class="joystick-handle"/></svg></div></div>
+<script src="/runtime.js"></script><script src="/arcade.js"></script>
+<script>
+(async()=>{try {
+ const code=await (await fetch('/game.js')).text();
+ const msg={type:'run',code,id:'local-preview',parts:[],partDefinitions:{},storedState:{},options:{},frameCounter:1};
+ window.simulator=new pxsim.Runtime(msg);
+ pxsim.Runtime.messagePosted=msg=>{if(msg.type==='debugger'&&msg.subtype==='warning')console.warn(msg);};
+ await simulator.board.initAsync(msg);simulator.run();
+ document.getElementById('status').textContent='Misión 1 jugable · Niveles 2–4: mapas para desarrollar';
+}catch(e){document.getElementById('status').textContent=e.message;console.error(e.stack);}})();
+</script></html>
