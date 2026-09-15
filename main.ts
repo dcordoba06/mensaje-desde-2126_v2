@@ -1,21 +1,13 @@
 function base () {
-    miniMenu.close(myMenu)
     sprites.destroy(myTextSprite)
     tiles.setCurrentTilemap(tilemap`level1`)
-    tiles.placeOnRandomTile(Ale, sprites.dungeon.floorLight0)
-    tiles.placeOnRandomTile(Cami, sprites.dungeon.floorLight0)
-    tiles.placeOnRandomTile(Chris, sprites.dungeon.floorLight0)
-    tiles.placeOnRandomTile(Nico, sprites.dungeon.floorLight0)
+    tiles.placeOnRandomTile(jugador, sprites.dungeon.floorLight0)
+    scene.cameraFollowSprite(jugador)
     game.splash("2026", "La base")
-    controller.moveSprite(Ale)
-    controller.moveSprite(Cami)
-    controller.moveSprite(Chris)
-    controller.moveSprite(Nico)
+    game.splash("Usa las flechas para moverte", "Explora la base. Salida cerrada.")
+    controller.moveSprite(jugador)
 }
-let Nico: Sprite = null
-let Chris: Sprite = null
-let Cami: Sprite = null
-let Ale: Sprite = null
+let jugador: Sprite = null
 let myMenu: Sprite = null
 let myTextSprite: fancyText.TextSprite = null
 myTextSprite = fancyText.create("ArcadeCAN")
@@ -146,148 +138,23 @@ scene.setBackgroundImage(img`
     `)
 game.splash("Bienvenido a:", "Mensaje desde 2126")
 myMenu = miniMenu.createMenu(
-miniMenu.createMenuItem("Ale", img`
-    . . . . . e e e e e e . . . . . 
-    . . . . e e e e e e e e . . . . 
-    . . . . e e e e d d d e . . . . 
-    . . . . e 1 f d d 1 f e . . . . 
-    . . . e e d d d d d d e e . . . 
-    . . . e e d f d d f d e e . . . 
-    . . e e . d d f f d d . e e . . 
-    . . . . 6 6 6 d d 6 6 6 . . . . 
-    . . . . 6 6 6 6 1 1 6 6 . . . . 
-    . . . . d . 6 6 6 6 . d . . . . 
-    . . . . d . 6 6 6 6 . d . . . . 
-    . . . . . . b b b b . . . . . . 
-    . . . . . . b f f b . . . . . . 
-    . . . . . . f d d f . . . . . . 
-    . . . . . f f f f f f . . . . . 
-    . . . . f 1 1 f f 1 1 f . . . . 
-    `),
-miniMenu.createMenuItem("Cami", img`
-    . . . . . . . . . . . . . . . . 
-    . . . . 4 4 4 4 4 4 4 4 . . . . 
-    . . . . 4 4 4 d d d d 4 . . . . 
-    . . . . 4 1 e d d 1 e 4 . . . . 
-    . . . . 4 d d d d d d 4 . . . . 
-    . . . . 4 d f d d f d 4 4 . . . 
-    . . . 4 4 d d f f d d 4 4 . . . 
-    . . . 4 a a a d d a a a 4 . . . 
-    . . . . a a a a a a a a 4 . . . 
-    . . . . d . a a a a . d 4 4 . . 
-    . . . . d . a a a a . d . . . . 
-    . . . . . . 9 9 9 9 . . . . . . 
-    . . . . . . 9 f f 9 . . . . . . 
-    . . . . . . f d d f . . . . . . 
-    . . . . . f a f f a f . . . . . 
-    . . . . f a a f f a a f . . . . 
-    `),
-miniMenu.createMenuItem("Chris", img`
-    . . . . . f f f f f f . . . . . 
-    . . . . f f f f f f f f . . . . 
-    . . . . f e e e e e e f . . . . 
-    . . . . . 1 f e e 1 f . . . . . 
-    . . . . . e e e e e e . . . . . 
-    . . . . . e f e e f e . . . . . 
-    . . . . . e e f f e e . . . . . 
-    . . . . 2 8 2 e e 8 2 8 . . . . 
-    . . . . 2 8 2 8 2 5 2 8 . . . . 
-    . . . . e . 2 8 2 8 . e . . . . 
-    . . . . e . 2 8 2 8 . e . . . . 
-    . . . . . . 8 8 8 8 . . . . . . 
-    . . . . . . 8 f f 8 . . . . . . 
-    . . . . . . f e e f . . . . . . 
-    . . . . . f f f f f f . . . . . 
-    . . . . f 1 1 f f 1 1 f . . . . 
-    `),
-miniMenu.createMenuItem("Nico", img`
-    . . . . . e e e e e e . . . . . 
-    . . . . e e e e e e e e . . . . 
-    . . . . e e e d e e d e . . . . 
-    . . . . e 1 6 d d 1 6 e . . . . 
-    . . . . . d d d d d d . . . . . 
-    . . . . . d f d d f d . . . . . 
-    . . . . . d d f f d d . . . . . 
-    . . . . f f f d d f f f . . . . 
-    . . . . f f 1 1 1 1 f f . . . . 
-    . . . . d . f f f f . d . . . . 
-    . . . . d . f f f f . d . . . . 
-    . . . . . . 8 8 8 8 . . . . . . 
-    . . . . . . 8 f f 8 . . . . . . 
-    . . . . . . f d d f . . . . . . 
-    . . . . . f 2 f f 2 f . . . . . 
-    . . . . f 1 1 f f 1 1 f . . . . 
-    `)
+miniMenu.createMenuItem("Ale", assets.image`ale`),
+miniMenu.createMenuItem("Cami", assets.image`cami`),
+miniMenu.createMenuItem("Chris", assets.image`chris`),
+miniMenu.createMenuItem("Nico", assets.image`nico`)
 )
 miniMenu.setMenuStyleProperty(myMenu, miniMenu.MenuStyleProperty.BackgroundColor, 0)
 miniMenu.onButtonPressed(myMenu, miniMenu.Button.A, function (selection, selectedIndex) {
+    miniMenu.close(myMenu)
     if (selectedIndex == 0) {
-        Ale = sprites.create(img`
-            . . . . . e e e e e e . . . . . 
-            . . . . e e e e e e e e . . . . 
-            . . . . e e e e d d d e . . . . 
-            . . . . e 1 f d d 1 f e . . . . 
-            . . . e e d d d d d d e e . . . 
-            . . . e e d f d d f d e e . . . 
-            . . e e . d d f f d d . e e . . 
-            . . . . 6 6 6 d d 6 6 6 . . . . 
-            . . . . 6 6 6 6 1 1 6 6 . . . . 
-            . . . . d . 6 6 6 6 . d . . . . 
-            . . . . d . 6 6 6 6 . d . . . . 
-            . . . . . . b b b b . . . . . . 
-            . . . . . . b f f b . . . . . . 
-            . . . . . . f d d f . . . . . . 
-            . . . . . f f f f f f . . . . . 
-            . . . . f 1 1 f f 1 1 f . . . . 
-            `, SpriteKind.Player)
-        scene.cameraFollowSprite(Ale)
-        music.play(music.stringPlayable("C D E F G - G - ", 180), music.PlaybackMode.UntilDone)
+        jugador = sprites.create(assets.image`ale`, SpriteKind.Player)
     } else if (selectedIndex == 1) {
-        Cami = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . 4 4 4 4 4 4 4 4 . . . . 
-            . . . . 4 4 4 d d d d 4 . . . . 
-            . . . . 4 1 e d d 1 e 4 . . . . 
-            . . . . 4 d d d d d d 4 . . . . 
-            . . . . 4 d f d d f d 4 4 . . . 
-            . . . 4 4 d d f f d d 4 4 . . . 
-            . . . 4 a a a d d a a a 4 . . . 
-            . . . . a a a a a a a a 4 . . . 
-            . . . . d . a a a a . d 4 4 . . 
-            . . . . d . a a a a . d . . . . 
-            . . . . . . 9 9 9 9 . . . . . . 
-            . . . . . . 9 f f 9 . . . . . . 
-            . . . . . . f d d f . . . . . . 
-            . . . . . f a f f a f . . . . . 
-            . . . . f a a f f a a f . . . . 
-            `, SpriteKind.Player)
-        scene.cameraFollowSprite(Cami)
-        music.play(music.stringPlayable("C D E F G - G - ", 180), music.PlaybackMode.UntilDone)
+        jugador = sprites.create(assets.image`cami`, SpriteKind.Player)
     } else if (selectedIndex == 2) {
-        Chris = sprites.create(assets.image`chris`, SpriteKind.Player)
-        scene.cameraFollowSprite(Chris)
-        music.play(music.stringPlayable("C D E F G - G - ", 180), music.PlaybackMode.UntilDone)
+        jugador = sprites.create(assets.image`chris`, SpriteKind.Player)
     } else if (selectedIndex == 3) {
-        Nico = sprites.create(img`
-            . . . . . e e e e e e . . . . . 
-            . . . . e e e e e e e e . . . . 
-            . . . . e e e d e e d e . . . . 
-            . . . . e 1 6 d d 1 6 e . . . . 
-            . . . . . d d d d d d . . . . . 
-            . . . . . d f d d f d . . . . . 
-            . . . . . d d f f d d . . . . . 
-            . . . . f f f d d f f f . . . . 
-            . . . . f f 1 1 1 1 f f . . . . 
-            . . . . d . f f f f . d . . . . 
-            . . . . d . f f f f . d . . . . 
-            . . . . . . 8 8 8 8 . . . . . . 
-            . . . . . . 8 f f 8 . . . . . . 
-            . . . . . . f d d f . . . . . . 
-            . . . . . f 2 f f 2 f . . . . . 
-            . . . . f 1 1 f f 1 1 f . . . . 
-            `, SpriteKind.Player)
-        scene.cameraFollowSprite(Nico)
-        music.play(music.stringPlayable("C D E F G - G - ", 180), music.PlaybackMode.UntilDone)
+        jugador = sprites.create(assets.image`nico`, SpriteKind.Player)
     }
+    music.play(music.stringPlayable("C D E F G - G - ", 180), music.PlaybackMode.InBackground)
     base()
 })

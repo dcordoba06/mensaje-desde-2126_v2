@@ -52,18 +52,18 @@ jobs:
           pxt build --hw rpi --cloud
           cp ./built/binary.uf2 binary-p0.uf2
 
-      - name: bundle all
-        run: |
-          cat binary-*.uf2 > ./built/arcade.uf2
-
-      - name: Upload Release Assets
+      - name: Bundle and upload available hardware builds
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG_NAME=${GITHUB_REF#refs/tags/}
-          gh release upload $TAG_NAME \
-            built/arcade.uf2 \
-            binary-d51.uf2 \
-            binary-f4.uf2 \
-            binary-p0.uf2 \
-            --clobber
+          shopt -s nullglob
+          binaries=(binary-*.uf2)
+          if (( ${#binaries[@]} == 0 )); then
+            echo "::error::No hardware builds succeeded; there are no UF2 files to publish."
+            exit 1
+          fi
+          mkdir -p built
+          cat "${binaries[@]}" > built/arcade.uf2
+          gh release upload "${GITHUB_REF#refs/tags/}" \
+            built/arcade.uf2 "${binaries[@]}" --clobber

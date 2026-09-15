@@ -8,5 +8,20 @@
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
         "namespace": "myImages"
+    },
+    "ale": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAO4OAAAAAODu7mDWDQDw7h7dbQYAAB/u/v1tZrb7H+7e3d9mtt//7t3d32G23//uHf1tYbb7H+793W0GAAAf4O7uYNYNAPAAAO4OAAAAAAAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "ale"
+    },
+    "cami": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAAEBERKTaDQDwQBTdrQoAAK9A5P2tqpr5qkDd3d+qmt//QN3d36qa3/9AHf2tqpr5qkDt3a0KAACvQEREpNoNAPAAAEBERAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "cami"
+    },
+    "nico": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAODuAPDfDQDw7h7d/Q8AAB/ubv398Y/4Eu7d3d/xj9//7t7d3/GP3//uHv398Y/4Eu5t3f0PAAAf4O4A8N8NAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "nico"
     }
 }
