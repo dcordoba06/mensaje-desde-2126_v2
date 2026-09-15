@@ -595,4 +595,5 @@ miniMenu.onButtonPressed(menuPersonajes, miniMenu.Button.A, function (selection,
     }
     prepararPersonaje()
     cargarNivel()
+    sprites.destroy(myTextSprite2)
 })
