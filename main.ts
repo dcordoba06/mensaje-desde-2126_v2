@@ -7,6 +7,20 @@ namespace SpriteKind {
     export const Interfaz = SpriteKind.create()
 }
 /**
+ * 1. INICIO Y PERSONAJES
+ * 
+ * Empieza aquí.
+ * 
+ * Abre prepararPersonaje para cambiar las habilidades.
+ */
+/**
+ * 2. CIUDAD Y MISIÓN 1
+ * 
+ * Edita ciudadReciclaje en Recursos.
+ * 
+ * Los marcadores colocan piezas, monedas y peligros.
+ */
+/**
  * 3. RECURSOS Y VIDA
  * 
  * Recoger, proteger y volver a la base.
@@ -105,6 +119,44 @@ function comprobarBoton (boton: string) {
         actualizarContador()
     }
 }
+// BOTÓN A: cada equipo tiene una acción. Durante la reparación solo comprueba A.
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (estado == "reparacion") {
+        comprobarBoton("A")
+    } else if (estado == "exploracion") {
+        if (estaCerca(maquina)) {
+            consultarMensaje()
+        } else if (estaCerca(botiquin)) {
+            info.setLife(3)
+            jugador.sayText("Tres corazones!", 1200, false)
+        } else if (estaCerca(mochila)) {
+            mejorarMochila()
+        } else if (estaCerca(herramienta)) {
+            mejorarHerramienta()
+        } else if (nivelActual == 1 && estaCerca(dispositivo) && !(misionCompletada)) {
+            iniciarReparacion()
+        } else {
+            if (Created) {
+            	
+            } else {
+                myTextSprite = fancyText.create("\"A\" para interactuar")
+                Text_sprite_2 = fancyText.create("\"B\" para misión")
+                Created = true
+                fancyText.setFont(Text_sprite_2, fancyText.geometric_sans_6)
+                fancyText.setColor(Text_sprite_2, fancyText.twoToneColor(15, 15))
+                myTextSprite.setPosition(72, 18)
+                fancyText.setColor(myTextSprite, fancyText.twoToneColor(15, 15))
+                fancyText.setFont(myTextSprite, fancyText.geometric_sans_6)
+            }
+            myTextSprite.setFlag(SpriteFlag.RelativeToCamera, true)
+            Text_sprite_2.setFlag(SpriteFlag.RelativeToCamera, true)
+            myTextSprite.setFlag(SpriteFlag.Invisible, false)
+            fancyText.animateAtSpeed(myTextSprite, fancyText.TextSpeed.Fast, fancyText.AnimationPlayMode.UntilDone)
+            pause(2000)
+            myTextSprite.setFlag(SpriteFlag.Invisible, true)
+        }
+    }
+})
 // VIDA: conserva piezas, dinero y puntaje al volver. No hay pérdida definitiva.
 function volverALaBase () {
     tiles.placeOnTile(jugador, tiles.getTileLocation(6, 6))
@@ -130,20 +182,6 @@ function cargarNivel2 () {
     tiles.setCurrentTilemap(tilemap`ciudadAgua`)
     ponerCartel("AGUA: TALLER", 29, 21)
 }
-/**
- * 1. INICIO Y PERSONAJES
- * 
- * Empieza aquí.
- * 
- * Abre prepararPersonaje para cambiar las habilidades.
- */
-/**
- * 2. CIUDAD Y MISIÓN 1
- * 
- * Edita ciudadReciclaje en Recursos.
- * 
- * Los marcadores colocan piezas, monedas y peligros.
- */
 // INICIO: cambia aquí los textos de la historia. El dibujo original está en "portada".
 function presentarHistoria () {
     scene.setBackgroundImage(img`
@@ -466,27 +504,6 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         continuarExplorando()
     }
 })
-// BOTÓN A: cada equipo tiene una acción. Durante la reparación solo comprueba A.
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (estado == "reparacion") {
-        comprobarBoton("A")
-    } else if (estado == "exploracion") {
-        if (estaCerca(maquina)) {
-            consultarMensaje()
-        } else if (estaCerca(botiquin)) {
-            info.setLife(3)
-            jugador.sayText("Tres corazones!", 1200, false)
-        } else if (estaCerca(mochila)) {
-            mejorarMochila()
-        } else if (estaCerca(herramienta)) {
-            mejorarHerramienta()
-        } else if (nivelActual == 1 && estaCerca(dispositivo) && !(misionCompletada)) {
-            iniciarReparacion()
-        } else {
-            jugador.sayText("Acercate a un equipo y pulsa A", 1200, false)
-        }
-    }
-})
 // NIVEL 1: este es el ejemplo jugable. Mueve los marcadores de colores en el mapa.
 function cargarNivel1 () {
     tiles.setCurrentTilemap(tilemap`ciudadReciclaje`)
@@ -510,12 +527,6 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         comprobarBoton("ARRIBA")
     }
 })
-let dispositivo: Sprite = null
-let misionCompletada = false
-let herramienta: Sprite = null
-let mochila: Sprite = null
-let botiquin: Sprite = null
-let maquina: Sprite = null
 let objeto: Sprite = null
 let cartel: fancyText.TextSprite = null
 let contador: fancyText.TextSprite = null
@@ -523,6 +534,15 @@ let fondoContador: Sprite = null
 let descuentoPiezas = 0
 let piezas = 0
 let protegidoHasta = 0
+let Text_sprite_2: fancyText.TextSprite = null
+let myTextSprite: fancyText.TextSprite = null
+let Created = false
+let misionCompletada = false
+let dispositivo: Sprite = null
+let herramienta: Sprite = null
+let mochila: Sprite = null
+let botiquin: Sprite = null
+let maquina: Sprite = null
 let pasoReparacion = 0
 let nivelHerramienta = 0
 let dinero = 0
@@ -541,7 +561,7 @@ capacidadPiezas = 3
 velocidad = 90
 puntosReparacion = 100
 costoReparacion = 3
-let TestMode = false
+let TestMode = true
 if (TestMode) {
 	
 } else {
