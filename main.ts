@@ -356,7 +356,7 @@ function consultarMensaje () {
         calcularCosto()
         game.showLongText("2126: el centro de reciclaje no funciona. Reune " + costoReparacion + " piezas y repara el recolector al sureste de la ciudad. Evita los residuos verdes. La maquina, el botiquin y las mejoras estan en la base.", DialogLayout.Full)
     } else if (nivelActual == 2) {
-        game.showLongText("NIVEL 2 - TALLER PARA CREAR. Proxima mision: recuperar el agua de la ciudad. Este mapa aun no tiene una mision jugable. Edita cargarNivel2 para continuar el proyecto.", DialogLayout.Full)
+        game.showLongText("Nivel 2: Encuentra el tanque de filtracion y la pastilla potabilizadora y colocalas cerca del rio para restaurar el rio.", DialogLayout.Full)
     } else if (nivelActual == 3) {
         game.showLongText("NIVEL 3 - TALLER PARA CREAR. Proxima mision: mejorar el aire. Agrega zonas de humo y componentes en cargarNivel3.", DialogLayout.Full)
     } else {
