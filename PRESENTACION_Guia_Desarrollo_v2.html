@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje desde 2126 - Guía de Desarrollo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .presentation-container {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+        }
+
+        .slide {
+            display: none;
+            padding: 60px;
+            height: 100%;
+            overflow-y: auto;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide h1 {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+
+        .slide h2 {
+            font-size: 2.2em;
+            color: #764ba2;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        .slide h3 {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .slide p, .slide li {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .slide ul, .slide ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .slide li {
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+
+        .highlight {
+            background: #fffacd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .success {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .warning {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .title-slide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .title-slide h1 {
+            color: white;
+            font-size: 3.5em;
+        }
+
+        .title-slide h2 {
+            color: #fff;
+            border: none;
+            font-size: 1.8em;
+            margin-top: 20px;
+        }
+
+        .title-slide p {
+            color: #fff;
+            font-size: 1.3em;
+            margin-top: 40px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-box {
+            background: #f9f9f9;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .feature-box.incomplete {
+            border-left-color: #e74c3c;
+        }
+
+        .feature-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .diagram {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px 0;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-box {
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .comparison-box.good {
+            background: #d4edda;
+            border: 2px solid #27ae60;
+        }
+
+        .comparison-box.bad {
+            background: #f8d7da;
+            border: 2px solid #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <h1>Mensaje desde 2126</h1>
+                <h2>Guía Completa de Desarrollo</h2>
+                <p>Un videojuego educativo en MakeCode Arcade</p>
+                <p style="margin-top: 60px; font-size: 1em;">Autores: Nicolás, Christopher, Alejandro</p>
+                <p>Asesor: Verónica Quirós Jiménez</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Objetivo -->
+        <div class="slide">
+            <h2>🎯 Objetivo de Esta Presentación</h2>
+            <p>Este documento te guiará paso a paso para:</p>
+            <ul>
+                <li><strong>Entender la estructura actual</strong> del código del juego</li>
+                <li><strong>Identificar qué está completo</strong> y qué falta</li>
+                <li><strong>Aprender a crear nuevos niveles</strong> siguiendo el patrón establecido</li>
+                <li><strong>Implementar mecánicas de reparación únicas</strong> para cada misión</li>
+                <li><strong>Terminar la historia</strong> del juego</li>
+            </ul>
+            <p style="margin-top: 40px;"><span class="highlight">Tiempo estimado: 2-3 sesiones de 90 minutos</span></p>
+        </div>
+
+        <!-- Slide 3: Estado Actual -->
+        <div class="slide">
+            <h2>📊 Estado Actual del Proyecto</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h4>✅ Completo</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li>✓ Selección de personaje</li>
+                        <li>✓ Sistema de habilidades</li>
+                        <li>✓ Nivel 1 (Reciclaje)</li>
+                        <li>✓ Exploración y movimiento</li>
+                        <li>✓ Minijuego de reparación</li>
+                        <li>✓ Base con 4 equipos</li>
+                        <li>✓ Sistema de vida</li>
+                    </ul>
+                </div>
+                <div class="feature-box incomplete">
+                    <h4>❌ Incompleto</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li>✗ Nivel 2 (Agua)</li>
+                        <li>✗ Nivel 3 (Aire)</li>
+                        <li>✗ Nivel 4 (Naturaleza)</li>
+                        <li>✗ Nuevas secuencias</li>
+                        <li>✗ Revelación final</li>
+                        <li>✗ Progresión de historia</li>
+                        <li>✗ Minijuegos únicos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Arquitectura -->
+        <div class="slide">
+            <h2>🏗️ Arquitectura del Código</h2>
+            <div class="diagram">
+presentarHistoria()<br>
+        ↓<br>
+menuPersonajes (Seleccionar personaje)<br>
+        ↓<br>
+prepararPersonaje()<br>
+        ↓<br>
+cargarNivel() ← enrutador<br>
+    ├── cargarNivel1() ✓ COMPLETO<br>
+    ├── cargarNivel2() ✗ VACÍO<br>
+    ├── cargarNivel3() ✗ VACÍO<br>
+    └── cargarNivel4() ✗ VACÍO<br>
+        ↓<br>
+colocarBase() + colocarRecursosYPeligros()<br>
+        ↓<br>
+Exploración → Reparación → Siguiente Nivel
+            </div>
+        </div>
+
+        <!-- Slide 5: Las 7 Macro Funcionalidades -->
+        <div class="slide">
+            <h2>🔧 Las 7 Macro Funcionalidades</h2>
+            <ol>
+                <li><strong>Sistema de Entrada</strong><br/>
+                    <span style="font-size: 0.9em;">Controles (A, B, flechas) y validación de estado</span>
+                </li>
+                <li><strong>Sistema de Personaje</strong><br/>
+                    <span style="font-size: 0.9em;">Selección y habilidades únicas</span>
+                </li>
+                <li><strong>Sistema de Nivel</strong><br/>
+                    <span style="font-size: 0.9em;">Carga de mapas y recursos</span>
+                </li>
+                <li><strong>Sistema de Exploración</strong><br/>
+                    <span style="font-size: 0.9em;">Movimiento, proximidad, colisiones</span>
+                </li>
+                <li><strong>Sistema de Reparación (Minijuego)</strong><br/>
+                    <span style="font-size: 0.9em;">Secuencias de botones y validación</span>
+                </li>
+                <li><strong>Sistema de Interfaz</strong><br/>
+                    <span style="font-size: 0.9em;">HUD, mensajes, carteles</span>
+                </li>
+                <li><strong>Sistema de Tienda</strong><br/>
+                    <span style="font-size: 0.9em;">Mejoras de mochila y herramienta</span>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Slide 6: Flujo del Juego -->
+        <div class="slide">
+            <h2>🎮 Flujo del Juego - Estados</h2>
+            <div class="diagram">
+"seleccion" → Menú de personajes<br>
+        ↓<br>
+"exploracion" → Movimiento libre, recogida de items<br>
+        ↓ (presionar A en dispositivo)<br>
+"reparacion" → Minijuego de secuencia de botones<br>
+        ↓<br>
+"mensaje" → Mostrar resultado y siguiente paso<br>
+        ↓ (volver a "exploracion" o cambiar de nivel)
+            </div>
+            <p style="margin-top: 20px;"><span class="highlight">Variable clave:</span> <code>let estado = "seleccion"</code></p>
+            <p>El estado determina qué acciones son permitidas en cada momento.</p>
+        </div>
+
+        <!-- Slide 7: Cómo Funciona el Nivel 1 -->
+        <div class="slide">
+            <h2>📍 Cómo Funciona el Nivel 1 (Reciclaje)</h2>
+            <p><strong>Secuencia de reparación:</strong> A → B → A → ARRIBA</p>
+            <div class="code-block">
+function cargarNivel1 () {<br/>
+    tiles.setCurrentTilemap(tilemap`ciudadReciclaje`)<br/>
+    colocarRecursosYPeligros()<br/>
+    dispositivo = sprites.create(<br/>
+        assets.image`recolector`,<br/>
+        SpriteKind.Equipo<br/>
+    )<br/>
+    tiles.placeOnTile(dispositivo,<br/>
+        tiles.getTileLocation(29, 18)<br/>
+    )<br/>
+    ponerCartel("ESCUELA", 29, 6)<br/>
+    ponerCartel("RECICLAJE", 30, 19)<br/>
+    ponerCartel("PARQUE", 8, 23)<br/>
+}
+            </div>
+            <p><strong>Lo que hace:</strong></p>
+            <ul>
+                <li>Carga el tilemap (mapa) de la ciudad de reciclaje</li>
+                <li>Coloca piezas, monedas y peligros (según marcadores del mapa)</li>
+                <li>Crea el dispositivo "recolector" para reparar</li>
+                <li>Pone carteles con nombres en el mapa</li>
+            </ul>
+        </div>
+
+        <!-- Slide 8: Estructura de cargarNivelX -->
+        <div class="slide">
+            <h2>📋 Estructura de Cada Nivel</h2>
+            <p>Todos los niveles siguen este patrón:</p>
+            <div class="code-block">
+function cargarNivel[X] () {<br/>
+    // 1. Cargar el tilemap (mapa del nivel)<br/>
+    tiles.setCurrentTilemap(tilemap`ciudadAgua`)<br/>
+<br/>
+    // 2. Colocar recursos y peligros<br/>
+    colocarRecursosYPeligros()<br/>
+<br/>
+    // 3. Crear el dispositivo a reparar<br/>
+    dispositivo = sprites.create(<br/>
+        assets.image`[imagen]`,<br/>
+        SpriteKind.Equipo<br/>
+    )<br/>
+    tiles.placeOnTile(dispositivo,<br/>
+        tiles.getTileLocation([col], [fila])<br/>
+    )<br/>
+<br/>
+    // 4. Colocar carteles<br/>
+    ponerCartel("[NOMBRE]", [col], [fila])<br/>
+}
+            </div>
+        </div>
+
+        <!-- Slide 9: Los 3 Pasos para Completar un Nivel -->
+        <div class="slide">
+            <h2>👣 3 Pasos para Completar Cada Nivel</h2>
+            <div style="margin-top: 30px;">
+                <h3><span class="step-number">1</span>Diseña el Mapa</h3>
+                <p>En MakeCode Arcade, abre el editor de tilemaps e diseña el mapa del nivel:</p>
+                <ul>
+                    <li>Dibuja las calles, edificios y áreas verdes</li>
+                    <li>Coloca marcadores (gris, amarillo, verde) para recursos</li>
+                    <li>Asegúrate de que el jugador pueda navegar</li>
+                </ul>
+
+                <h3 style="margin-top: 30px;"><span class="step-number">2</span>Edita cargarNivelX()</h3>
+                <p>Siguiendo el patrón, añade:</p>
+                <ul>
+                    <li>El nombre del tilemap correcto</li>
+                    <li>El dispositivo para reparar</li>
+                    <li>Los carteles con locaciones</li>
+                </ul>
+
+                <h3 style="margin-top: 30px;"><span class="step-number">3</span>Actualiza la Secuencia de Reparación</h3>
+                <p>En <code>comprobarBoton()</code>, cambia la validación para este nivel</p>
+            </div>
+        </div>
+
+        <!-- Slide 10: PASO 1 Detallado - Diseñar el Mapa -->
+        <div class="slide">
+            <h2>🗺️ PASO 1: Diseñar el Mapa (Detallado)</h2>
+            <ol style="font-size: 1em;">
+                <li>En MakeCode Arcade, haz clic en <strong>el ícono de mapa</strong> (a la izquierda)</li>
+                <li>Selecciona o crea un tilemap llamado <code>ciudadAgua</code> para el Nivel 2</li>
+                <li>Dibuja el mapa usando las herramientas de pintura</li>
+                <li>Usa colores para marcar dónde irán los recursos:
+                    <ul>
+                        <li><span style="background: gray; padding: 2px 5px; color: white;">Gris</span> = Piezas (marcaPieza)</li>
+                        <li><span style="background: #FFD700; padding: 2px 5px;">Amarillo</span> = Monedas (marcaMoneda)</li>
+                        <li><span style="background: lime; padding: 2px 5px;">Verde</span> = Peligros (marcaPeligro)</li>
+                    </ul>
+                </li>
+                <li>Deja espacio para el dispositivo que se colocará con código</li>
+                <li>Asegúrate de que el mapa no tenga áreas donde se quede atrapado</li>
+            </ol>
+            <p style="margin-top: 30px;"><strong>💡 Consejo:</strong> Puedes copiar el mapa del Nivel 1 y modificarlo para empezar más rápido.</p>
+        </div>
+
+        <!-- Slide 11: PASO 2 Código -->
+        <div class="slide">
+            <h2>💻 PASO 2: Codificar cargarNivel2()</h2>
+            <p><strong>ANTES:</strong></p>
+            <div class="code-block">
+function cargarNivel2 () {<br/>
+    tiles.setCurrentTilemap(tilemap`ciudadAgua`)<br/>
+    ponerCartel("AGUA: TALLER", 29, 21)<br/>
+}
+            </div>
+            <p><strong>DESPUÉS:</strong></p>
+            <div class="code-block">
+function cargarNivel2 () {<br/>
+    tiles.setCurrentTilemap(tilemap`ciudadAgua`)<br/>
+    colocarRecursosYPeligros()<br/>
+    dispositivo = sprites.create(<br/>
+        assets.image`planta`,<br/>
+        SpriteKind.Equipo<br/>
+    )<br/>
+    tiles.placeOnTile(dispositivo,<br/>
+        tiles.getTileLocation(25, 15))<br/>
+    ponerCartel("AGUA: PLANTA", 25, 10)<br/>
+    ponerCartel("ENTRADA", 5, 5)<br/>
+}
+            </div>
+            <p style="margin-top: 20px;"><strong>Cambios necesarios:</strong></p>
+            <ul>
+                <li>Añadir <code>colocarRecursosYPeligros()</code></li>
+                <li>Crear el dispositivo (usa una imagen que ya existe)</li>
+                <li>Posicionar con <code>tiles.getTileLocation(col, fila)</code></li>
+            </ul>
+        </div>
+
+        <!-- Slide 12: PASO 3 - Secuencia de Reparación -->
+        <div class="slide">
+            <h2>🔐 PASO 3: Nueva Secuencia de Reparación</h2>
+            <p><strong>Para el Nivel 2, propongo esta secuencia: A → ARRIBA → B → A</strong></p>
+            <p>Edita la función <code>comprobarBoton()</code>:</p>
+            <div class="code-block">
+function comprobarBoton (boton: string) {<br/>
+    let esValido = false<br/>
+    if (nivelActual == 1) {<br/>
+        // Nivel 1: A B A ARRIBA<br/>
+        esValido = (pasoReparacion == 0 && boton == "A" ||<br/>
+                   pasoReparacion == 1 && boton == "B" ||<br/>
+                   pasoReparacion == 2 && boton == "A" ||<br/>
+                   pasoReparacion == 3 && boton == "ARRIBA")<br/>
+    } else if (nivelActual == 2) {<br/>
+        // Nivel 2: A ARRIBA B A<br/>
+        esValido = (pasoReparacion == 0 && boton == "A" ||<br/>
+                   pasoReparacion == 1 && boton == "ARRIBA" ||<br/>
+                   pasoReparacion == 2 && boton == "B" ||<br/>
+                   pasoReparacion == 3 && boton == "A")<br/>
+    }<br/>
+<br/>
+    if (esValido) {<br/>
+        pasoReparacion += 1<br/>
+        if (pasoReparacion == 4) {<br/>
+            completarMision()<br/>
+        } else {<br/>
+            actualizarContador()<br/>
+        }<br/>
+    } else {<br/>
+        pasoReparacion = 0<br/>
+        jugador.sayText("Secuencia incorrecta", 1200, false)<br/>
+    }<br/>
+}
+            </div>
+        </div>
+
+        <!-- Slide 13: Las 4 Secuencias Propuestas -->
+        <div class="slide">
+            <h2>🎯 Propuesta de Secuencias Únicas</h2>
+            <div class="table-responsive">
+                <table>
+                    <tr>
+                        <th>Nivel</th>
+                        <th>Tema</th>
+                        <th>Secuencia</th>
+                        <th>Dificultad</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Reciclaje</td>
+                        <td>A → B → A → ARRIBA</td>
+                        <td>Fácil (lineal)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Agua</td>
+                        <td>A → ARRIBA → B → A</td>
+                        <td>Medio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Aire</td>
+                        <td>B → A → ARRIBA → B</td>
+                        <td>Medio-Alto</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>Naturaleza</td>
+                        <td>ARRIBA → B → A → ARRIBA</td>
+                        <td>Alto</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 14: Actualizar consultarMensaje() -->
+        <div class="slide">
+            <h2>📝 Actualizar consultarMensaje()</h2>
+            <p>Cambia los mensajes de texto para que tengan sentido:</p>
+            <div class="code-block">
+function consultarMensaje () {<br/>
+    estado = "mensaje"<br/>
+    controller.moveSprite(jugador, 0, 0)<br/>
+    if (nivelActual == 1) {<br/>
+        game.showLongText("Reune 3 piezas y repara...")<br/>
+    } else if (nivelActual == 2) {<br/>
+        game.showLongText("2126: El agua escasea. Necesitamos reparar la planta de tratamiento...", DialogLayout.Full)<br/>
+    } else if (nivelActual == 3) {<br/>
+        game.showLongText("2126: El aire está contaminado. Activa el sistema de filtración...", DialogLayout.Full)<br/>
+    } else {<br/>
+        game.showLongText("2126: El parque está destruido. Restaura el sistema de riego...", DialogLayout.Full)<br/>
+    }<br/>
+    continuarExplorando()<br/>
+}
+            </div>
+            <p style="margin-top: 20px;"><strong>Esto hace que cada nivel tenga su propia historia.</strong></p>
+        </div>
+
+        <!-- Slide 15: El Nivel 4 - Revelación Final -->
+        <div class="slide">
+            <h2>🎬 El Nivel 4 - La Revelación Final</h2>
+            <p>El Nivel 4 debe ser especial. Propongo:</p>
+            <h3>Contenido del Nivel 4:</h3>
+            <ul>
+                <li><strong>Reparar el parque</strong> - Última misión del juego</li>
+                <li><strong>Mensaje final desde 2126</strong> - Agradecimiento de los nietos</li>
+                <li><strong>Revelación de la máquina</strong> - ¿Quién la hizo? ¿De dónde vino?</li>
+                <li><strong>Créditos</strong> - Mostrar nombres y puntuación final</li>
+            </ul>
+            <div class="code-block">
+function completarMision () {<br/>
+    // ... código igual para niveles 1-3<br/>
+    if (nivelActual == 4) {<br/>
+        // Nivel 4: agregar revelación especial<br/>
+        game.showLongText("Somos ustedes, de 2126...", DialogLayout.Full)<br/>
+        game.showLongText("Nosotros construimos esta máquina para enviar mensajes al pasado...", DialogLayout.Full)<br/>
+        game.splash("Misión Completada", "¡El futuro está en tus manos!")<br/>
+        // Podría mostrar puntuación total<br/>
+    }<br/>
+}
+            </div>
+        </div>
+
+        <!-- Slide 16: Checklist de Implementación -->
+        <div class="slide">
+            <h2>✅ Checklist de Implementación</h2>
+            <p><strong>Para cada nivel (2, 3, 4):</strong></p>
+            <div style="background: #f5f5f5; padding: 20px; border-radius: 5px;">
+                <p>☐ Diseña el tilemap en el editor visual</p>
+                <p>☐ Coloca marcadores (gris, amarillo, verde) en el mapa</p>
+                <p>☐ Edita <code>cargarNivelX()</code> para cargar el mapa</p>
+                <p>☐ Crea el dispositivo en la ubicación correcta</p>
+                <p>☐ Coloca carteles de localización</p>
+                <p>☐ Actualiza <code>consultarMensaje()</code> con el texto del nivel</p>
+                <p>☐ Define la secuencia de reparación en <code>comprobarBoton()</code></p>
+                <p>☐ Prueba el nivel completo</p>
+                <p>☐ Verifica que se pase al siguiente nivel correctamente</p>
+            </div>
+        </div>
+
+        <!-- Slide 17: Recursos y Componentes -->
+        <div class="slide">
+            <h2>🎨 Recursos Disponibles</h2>
+            <p>MakeCode Arcade ya tiene muchas imágenes en la librería. Para cada nivel:</p>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h4>Nivel 2 (Agua)</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9em;">
+                        <li>• Usa imagen de "tubería"</li>
+                        <li>• O "tanque de agua"</li>
+                        <li>• Cartel: "AGUA"</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h4>Nivel 3 (Aire)</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9em;">
+                        <li>• Usa imagen de "filtro"</li>
+                        <li>• O "ventilador"</li>
+                        <li>• Cartel: "AIRE"</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h4>Nivel 4 (Naturaleza)</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9em;">
+                        <li>• Usa imagen de "árbol"</li>
+                        <li>• O "planta"</li>
+                        <li>• Cartel: "PARQUE"</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 20px;"><strong>💡 Consejo:</strong> Si necesitas una imagen diferente, puedes crearla en el editor de imágenes de MakeCode.</p>
+        </div>
+
+        <!-- Slide 18: Pruebas y Debugging -->
+        <div class="slide">
+            <h2>🐛 Pruebas y Debugging</h2>
+            <p><strong>Cómo probar cada nivel:</strong></p>
+            <ol>
+                <li><strong>Prueba el movimiento</strong> - ¿El jugador se mueve libremente sin trancarse?</li>
+                <li><strong>Prueba la recolección</strong> - ¿Se recogen piezas, monedas y se toman daños?</li>
+                <li><strong>Prueba la reparación</strong> - ¿La secuencia de botones funciona correctamente?</li>
+                <li><strong>Prueba la transición</strong> - ¿Se pasa al siguiente nivel después de terminar?</li>
+                <li><strong>Prueba la progresión total</strong> - ¿Puedes jugar del Nivel 1 al 4 sin errores?</li>
+            </ol>
+            <p style="margin-top: 20px;"><strong>Si algo no funciona:</strong></p>
+            <ul>
+                <li>Revisa la consola de errores en MakeCode (esquina inferior)</li>
+                <li>Verifica que los nombres de tilemaps sean exactos</li>
+                <li>Asegúrate de que las coordenadas (col, fila) sean correctas</li>
+                <li>Prueba comentando el código sospechoso y activándolo gradualmente</li>
+            </ul>
+        </div>
+
+        <!-- Slide 19: Ejemplos de Diálogos para Cada Nivel -->
+        <div class="slide">
+            <h2>💬 Ejemplos de Diálogos Sugeridos</h2>
+            <p><strong>Nivel 2 (Agua):</strong></p>
+            <p style="font-style: italic; margin-left: 20px;">"2126: El agua escasea. Sin agua fresca, no hay futuro. Repara la planta de tratamiento y activa el sistema. Busca 3 piezas para reparar."</p>
+
+            <p style="margin-top: 20px;"><strong>Nivel 3 (Aire):</strong></p>
+            <p style="font-style: italic; margin-left: 20px;">"2126: El aire está tan contaminado que no podemos respirar. Nuestras máquinas de filtración están rotas. Repáralas antes de que sea demasiado tarde."</p>
+
+            <p style="margin-top: 20px;"><strong>Nivel 4 (Naturaleza):</strong></p>
+            <p style="font-style: italic; margin-left: 20px;">"2126: No quedan árboles, no hay pájaros, el parque es un desierto de hormigón. Restaura el sistema de riego automático para que todo vuelva a crecer."</p>
+
+            <p style="margin-top: 20px;"><strong>Revelación Final (después de completar 4):</strong></p>
+            <p style="font-style: italic; margin-left: 20px;">"Gracias. Esta máquina la construimos nosotros, tus nietos. Sabíamos que si te mostramos el futuro, entenderías por qué debemos actuar ahora."</p>
+        </div>
+
+        <!-- Slide 20: Mejoras Opcionales -->
+        <div class="slide">
+            <h2>✨ Mejoras Opcionales (Si Hay Tiempo)</h2>
+            <ul>
+                <li><strong>Aumentar dificultad progresivamente</strong>
+                    <ul><li>Cada nivel requiere más piezas</li></ul>
+                </li>
+                <li><strong>Agregar "zonas temáticas"</strong>
+                    <ul><li>Nivel 2: área de alcantarillas</li>
+                        <li>Nivel 3: área industrial con humo</li>
+                        <li>Nivel 4: parque en ruinas</li></ul>
+                </li>
+                <li><strong>Jefes finales</strong>
+                    <ul><li>En cada nivel, un "jefe" que representa el problema</li></ul>
+                </li>
+                <li><strong>Sistema de logros</strong>
+                    <ul><li>Bonificaciones por terminar rápido o sin fallos</li></ul>
+                </li>
+                <li><strong>Musicalización</strong>
+                    <ul><li>Agregar sonidos a cada acción</li></ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Slide 21: Resumen y Próximos Pasos -->
+        <div class="slide">
+            <h2>🚀 Resumen y Próximos Pasos</h2>
+            <div style="background: #f0f0f0; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Lo que aprendiste:</h3>
+                <ul>
+                    <li>La estructura general del juego</li>
+                    <li>Las 7 macro funcionalidades</li>
+                    <li>Cómo seguir el patrón establecido</li>
+                    <li>Los 3 pasos para completar cada nivel</li>
+                </ul>
+            </div>
+            <div style="background: #f0f0f0; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Próximos pasos (en orden):</h3>
+                <ol>
+                    <li>Completa el <span class="highlight">Nivel 2 (Agua)</span></li>
+                    <li>Completa el <span class="highlight">Nivel 3 (Aire)</span></li>
+                    <li>Completa el <span class="highlight">Nivel 4 (Naturaleza)</span> con revelación final</li>
+                    <li>Prueba todo de inicio a fin</li>
+                    <li>Considera mejoras opcionales</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 22: Dudas Frecuentes -->
+        <div class="slide">
+            <h2>❓ Dudas Frecuentes (FAQ)</h2>
+            <div style="margin: 20px 0;">
+                <h3 style="color: #667eea;">P: ¿Cómo cambio la cantidad de piezas requeridas?</h3>
+                <p style="margin-left: 20px;">En `calcularCosto()`, usa `Math.max(1, 3 - descuentoPiezas - nivelHerramienta)`. Cambia el 3 a otro número.</p>
+            </div>
+            <div style="margin: 20px 0;">
+                <h3 style="color: #667eea;">P: ¿Cómo agrego más de una secuencia por nivel?</h3>
+                <p style="margin-left: 20px;">Crea múltiples dispositivos con variables diferentes. Cada uno llama a una función distinta.</p>
+            </div>
+            <div style="margin: 20px 0;">
+                <h3 style="color: #667eea;">P: ¿Qué pasa si no recuerdo una secuencia?</h3>
+                <p style="margin-left: 20px;">La tabla en la diapositiva 13 tiene las 4 secuencias sugeridas.</p>
+            </div>
+            <div style="margin: 20px 0;">
+                <h3 style="color: #667eea;">P: ¿Puedo cambiar la historia?</h3>
+                <p style="margin-left: 20px;">Sí, edita los textos en `presentarHistoria()` y `consultarMensaje()`.</p>
+            </div>
+        </div>
+
+        <!-- Slide 23: Final -->
+        <div class="slide title-slide">
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+                <h1>¡Estás Listo!</h1>
+                <h2>Ahora a programar 🚀</h2>
+                <p style="margin-top: 40px; font-size: 1.2em;">Sigue los 3 pasos para cada nivel</p>
+                <p style="margin-top: 20px; font-size: 1.1em;">Prueba, debuggea y celebra cada logro</p>
+                <p style="margin-top: 40px; font-size: 0.95em;">Preguntas: Verónica Quirós Jiménez</p>
+                <p style="font-size: 0.95em;">Competencia: VII Torneo STEAM LUVÁ 2026</p>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+            <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">23</span></span>
+            <button id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+
+            if (n > totalSlides) { currentSlide = totalSlides; }
+            if (n < 1) { currentSlide = 1; }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+
+            document.getElementById('currentSlide').textContent = currentSlide;
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+        }
+
+        function changeSlide(n) {
+            currentSlide += n;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') changeSlide(-1);
+            if (event.key === 'ArrowRight') changeSlide(1);
+        });
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
