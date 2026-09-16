@@ -43,9 +43,9 @@ namespace SpriteKind {
  */
 // POR CONSTRUIR: restaura el parque y escribe la revelación de la máquina.
 function cargarNivel4 () {
-    tiles.setCurrentTilemap(tilemap`level1`)
+    tiles.setCurrentTilemap(tilemap`ciudadNaturaleza`)
     colocarRecursosYPeligros()
-    dispositivo = sprites.create(assets.image`arbol`, SpriteKind.Equipo)
+    dispositivo = sprites.create(assets.image`arbolSeco`, SpriteKind.Equipo)
     tiles.placeOnTile(dispositivo, tiles.getTileLocation(15, 10))
     ponerCartel("SISTEMA RIEGO", 15, 5)
     ponerCartel("PARQUE CENTRAL", 5, 5)
@@ -183,7 +183,7 @@ function volverALaBase () {
 }
 // POR CONSTRUIR: diseña la misión del agua y coloca sus piezas y dispositivos.
 function cargarNivel2 () {
-    tiles.setCurrentTilemap(tilemap`level2`)
+    tiles.setCurrentTilemap(tilemap`ciudadAgua`)
     colocarRecursosYPeligros()
     dispositivo = sprites.create(assets.image`planta`, SpriteKind.Equipo)
     tiles.placeOnTile(dispositivo, tiles.getTileLocation(25, 15))
@@ -403,20 +403,20 @@ function ponerCartel (texto: string, columna: number, fila: number) {
 }
 // MARCADORES: gris = pieza, amarillo = moneda, verde = peligro. Se vuelven acera.
 function colocarRecursosYPeligros () {
-    for (let lugar of tiles.getTilesByType(assets.tile`transparency16`)) {
+    for (let lugar of tiles.getTilesByType(assets.tile`marcaPieza0`)) {
         objeto = sprites.create(assets.image`pieza0`, SpriteKind.Pieza)
         tiles.placeOnTile(objeto, lugar)
-        tiles.setTileAt(lugar, assets.tile`transparency16`)
+        tiles.setTileAt(lugar, assets.tile`acera0`)
     }
-    for (let lugar2 of tiles.getTilesByType(assets.tile`transparency16`)) {
+    for (let lugar2 of tiles.getTilesByType(assets.tile`marcaMoneda0`)) {
         objeto = sprites.create(assets.image`moneda0`, SpriteKind.Moneda)
         tiles.placeOnTile(objeto, lugar2)
-        tiles.setTileAt(lugar2, assets.tile`transparency16`)
+        tiles.setTileAt(lugar2, assets.tile`acera0`)
     }
-    for (let lugar3 of tiles.getTilesByType(assets.tile`transparency16`)) {
+    for (let lugar3 of tiles.getTilesByType(assets.tile`marcaPeligro0`)) {
         objeto = sprites.create(assets.image`peligro0`, SpriteKind.Peligro)
         tiles.placeOnTile(objeto, lugar3)
-        tiles.setTileAt(lugar3, assets.tile`transparency16`)
+        tiles.setTileAt(lugar3, assets.tile`acera0`)
     }
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -435,7 +435,7 @@ function actualizarContador () {
 }
 // POR CONSTRUIR: añade humo y dos componentes antes de la reparación final.
 function cargarNivel3 () {
-    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.setCurrentTilemap(tilemap`ciudadAire`)
     colocarRecursosYPeligros()
     dispositivo = sprites.create(assets.image`ventilador`, SpriteKind.Equipo)
     tiles.placeOnTile(dispositivo, tiles.getTileLocation(20, 12))
@@ -539,7 +539,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Peligro, function (sprite, pelig
 })
 // NIVEL 1: este es el ejemplo jugable. Mueve los marcadores de colores en el mapa.
 function cargarNivel1 () {
-    tiles.setCurrentTilemap(tilemap`level1`)
+    tiles.setCurrentTilemap(tilemap`ciudadReciclaje`)
     colocarRecursosYPeligros()
     dispositivo = sprites.create(assets.image`recolector0`, SpriteKind.Equipo)
     tiles.placeOnTile(dispositivo, tiles.getTileLocation(29, 18))
@@ -1099,5 +1099,4 @@ miniMenu.onButtonPressed(menuPersonajes, miniMenu.Button.A, function (selection,
     }
     prepararPersonaje()
     cargarNivel()
-    sprites.destroy(myTextSprite2)
 })

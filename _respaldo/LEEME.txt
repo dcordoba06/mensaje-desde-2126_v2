@@ -1,0 +1,13 @@
+RESPALDOS DE LA INTEGRACION (16/09/2026)
+=========================================
+Estos archivos NO los usa MakeCode (no estan en pxt.json). Solo estan aqui
+para que no se pierda nada de lo que hicieron los estudiantes.
+
+  main.blocks.de-cris           Vista de bloques del commit de Cris (780910c)
+  main.blocks.de-ale            Vista de bloques del commit de Ale (a8b55e1)
+  tilemap.g.jres.del-merge-roto Assets como quedaron tras el merge f7d35cd
+
+Etiquetas de git para recuperar cualquier estado completo:
+  git checkout respaldo-ale            -> commit de Ale  (a8b55e1)
+  git checkout respaldo-cris           -> commit de Cris (780910c)
+  git checkout respaldo-master-previo  -> master antes de reparar (f7d35cd)
