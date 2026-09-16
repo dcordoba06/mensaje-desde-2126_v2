@@ -3,6 +3,25 @@ namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
         switch(helpers.stringTrim(name)) {
+            case "recolector":
+            case "recolector0":return img`
+. . 7 7 7 7 7 7 7 7 7 7 7 7 . . 
+. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
+. 7 6 6 1 1 1 1 1 1 1 1 6 6 7 . 
+. 7 6 6 1 f f f f f f 1 6 6 7 . 
+. 7 6 6 1 f f f f f f 1 6 6 7 . 
+. 7 6 6 1 1 1 1 1 1 1 1 6 6 7 . 
+. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
+. 7 6 6 6 2 2 2 2 6 6 6 6 6 7 . 
+. 7 6 6 6 2 2 2 2 6 6 6 6 6 7 . 
+. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
+. 7 6 6 6 5 5 5 5 6 6 6 6 6 7 . 
+. 7 6 6 6 5 5 5 5 6 6 6 6 6 7 . 
+. 7 7 7 7 7 7 7 7 7 7 7 7 7 7 . 
+. . f f . . . . . . . . f f . . 
+. . f f . . . . . . . . f f . . 
+. . . . . . . . . . . . . . . . 
+`;
             case "nico":
             case "nico0":return img`
 . . . . . e e e e e e . . . . . 
@@ -97,25 +116,6 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-`;
-            case "recolector":
-            case "recolector0":return img`
-. . 7 7 7 7 7 7 7 7 7 7 7 7 . . 
-. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
-. 7 6 6 1 1 1 1 1 1 1 1 6 6 7 . 
-. 7 6 6 1 f f f f f f 1 6 6 7 . 
-. 7 6 6 1 f f f f f f 1 6 6 7 . 
-. 7 6 6 1 1 1 1 1 1 1 1 6 6 7 . 
-. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
-. 7 6 6 6 2 2 2 2 6 6 6 6 6 7 . 
-. 7 6 6 6 2 2 2 2 6 6 6 6 6 7 . 
-. 7 6 6 6 6 6 6 6 6 6 6 6 6 7 . 
-. 7 6 6 6 5 5 5 5 6 6 6 6 6 7 . 
-. 7 6 6 6 5 5 5 5 6 6 6 6 6 7 . 
-. 7 7 7 7 7 7 7 7 7 7 7 7 7 7 . 
-. . f f . . . . . . . . f f . . 
-. . f f . . . . . . . . f f . . 
-. . . . . . . . . . . . . . . . 
 `;
             case "portada":
             case "portada0":return img`
