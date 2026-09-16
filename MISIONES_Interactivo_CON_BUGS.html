@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 MISIONES: Mensaje desde 2126</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header h2 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-box .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .progress-bar {
+            background: #eee;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);
+            height: 100%;
+            width: 0%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 0.3s ease;
+        }
+
+        .actos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .acto {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .acto:hover {
+            transform: translateY(-5px);
+        }
+
+        .acto.critico {
+            border: 3px solid #e74c3c;
+        }
+
+        .acto-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .acto.critico .acto-header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .acto-header h3 {
+            font-size: 1.5em;
+        }
+
+        .acto-header .toggle {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .acto.collapsed .acto-header .toggle {
+            transform: rotate(-90deg);
+        }
+
+        .acto-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .acto.collapsed .acto-content {
+            max-height: 0;
+        }
+
+        .misiones {
+            padding: 20px;
+        }
+
+        .mision {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .mision.completed {
+            background: #d4edda;
+            border-left-color: #27ae60;
+            opacity: 0.7;
+        }
+
+        .mision.critico {
+            border-left-color: #e74c3c;
+            background: #ffe6e6;
+        }
+
+        .mision-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .mision input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-right: 15px;
+            accent-color: #667eea;
+        }
+
+        .mision.critico input[type="checkbox"] {
+            accent-color: #e74c3c;
+        }
+
+        .mision-title {
+            flex: 1;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .mision.critico .mision-title {
+            color: #e74c3c;
+        }
+
+        .mision-xp {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .mision.critico .mision-xp {
+            background: #e74c3c;
+        }
+
+        .mision-details {
+            margin-top: 10px;
+            padding-left: 39px;
+            display: none;
+        }
+
+        .mision.expanded .mision-details {
+            display: block;
+        }
+
+        .mision-details h4 {
+            color: #764ba2;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .mision-details ul {
+            margin-left: 20px;
+            color: #555;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .mision-details li {
+            margin-bottom: 5px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            color: #856404;
+        }
+
+        .warning-box strong {
+            color: #e74c3c;
+        }
+
+        .acto-progress {
+            padding: 0 20px 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .acto-progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .acto-progress-fill {
+            background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .acto.critico .acto-progress-fill {
+            background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        footer {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        footer p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .reset-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .reset-btn:hover {
+            background: #c0392b;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .actos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 MISIONES: Mensaje desde 2126</h1>
+            <h2>Completa el Videojuego Educativo</h2>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="number" id="totalMisiones">0</div>
+                    <div class="label">Misiones Totales</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" id="misionesCompletadas">0</div>
+                    <div class="label">Completadas</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" id="xpTotal">0</div>
+                    <div class="label">XP Ganados</div>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%">
+                    <span id="progressText">0%</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="actos" id="actosContainer"></div>
+
+        <footer>
+            <p>✨ <strong>Equipo ArcadeCAN</strong> - VII Torneo STEAM LUVÁ 2026</p>
+            <p>Nicolás • Christopher • Alejandro</p>
+            <button class="reset-btn" onclick="resetProgress()">🔄 Reiniciar Progreso</button>
+        </footer>
+    </div>
+
+    <script>
+        const misiones = {
+            bugs: {
+                nombre: "🐛 REPARACIONES CRÍTICAS",
+                emoji: "🔧",
+                critico: true,
+                xpTotal: 1000,
+                misiones: [
+                    {
+                        id: "bug-1",
+                        titulo: "Arregla comprobarBoton() - Secuencias múltiples",
+                        xp: 250,
+                        critico: true,
+                        pasos: [
+                            "Este es el BUG más importante: el código siempre usa A→B→A→ARRIBA",
+                            "Debe cambiar según el nivel (Nivel 2: A→ARRIBA→B→A, etc.)",
+                            "Encuentra la función comprobarBoton() (línea ~280)",
+                            "Reemplaza TODO el contenido de esa función con el código nuevo"
+                        ],
+                        codigo: `function comprobarBoton (boton: string) {
+    let esValido = false
+    if (nivelActual == 1) {
+        // Nivel 1: A B A ARRIBA
+        esValido = (pasoReparacion == 0 && boton == "A" ||
+                   pasoReparacion == 1 && boton == "B" ||
+                   pasoReparacion == 2 && boton == "A" ||
+                   pasoReparacion == 3 && boton == "ARRIBA")
+    } else if (nivelActual == 2) {
+        // Nivel 2: A ARRIBA B A
+        esValido = (pasoReparacion == 0 && boton == "A" ||
+                   pasoReparacion == 1 && boton == "ARRIBA" ||
+                   pasoReparacion == 2 && boton == "B" ||
+                   pasoReparacion == 3 && boton == "A")
+    } else if (nivelActual == 3) {
+        // Nivel 3: B A ARRIBA B
+        esValido = (pasoReparacion == 0 && boton == "B" ||
+                   pasoReparacion == 1 && boton == "A" ||
+                   pasoReparacion == 2 && boton == "ARRIBA" ||
+                   pasoReparacion == 3 && boton == "B")
+    } else if (nivelActual == 4) {
+        // Nivel 4: ARRIBA B A ARRIBA
+        esValido = (pasoReparacion == 0 && boton == "ARRIBA" ||
+                   pasoReparacion == 1 && boton == "B" ||
+                   pasoReparacion == 2 && boton == "A" ||
+                   pasoReparacion == 3 && boton == "ARRIBA")
+    }
+
+    if (esValido) {
+        pasoReparacion += 1
+        if (pasoReparacion == 4) {
+            completarMision()
+        } else {
+            actualizarContador()
+        }
+    } else {
+        pasoReparacion = 0
+        jugador.sayText("Intenta de nuevo", 1200, false)
+        actualizarContador()
+    }
+}`
+                    },
+                    {
+                        id: "bug-2",
+                        titulo: "Arregla iniciarReparacion() - Solo Nivel 1",
+                        xp: 200,
+                        critico: true,
+                        pasos: [
+                            "BUG: Solo permite reparar si nivelActual == 1",
+                            "Esto significa Niveles 2-4 nunca podrán iniciar reparación",
+                            "Busca en controller.A.onEvent() donde dice: else if (nivelActual == 1 && estaCerca(dispositivo)",
+                            "Cambia esa línea para que funcione en TODOS los niveles"
+                        ],
+                        codigo: `// CAMBIAR ESTA LÍNEA (busca alrededor de línea 248):
+} else if (nivelActual == 1 && estaCerca(dispositivo) && !(misionCompletada)) {
+    iniciarReparacion()
+}
+
+// A ESTO:
+} else if (estaCerca(dispositivo) && !(misionCompletada)) {
+    iniciarReparacion()
+}`
+                    },
+                    {
+                        id: "bug-3",
+                        titulo: "Arregla completarMision() - Imagen del dispositivo",
+                        xp: 200,
+                        critico: true,
+                        pasos: [
+                            "BUG: El dispositivo solo cambia imagen en Nivel 1",
+                            "Busca completarMision() (línea ~340)",
+                            "Agrega una condición para cada nivel: dispositivo.setImage(...)",
+                            "Usa imágenes lógicas para cada nivel: recolectorListo, plantaLista, etc."
+                        ],
+                        codigo: `// EN completarMision(), DESPUÉS de: info.changeScoreBy(puntosReparacion)
+// BUSCA ESTA LÍNEA (línea ~340):
+dispositivo.setImage(assets.image\`recolectorListo\`)
+
+// CAMBIA A ESTO:
+if (nivelActual == 1) {
+    dispositivo.setImage(assets.image\`recolectorListo\`)
+} else if (nivelActual == 2) {
+    dispositivo.setImage(assets.image\`plantaLista\`)
+} else if (nivelActual == 3) {
+    dispositivo.setImage(assets.image\`filtroListo\`)
+} else if (nivelActual == 4) {
+    dispositivo.setImage(assets.image\`arbolVivo\`)
+}`
+                    },
+                    {
+                        id: "bug-4",
+                        titulo: "Completa cargarNivel2/3/4 - Agregá recursos",
+                        xp: 250,
+                        critico: true,
+                        pasos: [
+                            "BUG: Las funciones están vacías, sin colocarRecursosYPeligros()",
+                            "Busca cargarNivel2(), cargarNivel3(), cargarNivel4()",
+                            "Cada una debe tener la estructura: tilemap, recursos, dispositivo, carteles",
+                            "Copia el patrón de cargarNivel1() pero con nombres diferentes"
+                        ],
+                        codigo: `// NIVEL 2 - REEMPLAZA TODA LA FUNCIÓN:
+function cargarNivel2 () {
+    tiles.setCurrentTilemap(tilemap\`ciudadAgua\`)
+    colocarRecursosYPeligros()
+    dispositivo = sprites.create(assets.image\`planta\`, SpriteKind.Equipo)
+    tiles.placeOnTile(dispositivo, tiles.getTileLocation(25, 15))
+    ponerCartel("PLANTA AGUA", 25, 10)
+    ponerCartel("ENTRADA", 5, 5)
+}
+
+// NIVEL 3 - REEMPLAZA TODA LA FUNCIÓN:
+function cargarNivel3 () {
+    tiles.setCurrentTilemap(tilemap\`ciudadAire\`)
+    colocarRecursosYPeligros()
+    dispositivo = sprites.create(assets.image\`ventilador\`, SpriteKind.Equipo)
+    tiles.placeOnTile(dispositivo, tiles.getTileLocation(20, 12))
+    ponerCartel("FILTRADOR AIRE", 20, 8)
+    ponerCartel("ZONA INDUSTRIAL", 5, 5)
+}
+
+// NIVEL 4 - REEMPLAZA TODA LA FUNCIÓN:
+function cargarNivel4 () {
+    tiles.setCurrentTilemap(tilemap\`ciudadNaturaleza\`)
+    colocarRecursosYPeligros()
+    dispositivo = sprites.create(assets.image\`arbol\`, SpriteKind.Equipo)
+    tiles.placeOnTile(dispositivo, tiles.getTileLocation(15, 10))
+    ponerCartel("SISTEMA RIEGO", 15, 5)
+    ponerCartel("PARQUE CENTRAL", 5, 5)
+}`
+                    },
+                    {
+                        id: "bug-5",
+                        titulo: "Completa consultarMensaje() - Textos de cada nivel",
+                        xp: 300,
+                        critico: true,
+                        pasos: [
+                            "BUG: Solo Nivel 1 tiene un mensaje real; 2-4 dicen 'TALLER PARA CREAR'",
+                            "Busca consultarMensaje() (línea ~232)",
+                            "Cada nivel debe mostrar su propia misión y contexto",
+                            "Reemplaza los else if para nivelActual 2, 3, 4"
+                        ],
+                        codigo: `// EN consultarMensaje(), REEMPLAZA LOS BLOQUES else if:
+} else if (nivelActual == 2) {
+    calcularCosto()
+    game.showLongText("2126: El agua escasea sin remedio. La planta de tratamiento está destruida. Busca " + costoReparacion + " piezas y repárala. El agua es vida.", DialogLayout.Full)
+} else if (nivelActual == 3) {
+    calcularCosto()
+    game.showLongText("2126: El aire es tóxico. Las máquinas de filtración no funcionan hace años. Busca " + costoReparacion + " piezas y actívalas. Necesitamos aire limpio.", DialogLayout.Full)
+} else {
+    calcularCosto()
+    game.showLongText("2126: El parque está muerto. Sin zonas verdes, la ciudad es un desierto. Busca " + costoReparacion + " piezas y restaura el sistema de riego. ¡Devuelve la vida!", DialogLayout.Full)
+}`
+                    }
+                ]
+            },
+            acto1: {
+                nombre: "🌊 ACTO 1: EL AGUA",
+                emoji: "💧",
+                xpTotal: 550,
+                misiones: [
+                    {
+                        id: "1-1",
+                        titulo: "Diseña la Ciudad del Agua",
+                        xp: 100,
+                        pasos: [
+                            "Abre MakeCode Arcade y tu proyecto",
+                            "Haz clic en el ícono de tilemap (a la izquierda)",
+                            "Crea un nuevo tilemap llamado ciudadAgua",
+                            "Dibuja un mapa de ciudad con calles, edificios y agua",
+                            "Coloca marcadores: Gris (3-5 piezas), Amarillo (2-3 monedas), Verde (2-3 peligros)"
+                        ]
+                    },
+                    {
+                        id: "1-2",
+                        titulo: "Codifica la Carga del Nivel",
+                        xp: 150,
+                        pasos: [
+                            "Ya está en el BUG FIX #4",
+                            "Copia cargarNivel2() del código de reparación"
+                        ]
+                    },
+                    {
+                        id: "1-3",
+                        titulo: "Crea la Secuencia del Nivel 2",
+                        xp: 200,
+                        pasos: [
+                            "Ya está en BUG FIX #1",
+                            "Verifica que comprobarBoton() tenga el código para nivelActual == 2",
+                            "Secuencia: A → ARRIBA → B → A"
+                        ]
+                    },
+                    {
+                        id: "1-4",
+                        titulo: "Escribe el Mensaje del Nivel 2",
+                        xp: 100,
+                        pasos: [
+                            "Ya está en BUG FIX #5",
+                            "Verifica que consultarMensaje() tenga el texto para agua"
+                        ]
+                    }
+                ]
+            },
+            acto2: {
+                nombre: "🌪️ ACTO 2: EL AIRE",
+                emoji: "💨",
+                xpTotal: 550,
+                misiones: [
+                    {
+                        id: "2-1",
+                        titulo: "Diseña la Ciudad Contaminada",
+                        xp: 100,
+                        pasos: [
+                            "Crea nuevo tilemap: ciudadAire",
+                            "Dibuja zonas industriales (chimeneas, fábricas)",
+                            "Añade humo visible (tiles oscuros)",
+                            "Crea espacio para el dispositivo (coordenadas 20, 12)",
+                            "Coloca marcadores: Gris (4), Amarillo (2-3), Verde (3)"
+                        ]
+                    },
+                    {
+                        id: "2-2",
+                        titulo: "Codifica cargarNivel3()",
+                        xp: 150,
+                        pasos: [
+                            "Ya está en BUG FIX #4",
+                            "Copia cargarNivel3() del código de reparación"
+                        ]
+                    },
+                    {
+                        id: "2-3",
+                        titulo: "La Secuencia del Aire",
+                        xp: 200,
+                        pasos: [
+                            "Ya está en BUG FIX #1",
+                            "Verifica que comprobarBoton() tenga el código para nivelActual == 3",
+                            "Secuencia: B → A → ARRIBA → B"
+                        ]
+                    },
+                    {
+                        id: "2-4",
+                        titulo: "El Mensaje de Aire",
+                        xp: 100,
+                        pasos: [
+                            "Ya está en BUG FIX #5",
+                            "Verifica que consultarMensaje() tenga el texto para aire"
+                        ]
+                    }
+                ]
+            },
+            acto3: {
+                nombre: "🌳 ACTO 3: LA NATURALEZA",
+                emoji: "🌱",
+                xpTotal: 700,
+                misiones: [
+                    {
+                        id: "3-1",
+                        titulo: "El Parque Destruido",
+                        xp: 100,
+                        pasos: [
+                            "Crea tilemap: ciudadNaturaleza",
+                            "Dibuja parque en ruinas (sin árboles, sin vida)",
+                            "Usa hormigón gris y zonas muertas",
+                            "Espacio para riego (coordenadas 15, 10)"
+                        ]
+                    },
+                    {
+                        id: "3-2",
+                        titulo: "Cargar el Nivel Final",
+                        xp: 150,
+                        pasos: [
+                            "Ya está en BUG FIX #4",
+                            "Copia cargarNivel4() del código de reparación"
+                        ]
+                    },
+                    {
+                        id: "3-3",
+                        titulo: "La Secuencia Final",
+                        xp: 200,
+                        pasos: [
+                            "Ya está en BUG FIX #1",
+                            "Verifica que comprobarBoton() tenga el código para nivelActual == 4",
+                            "Secuencia: ARRIBA → B → A → ARRIBA (¡la más difícil!)"
+                        ]
+                    },
+                    {
+                        id: "3-4",
+                        titulo: "La Revelación Final",
+                        xp: 250,
+                        pasos: [
+                            "Encuentra completarMision()",
+                            "Busca: if (nivelActual == 4)",
+                            "Agrega el código de la revelación épica"
+                        ],
+                        codigo: `} else if (nivelActual == 4) {
+    game.showLongText("Espera... ¿Qué pasa? Una voz llena de esperanza...", DialogLayout.Full)
+    game.showLongText("Somos nosotros. Tus nietos. Del año 2126.", DialogLayout.Full)
+    game.showLongText("Construimos esta máquina para enviarte un mensaje: el futuro no está escrito. Si actúas ahora, todo puede cambiar.", DialogLayout.Full)
+    game.showLongText("Gracias por salvarnos.", DialogLayout.Full)
+    game.splash("¡MISIÓN CUMPLIDA!", "¡EL FUTURO ESTÁ EN TUS MANOS!")
+}`
+                    }
+                ]
+            }
+        };
+
+        function initMisiones() {
+            const container = document.getElementById('actosContainer');
+            let totalXP = 0;
+            let totalMisiones = 0;
+
+            Object.keys(misiones).forEach(actoKey => {
+                const acto = misiones[actoKey];
+                totalMisiones += acto.misiones.length;
+                totalXP += acto.xpTotal;
+
+                const actoDiv = document.createElement('div');
+                actoDiv.className = 'acto' + (acto.critico ? ' critico' : '');
+                actoDiv.innerHTML = `
+                    <div class="acto-header" onclick="toggleActo(this)">
+                        <h3>${acto.nombre}</h3>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="acto-content">
+                        <div class="misiones" id="misiones-${actoKey}"></div>
+                        <div class="acto-progress">
+                            <div>Progreso: <strong id="progress-${actoKey}">0/0</strong></div>
+                            <div class="acto-progress-bar">
+                                <div class="acto-progress-fill" id="fill-${actoKey}" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                const misionesContainer = actoDiv.querySelector(`#misiones-${actoKey}`);
+                acto.misiones.forEach(mision => {
+                    const misionDiv = document.createElement('div');
+                    misionDiv.className = 'mision' + (mision.critico ? ' critico' : '');
+                    misionDiv.id = `mision-${mision.id}`;
+                    misionDiv.onclick = (e) => {
+                        if (e.target.tagName !== 'INPUT') {
+                            misionDiv.classList.toggle('expanded');
+                        }
+                    };
+
+                    let detalles = `<h4>Pasos:</h4><ul>`;
+                    mision.pasos.forEach(paso => {
+                        detalles += `<li>${paso}</li>`;
+                    });
+                    detalles += `</ul>`;
+
+                    if (mision.critico) {
+                        detalles = `<div class="warning-box"><strong>⚠️ BUG CRÍTICO:</strong> Este bug previene que funcionen los Niveles 2-4. Debe repararse primero.</div>` + detalles;
+                    }
+
+                    if (mision.codigo) {
+                        detalles += `<div class="code-block">${mision.codigo}</div>`;
+                    }
+
+                    misionDiv.innerHTML = `
+                        <div class="mision-header">
+                            <input type="checkbox" class="mision-check" id="check-${mision.id}" onchange="updateProgress()">
+                            <span class="mision-title">${mision.titulo}</span>
+                            <span class="mision-xp">+${mision.xp} XP</span>
+                        </div>
+                        <div class="mision-details">${detalles}</div>
+                    `;
+
+                    misionesContainer.appendChild(misionDiv);
+                });
+
+                container.appendChild(actoDiv);
+            });
+
+            document.getElementById('totalMisiones').textContent = totalMisiones;
+            loadProgress();
+        }
+
+        function toggleActo(header) {
+            header.closest('.acto').classList.toggle('collapsed');
+        }
+
+        function updateProgress() {
+            let completed = 0;
+            let total = document.querySelectorAll('.mision-check').length;
+            let xpGanado = 0;
+
+            document.querySelectorAll('.mision-check').forEach((checkbox, idx) => {
+                if (checkbox.checked) {
+                    completed++;
+                    const misionDiv = checkbox.closest('.mision');
+                    misionDiv.classList.add('completed');
+
+                    const xpText = misionDiv.querySelector('.mision-xp').textContent;
+                    const xp = parseInt(xpText.replace(/\D/g, ''));
+                    xpGanado += xp;
+                } else {
+                    checkbox.closest('.mision').classList.remove('completed');
+                }
+            });
+
+            const percentage = Math.round((completed / total) * 100);
+            document.getElementById('misionesCompletadas').textContent = completed;
+            document.getElementById('xpTotal').textContent = xpGanado;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = percentage + '%';
+
+            Object.keys(misiones).forEach(actoKey => {
+                const acto = misiones[actoKey];
+                let actoCompleted = 0;
+                acto.misiones.forEach(m => {
+                    const checkbox = document.getElementById(`check-${m.id}`);
+                    if (checkbox && checkbox.checked) actoCompleted++;
+                });
+                const actoPercentage = Math.round((actoCompleted / acto.misiones.length) * 100);
+                const progressEl = document.getElementById(`progress-${actoKey}`);
+                if (progressEl) {
+                    progressEl.textContent = `${actoCompleted}/${acto.misiones.length}`;
+                    document.getElementById(`fill-${actoKey}`).style.width = actoPercentage + '%';
+                }
+            });
+
+            saveProgress();
+        }
+
+        function saveProgress() {
+            const progress = {};
+            document.querySelectorAll('.mision-check').forEach(checkbox => {
+                progress[checkbox.id] = checkbox.checked;
+            });
+            localStorage.setItem('misionesProgress', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const progress = JSON.parse(localStorage.getItem('misionesProgress') || '{}');
+            Object.keys(progress).forEach(id => {
+                const checkbox = document.getElementById(id);
+                if (checkbox) {
+                    checkbox.checked = progress[id];
+                }
+            });
+            updateProgress();
+        }
+
+        function resetProgress() {
+            if (confirm('¿Estás seguro de que quieres reiniciar todo el progreso?')) {
+                localStorage.removeItem('misionesProgress');
+                document.querySelectorAll('.mision-check').forEach(cb => cb.checked = false);
+                updateProgress();
+            }
+        }
+
+        initMisiones();
+    </script>
+</body>
+</html>
