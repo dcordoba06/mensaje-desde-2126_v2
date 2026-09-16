@@ -326,6 +326,132 @@
             background: #c0392b;
         }
 
+        .paso-help-btn {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+
+        .paso-help-btn:hover {
+            background: #2980b9;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            color: #667eea;
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .modal-close {
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: #000;
+        }
+
+        .modal-section {
+            margin-bottom: 20px;
+        }
+
+        .modal-section h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .modal-section p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .modal-section ul {
+            margin-left: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .modal-section li {
+            margin-bottom: 8px;
+        }
+
         .acto-premio {
             background: #fff9e6;
             border: 2px solid #f39c12;
@@ -396,7 +522,40 @@
         </footer>
     </div>
 
+    <!-- Modal para explicaciones -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Explicación</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
     <script>
+        // Almacena explicaciones por ID de misión
+        const explicaciones = {};
+
+        function openModal(misionId) {
+            if (!explicaciones[misionId]) return;
+            const exp = explicaciones[misionId];
+            document.getElementById('modalTitle').textContent = exp.titulo;
+            document.getElementById('modalBody').innerHTML = exp.contenido;
+            document.getElementById('helpModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('helpModal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('helpModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
         const misiones = {
             bugs: {
                 nombre: "🐛 REPARACIONES CRÍTICAS",
@@ -581,6 +740,39 @@ function cargarNivel4 () {
                         id: "1-1",
                         titulo: "Diseña la Ciudad del Agua",
                         xp: 100,
+                        explicacion: `
+                            <div class="modal-section">
+                                <h3>🎮 ¿QUÉ ES UN TILEMAP?</h3>
+                                <p>Un <strong>tilemap</strong> es el "mapa" del videojuego. Es como una grilla de cuadrículas donde cada cuadrícula contiene un "tile" (baldosa). Cada tile es una pequeña imagen que se repite para construir todo el nivel.</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>🏗️ CÓMO FUNCIONA</h3>
+                                <p>En MakeCode Arcade, los tilemaps son grillas de 16x10 cuadrículas (aproximadamente). Cada cuadrícula puede tener:</p>
+                                <ul>
+                                    <li><strong>Azul</strong> = Agua (ambiente)</li>
+                                    <li><strong>Gris</strong> = Calles y construcciones</li>
+                                    <li><strong>Marrón</strong> = Tierra/Naturaleza</li>
+                                    <li><strong>Puntos especiales</strong> = Lugares donde aparecen items o peligros</li>
+                                </ul>
+                                <p>El código JavaScript <strong>lee</strong> este tilemap y sabe dónde pueden moverse los personajes.</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>❓ POR QUÉ LO HACEMOS</h3>
+                                <p>Si no creamos el tilemap, el juego no tiene "mundo" donde jugar. El mapa es la base de todo el nivel. Sin mapa = sin juego.</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>🤔 PREGUNTAS DEL JURADO</h3>
+                                <ul>
+                                    <li><strong>¿Qué es un tilemap?</strong> → Es el mapa visual del juego, hecho de cuadrículas (tiles)</li>
+                                    <li><strong>¿Cuántos tilemaps tienen?</strong> → Cuatro: ciudadAgua, ciudadAire, ciudadNaturaleza, y el nivel 1</li>
+                                    <li><strong>¿Por qué nombran con "Agua", "Aire", "Naturaleza"?</strong> → Porque cada nivel representa un problema ambiental diferente</li>
+                                    <li><strong>¿Quién usa el tilemap en el código?</strong> → La función cargarNivel() lee el tilemap y lo coloca en pantalla</li>
+                                </ul>
+                            </div>
+                        `,
                         pasos: [
                             "1. Abre MakeCode Arcade con tu proyecto",
                             "2. EN EL MENÚ IZQUIERDO, busca el botón que dice 'Tilemap' (muestra una imagen de grilla)",
@@ -600,6 +792,38 @@ function cargarNivel4 () {
                         id: "1-2",
                         titulo: "Codifica la Carga del Nivel",
                         xp: 150,
+                        explicacion: `
+                            <div class="modal-section">
+                                <h3>🎮 ¿QUÉ ES cargarNivel2()?</h3>
+                                <p>Es una <strong>función</strong> que prepara el nivel 2 para que el juego pueda jugarlo. Cuando el jugador llega al nivel 2, esta función se ejecuta automáticamente.</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>⚙️ LAS 5 LÍNEAS QUE AGREGA</h3>
+                                <ul>
+                                    <li><strong>tiles.setCurrentTilemap()</strong> → Coloca el mapa en pantalla</li>
+                                    <li><strong>colocarRecursosYPeligros()</strong> → Distribuye piezas, monedas y peligros aleatoriamente</li>
+                                    <li><strong>sprites.create()</strong> → Crea el dispositivo que hay que reparar</li>
+                                    <li><strong>tiles.placeOnTile()</strong> → Posiciona el dispositivo en una ubicación específica</li>
+                                    <li><strong>ponerCartel()</strong> → Agrega mensajes de texto en el mapa (como señales)</li>
+                                </ul>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>🤔 POR QUÉ</h3>
+                                <p>Sin esta función, el nivel 2 no mostraría el mapa, no habría nada que recoger, el dispositivo no existiría. Es como construir una casa: sin paredes, piso y techo, solo hay aire.</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>📋 PREGUNTAS DEL JURADO</h3>
+                                <ul>
+                                    <li><strong>¿Cuántas líneas agrega en cargarNivel2()?</strong> → Cinco líneas después de setCurrentTilemap()</li>
+                                    <li><strong>¿Qué hace colocarRecursosYPeligros()?</strong> → Lee el tilemap y genera items en los lugares correctos</li>
+                                    <li><strong>¿Por qué colocar carteles?</strong> → Para guiar al jugador y dar contexto a la historia</li>
+                                    <li><strong>¿Qué sería diferente sin esta función?</strong> → El nivel estaría vacío, sin mundo, sin dispositivo</li>
+                                </ul>
+                            </div>
+                        `,
                         pasos: [
                             "1. Abre tu proyecto en MakeCode Arcade",
                             "2. En el editor de código (JavaScript), presiona Ctrl+F (o Cmd+F en Mac)",
@@ -627,6 +851,49 @@ function cargarNivel2 () {
                         id: "1-3",
                         titulo: "Crea la Secuencia del Nivel 2",
                         xp: 200,
+                        explicacion: `
+                            <div class="modal-section">
+                                <h3>🎮 ¿QUÉ ES UNA SECUENCIA?</h3>
+                                <p>Una <strong>secuencia</strong> es el orden de botones que el jugador debe presionar para reparar un dispositivo. Es como un código secreto: si lo haces en el orden correcto, funciona. Si lo haces mal, ¡debe volver a intentarlo!</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>🔑 SECUENCIAS DEL JUEGO</h3>
+                                <ul>
+                                    <li><strong>Nivel 1 (Reciclaje):</strong> A → B → A → ARRIBA</li>
+                                    <li><strong>Nivel 2 (Agua):</strong> A → ARRIBA → B → A</li>
+                                    <li><strong>Nivel 3 (Aire):</strong> B → A → ARRIBA → B</li>
+                                    <li><strong>Nivel 4 (Naturaleza):</strong> ARRIBA → B → A → ARRIBA (¡LA MÁS DIFÍCIL!)</li>
+                                </ul>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>⚙️ CÓMO FUNCIONA EN EL CÓDIGO</h3>
+                                <p>La función <strong>comprobarBoton()</strong> verifica:</p>
+                                <ul>
+                                    <li>¿Cuál es el nivel actual?</li>
+                                    <li>¿Qué botón presionó el jugador?</li>
+                                    <li>¿Es el botón correcto para ESTE PASO de la secuencia?</li>
+                                    <li>Si es correcto: suma 1 a los pasos completados</li>
+                                    <li>Si es incorrecto: reinicia los pasos (empieza de nuevo)</li>
+                                </ul>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>💡 POR QUÉ CADA NIVEL TIENE DIFERENTE SECUENCIA</h3>
+                                <p>Porque cada problema ambiental requiere "reparaciones" diferentes. El agua necesita tratamiento diferente al aire, etc. Además, hace el juego más desafiante: si todas las secuencias fueran igual, sería aburrido.</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>📋 PREGUNTAS DEL JURADO</h3>
+                                <ul>
+                                    <li><strong>¿Cuántos botones tiene cada secuencia?</strong> → Exactamente 4 botones</li>
+                                    <li><strong>¿Qué pasa si presiono un botón equivocado?</strong> → Se reinicia la secuencia (vuelves al paso 1)</li>
+                                    <li><strong>¿Dónde se verifica la secuencia?</strong> → En la función comprobarBoton()</li>
+                                    <li><strong>¿Por qué es diferente en cada nivel?</strong> → Refleja los diferentes problemas ambientales</li>
+                                </ul>
+                            </div>
+                        `,
                         pasos: [
                             "1. En MakeCode, busca la función: comprobarBoton (usa Ctrl+F)",
                             "2. Dentro de esa función, BUSCA este bloque: } else if (nivelActual == 2) {",
@@ -661,6 +928,38 @@ function cargarNivel2 () {
                         id: "2-1",
                         titulo: "Diseña la Ciudad Contaminada",
                         xp: 100,
+                        explicacion: `
+                            <div class="modal-section">
+                                <h3>🌫️ ¿QUÉ REPRESENTA ESTE NIVEL?</h3>
+                                <p>Este nivel representa el problema de la <strong>contaminación del aire</strong>. Visualmente, debe verse como una ciudad industrial con fábricas, chimeneas y MUCHO HUMO que contamina el aire.</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>🎨 CÓMO DIBUJARLO PARA QUE SE VEA "CONTAMINADO"</h3>
+                                <ul>
+                                    <li><strong>Chimeneas altas:</strong> Dibuja torres grises/cafés que suben</li>
+                                    <li><strong>Fábricas:</strong> Rectángulos grandes de hormigón gris</li>
+                                    <li><strong>Nubes de humo:</strong> MUCHOS tiles negros/grises oscuros ARRIBA (ocupando las filas superiores)</li>
+                                    <li><strong>Sin naturaleza:</strong> NO dibujes árboles ni agua azul - es una ciudad destruida</li>
+                                    <li><strong>Un espacio limpio EN EL MEDIO:</strong> Donde irá el filtrador de aire (coordenadas 20, 12)</li>
+                                </ul>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>🎮 POR QUÉ IMPORTA EL DISEÑO</h3>
+                                <p>El jugador debe <strong>SENTIR</strong> que el ambiente está mal. Si el mapa se ve bonito y limpio, no comprende el problema. El diseño comunica la narrativa del juego sin palabras.</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>📋 PREGUNTAS DEL JURADO</h3>
+                                <ul>
+                                    <li><strong>¿Cómo visualmente representan la contaminación?</strong> → Con humo (tiles negros) y fábricas (tiles oscuros)</li>
+                                    <li><strong>¿Por qué la ciudad debe verse "fea"?</strong> → Para comunicar que hay un problema ambiental</li>
+                                    <li><strong>¿Qué significa limpiar el aire en este nivel?</strong> → Activar el filtrador que remueve el humo (conceptualmente)</li>
+                                    <li><strong>¿Cómo se conecta esto a la vida real?</strong> → Las ciudades industriales reales SÍ tienen contaminación del aire</li>
+                                </ul>
+                            </div>
+                        `,
                         pasos: [
                             "1. En MakeCode, ve al menú IZQUIERDO y haz clic en 'Tilemap'",
                             "2. Haz clic en el botón '+' VERDE para nuevo tilemap",
@@ -802,6 +1101,54 @@ function cargarNivel4 () {
                         id: "3-4",
                         titulo: "La Revelación Final",
                         xp: 250,
+                        explicacion: `
+                            <div class="modal-section">
+                                <h3>📖 ¿QUÉ ES LA "REVELACIÓN FINAL"?</h3>
+                                <p>Es el cierre narrativo del juego. Después de reparar los 4 problemas ambientales, una voz misteriosa aparece para explicar que TODO TENÍA UN PROPÓSITO: un mensaje desde el futuro pidiendo que actuemos ahora.</p>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>🎬 LOS 5 MENSAJES</h3>
+                                <ol>
+                                    <li>Sorpresa: "Espera... ¿Qué pasa? Una voz..."</li>
+                                    <li>Identidad: "Somos nosotros. Tus nietos. Del año 2126"</li>
+                                    <li>Propósito: "Construimos esta máquina para enviarte un mensaje..."</li>
+                                    <li>Esperanza: "...el futuro no está escrito. Si actúas ahora, todo puede cambiar"</li>
+                                    <li>Gratitud: "Gracias por salvarnos"</li>
+                                </ol>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>⚙️ CÓMO FUNCIONA EN CÓDIGO</h3>
+                                <p>Cuando el jugador repara el nivel 4, se ejecuta: </p>
+                                <ul>
+                                    <li>Se verifica: if (nivelActual == 4)</li>
+                                    <li>Se ejecutan 5 bloques de game.showLongText() (5 mensajes)</li>
+                                    <li>Finalmente, game.splash() muestra la pantalla final épica</li>
+                                </ul>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>💭 EL MENSAJE PROFUNDO</h3>
+                                <p>No es solo un juego. Es una <strong>simulación</strong> que muestra que:</p>
+                                <ul>
+                                    <li>Las decisiones de HOY afectan el futuro</li>
+                                    <li>Los problemas ambientales son REALES</li>
+                                    <li>Pero PODEMOS CAMBIARLOS si actuamos</li>
+                                    <li>El futuro depende de nosotros (de ustedes, realmente)</li>
+                                </ul>
+                            </div>
+
+                            <div class="modal-section">
+                                <h3>📋 PREGUNTAS DEL JURADO</h3>
+                                <ul>
+                                    <li><strong>¿Por qué hay 5 mensajes?</strong> → Para crear emoción gradual: sorpresa → identidad → propósito → esperanza → gratitud</li>
+                                    <li><strong>¿Quiénes son "nosotros" (los nietos)?</strong> → Ustedes, pero en el año 2126, enviando un mensaje al pasado</li>
+                                    <li><strong>¿Es real o ficticio?</strong> → Es ficticio pero INSPIRADO EN REALIDAD: el cambio climático es real</li>
+                                    <li><strong>¿Cuál es el mensaje final?</strong> → "El futuro está en tus manos" - tú puedes hacer el cambio</li>
+                                </ul>
+                            </div>
+                        `,
                         pasos: [
                             "1. Busca la función: completarMision (Ctrl+F)",
                             "2. Dentro de esa función, BUSCA: } else if (nivelActual == 4) {",
@@ -879,10 +1226,20 @@ function cargarNivel4 () {
                         detalles += `<div class="code-block">${mision.codigo}</div>`;
                     }
 
+                    let helpBtn = '';
+                    if (mision.explicacion) {
+                        // Almacenar explicación en el objeto global
+                        explicaciones[mision.id] = {
+                            titulo: mision.titulo,
+                            contenido: mision.explicacion
+                        };
+                        helpBtn = `<button class="paso-help-btn" onclick="openModal('${mision.id}'); event.stopPropagation();">?</button>`;
+                    }
+
                     misionDiv.innerHTML = `
                         <div class="mision-header">
                             <input type="checkbox" class="mision-check" id="check-${mision.id}" onchange="updateProgress()">
-                            <span class="mision-title">${mision.titulo}</span>
+                            <span class="mision-title">${mision.titulo}${helpBtn}</span>
                             <span class="mision-xp">+${mision.xp} XP</span>
                         </div>
                         <div class="mision-details">${detalles}</div>
