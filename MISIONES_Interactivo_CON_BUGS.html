@@ -582,11 +582,18 @@ function cargarNivel4 () {
                         titulo: "Diseña la Ciudad del Agua",
                         xp: 100,
                         pasos: [
-                            "Abre MakeCode Arcade y tu proyecto",
-                            "Haz clic en el ícono de tilemap (a la izquierda)",
-                            "Crea un nuevo tilemap llamado ciudadAgua",
-                            "Dibuja un mapa de ciudad con calles, edificios y agua",
-                            "Coloca marcadores: Gris (3-5 piezas), Amarillo (2-3 monedas), Verde (2-3 peligros)"
+                            "1. Abre MakeCode Arcade con tu proyecto",
+                            "2. EN EL MENÚ IZQUIERDO, busca el botón que dice 'Tilemap' (muestra una imagen de grilla)",
+                            "3. Haz clic en 'Tilemap'",
+                            "4. Busca el botón '+' VERDE para crear nuevo tilemap",
+                            "5. En el cuadro que aparece, REEMPLAZA el nombre por: ciudadAgua (sin espacios)",
+                            "6. Presiona OK o Enter",
+                            "7. Ahora verás la grilla del editor - dibuja una ciudad con agua:",
+                            "   - Usa tiles azules para AGUA",
+                            "   - Usa tiles grises para CALLES y CASAS",
+                            "   - Deja espacio en el medio para colocar la máquina (tipo fábrica)",
+                            "8. Cuando termines, presiona la X roja para cerrar el editor",
+                            "9. Marca como completada ✓"
                         ]
                     },
                     {
@@ -594,18 +601,39 @@ function cargarNivel4 () {
                         titulo: "Codifica la Carga del Nivel",
                         xp: 150,
                         pasos: [
-                            "Ya está en el BUG FIX #4",
-                            "Copia cargarNivel2() del código de reparación"
-                        ]
+                            "1. Abre tu proyecto en MakeCode Arcade",
+                            "2. En el editor de código (JavaScript), presiona Ctrl+F (o Cmd+F en Mac)",
+                            "3. Busca la función: cargarNivel2",
+                            "4. Encontrarás una función vacía que solo tiene: tiles.setCurrentTilemap(tilemap`ciudadAgua`)",
+                            "5. Después de esa línea, AGREGA estas líneas exactamente:",
+                            "   colocarRecursosYPeligros()",
+                            "   dispositivo = sprites.create(assets.image`planta`, SpriteKind.Equipo)",
+                            "   tiles.placeOnTile(dispositivo, tiles.getTileLocation(25, 15))",
+                            "   ponerCartel(\"PLANTA AGUA\", 25, 10)",
+                            "   ponerCartel(\"ENTRADA\", 5, 5)",
+                            "6. Presiona el botón ROJO de play para probar que no hay errores"
+                        ],
+                        codigo: `// Así debe quedar cargarNivel2() COMPLETA:
+function cargarNivel2 () {
+    tiles.setCurrentTilemap(tilemap\`ciudadAgua\`)
+    colocarRecursosYPeligros()
+    dispositivo = sprites.create(assets.image\`planta\`, SpriteKind.Equipo)
+    tiles.placeOnTile(dispositivo, tiles.getTileLocation(25, 15))
+    ponerCartel("PLANTA AGUA", 25, 10)
+    ponerCartel("ENTRADA", 5, 5)
+}`
                     },
                     {
                         id: "1-3",
                         titulo: "Crea la Secuencia del Nivel 2",
                         xp: 200,
                         pasos: [
-                            "Ya está en BUG FIX #1",
-                            "Verifica que comprobarBoton() tenga el código para nivelActual == 2",
-                            "Secuencia: A → ARRIBA → B → A"
+                            "1. En MakeCode, busca la función: comprobarBoton (usa Ctrl+F)",
+                            "2. Dentro de esa función, BUSCA este bloque: } else if (nivelActual == 2) {",
+                            "3. Si NO EXISTE ese bloque, cópialo del BUG FIX #1 arriba en esta página",
+                            "4. La secuencia para Nivel 2 DEBE SER: A → ARRIBA → B → A",
+                            "5. Verifica que el código de BUG FIX #1 tenga exactamente eso para nivelActual == 2",
+                            "6. Si está correcto, marca esta misión como completada ✓"
                         ]
                     },
                     {
@@ -613,8 +641,12 @@ function cargarNivel4 () {
                         titulo: "Escribe el Mensaje del Nivel 2",
                         xp: 100,
                         pasos: [
-                            "Ya está en BUG FIX #5",
-                            "Verifica que consultarMensaje() tenga el texto para agua"
+                            "1. Abre MakeCode y busca la función: consultarMensaje (Ctrl+F)",
+                            "2. BUSCA dentro el bloque: } else if (nivelActual == 2) {",
+                            "3. Si NO EXISTE, cópialo del BUG FIX #5 arriba en esta página",
+                            "4. Verifica que el mensaje diga algo sobre el AGUA y que pida piezas",
+                            "5. El texto debe ser: '2126: El agua escasea sin remedio. La planta de tratamiento está destruida. Busca X piezas y repárala. El agua es vida.'",
+                            "6. Si está correcto, marca como completada ✓"
                         ]
                     }
                 ]
@@ -630,11 +662,18 @@ function cargarNivel4 () {
                         titulo: "Diseña la Ciudad Contaminada",
                         xp: 100,
                         pasos: [
-                            "Crea nuevo tilemap: ciudadAire",
-                            "Dibuja zonas industriales (chimeneas, fábricas)",
-                            "Añade humo visible (tiles oscuros)",
-                            "Crea espacio para el dispositivo (coordenadas 20, 12)",
-                            "Coloca marcadores: Gris (4), Amarillo (2-3), Verde (3)"
+                            "1. En MakeCode, ve al menú IZQUIERDO y haz clic en 'Tilemap'",
+                            "2. Haz clic en el botón '+' VERDE para nuevo tilemap",
+                            "3. REEMPLAZA el nombre por: ciudadAire (sin espacios)",
+                            "4. Presiona OK",
+                            "5. Ahora dibuja una CIUDAD INDUSTRIAL y CONTAMINADA:",
+                            "   - Dibuja CHIMENEAS (tiles altos y oscuros) en varios lugares",
+                            "   - Dibuja FÁBRICAS (combinación de tiles grises y cafés)",
+                            "   - Dibuja NUBES DE HUMO (usa tiles negros o grises oscuros arriba)",
+                            "   - Deja en el MEDIO UN ESPACIO LIMPIO para el filtrador (alrededor de columna 20, fila 12)",
+                            "6. Asegúrate de que se vea contaminada y con mucho humo",
+                            "7. Cierra el editor (botón X rojo)",
+                            "8. Marca como completada ✓"
                         ]
                     },
                     {
@@ -642,18 +681,39 @@ function cargarNivel4 () {
                         titulo: "Codifica cargarNivel3()",
                         xp: 150,
                         pasos: [
-                            "Ya está en BUG FIX #4",
-                            "Copia cargarNivel3() del código de reparación"
-                        ]
+                            "1. Abre MakeCode Arcade y busca la función: cargarNivel3 (usa Ctrl+F)",
+                            "2. Encontrarás que solo tiene: tiles.setCurrentTilemap(tilemap`ciudadAire`)",
+                            "3. DESPUÉS DE ESA LÍNEA, agrega estas 5 líneas exactas:",
+                            "   colocarRecursosYPeligros()",
+                            "   dispositivo = sprites.create(assets.image`ventilador`, SpriteKind.Equipo)",
+                            "   tiles.placeOnTile(dispositivo, tiles.getTileLocation(20, 12))",
+                            "   ponerCartel(\"FILTRADOR AIRE\", 20, 8)",
+                            "   ponerCartel(\"ZONA INDUSTRIAL\", 5, 5)",
+                            "4. Presiona PLAY (botón rojo) para verificar que NO HAY ERRORES",
+                            "5. Si el juego abre sin errores, marca como completada ✓"
+                        ],
+                        codigo: `// Así debe quedar cargarNivel3() COMPLETA:
+function cargarNivel3 () {
+    tiles.setCurrentTilemap(tilemap\`ciudadAire\`)
+    colocarRecursosYPeligros()
+    dispositivo = sprites.create(assets.image\`ventilador\`, SpriteKind.Equipo)
+    tiles.placeOnTile(dispositivo, tiles.getTileLocation(20, 12))
+    ponerCartel("FILTRADOR AIRE", 20, 8)
+    ponerCartel("ZONA INDUSTRIAL", 5, 5)
+}`
                     },
                     {
                         id: "2-3",
                         titulo: "La Secuencia del Aire",
                         xp: 200,
                         pasos: [
-                            "Ya está en BUG FIX #1",
-                            "Verifica que comprobarBoton() tenga el código para nivelActual == 3",
-                            "Secuencia: B → A → ARRIBA → B"
+                            "1. Busca la función: comprobarBoton (Ctrl+F en MakeCode)",
+                            "2. BUSCA DENTRO el bloque que dice: } else if (nivelActual == 3) {",
+                            "3. Si NO EXISTE, cópialo del BUG FIX #1 que está arriba en esta página",
+                            "4. La secuencia CORRECTA para Aire debe ser: B → A → ARRIBA → B",
+                            "5. Verifica que el código de BUG FIX #1 tenga exactamente eso",
+                            "6. Prensa PLAY y cuando llegues al nivel 3, intenta la secuencia",
+                            "7. Si funciona, marca como completada ✓"
                         ]
                     },
                     {
@@ -661,8 +721,13 @@ function cargarNivel4 () {
                         titulo: "El Mensaje de Aire",
                         xp: 100,
                         pasos: [
-                            "Ya está en BUG FIX #5",
-                            "Verifica que consultarMensaje() tenga el texto para aire"
+                            "1. Busca la función: consultarMensaje (Ctrl+F)",
+                            "2. BUSCA el bloque: } else if (nivelActual == 3) {",
+                            "3. Si NO EXISTE, cópialo del BUG FIX #5 de arriba",
+                            "4. El mensaje DEBE HABLAR sobre el AIRE contaminado",
+                            "5. El texto debe ser: '2126: El aire es tóxico. Las máquinas de filtración no funcionan hace años. Busca X piezas y actívalas. Necesitamos aire limpio.'",
+                            "6. Presiona PLAY, llega al nivel 3, y presiona B para ver el mensaje",
+                            "7. Si aparece el mensaje correcto, marca como completada ✓"
                         ]
                     }
                 ]
@@ -678,10 +743,18 @@ function cargarNivel4 () {
                         titulo: "El Parque Destruido",
                         xp: 100,
                         pasos: [
-                            "Crea tilemap: ciudadNaturaleza",
-                            "Dibuja parque en ruinas (sin árboles, sin vida)",
-                            "Usa hormigón gris y zonas muertas",
-                            "Espacio para riego (coordenadas 15, 10)"
+                            "1. En MakeCode, haz clic en 'Tilemap' (menú izquierdo)",
+                            "2. Presiona el botón '+' VERDE",
+                            "3. REEMPLAZA el nombre por: ciudadNaturaleza (sin espacios)",
+                            "4. Presiona OK",
+                            "5. Ahora dibuja un PARQUE DESTRUIDO Y MUERTO:",
+                            "   - Usa tiles GRISES (hormigón) para el suelo vacío",
+                            "   - NO DIBUJES ÁRBOLES (porque está muerto)",
+                            "   - Dibuja algunas RUINAS (combina grises con un poco de marrón oscuro)",
+                            "   - Deja un espacio EN EL CENTRO para el sistema de riego (alrededor de columna 15, fila 10)",
+                            "   - Busca hacer que se vea desolado, sin vida, solo hormigón",
+                            "6. Cuando esté lista, cierra el editor (X rojo)",
+                            "7. Marca como completada ✓"
                         ]
                     },
                     {
@@ -689,18 +762,40 @@ function cargarNivel4 () {
                         titulo: "Cargar el Nivel Final",
                         xp: 150,
                         pasos: [
-                            "Ya está en BUG FIX #4",
-                            "Copia cargarNivel4() del código de reparación"
-                        ]
+                            "1. Abre MakeCode y busca: cargarNivel4 (Ctrl+F)",
+                            "2. Verás que solo tiene: tiles.setCurrentTilemap(tilemap`ciudadNaturaleza`)",
+                            "3. AÑADE ESTAS 5 LÍNEAS DESPUÉS:",
+                            "   colocarRecursosYPeligros()",
+                            "   dispositivo = sprites.create(assets.image`arbol`, SpriteKind.Equipo)",
+                            "   tiles.placeOnTile(dispositivo, tiles.getTileLocation(15, 10))",
+                            "   ponerCartel(\"SISTEMA RIEGO\", 15, 5)",
+                            "   ponerCartel(\"PARQUE CENTRAL\", 5, 5)",
+                            "4. Presiona PLAY (botón rojo) - si no hay errores, está bien",
+                            "5. Marca como completada ✓"
+                        ],
+                        codigo: `// Así debe quedar cargarNivel4() COMPLETA:
+function cargarNivel4 () {
+    tiles.setCurrentTilemap(tilemap\`ciudadNaturaleza\`)
+    colocarRecursosYPeligros()
+    dispositivo = sprites.create(assets.image\`arbol\`, SpriteKind.Equipo)
+    tiles.placeOnTile(dispositivo, tiles.getTileLocation(15, 10))
+    ponerCartel("SISTEMA RIEGO", 15, 5)
+    ponerCartel("PARQUE CENTRAL", 5, 5)
+}`
                     },
                     {
                         id: "3-3",
                         titulo: "La Secuencia Final",
                         xp: 200,
                         pasos: [
-                            "Ya está en BUG FIX #1",
-                            "Verifica que comprobarBoton() tenga el código para nivelActual == 4",
-                            "Secuencia: ARRIBA → B → A → ARRIBA (¡la más difícil!)"
+                            "1. Busca la función: comprobarBoton (Ctrl+F)",
+                            "2. BUSCA DENTRO: } else if (nivelActual == 4) {",
+                            "3. Si NO EXISTE, cópialo del BUG FIX #1 arriba",
+                            "4. La secuencia FINAL es: ARRIBA → B → A → ARRIBA (¡la más difícil!)",
+                            "5. Verifica que el código de BUG FIX #1 tenga exactamente eso para nivel 4",
+                            "6. Prensa PLAY, avanza a nivel 4, e intenta presionar los botones en orden",
+                            "7. Cuando lo hagas correctamente, deberías reparar el sistema",
+                            "8. Si funciona, marca como completada ✓"
                         ]
                     },
                     {
@@ -708,11 +803,17 @@ function cargarNivel4 () {
                         titulo: "La Revelación Final",
                         xp: 250,
                         pasos: [
-                            "Encuentra completarMision()",
-                            "Busca: if (nivelActual == 4)",
-                            "Agrega el código de la revelación épica"
+                            "1. Busca la función: completarMision (Ctrl+F)",
+                            "2. Dentro de esa función, BUSCA: } else if (nivelActual == 4) {",
+                            "3. Si NO EXISTE ese bloque, añádelo ANTES del último } de la función",
+                            "4. Copia EXACTAMENTE este código en ese bloque (arriba está el código)",
+                            "5. Asegúrate de que tiene los 5 game.showLongText seguidos",
+                            "6. Y que termina con game.splash()",
+                            "7. Presiona PLAY, ve al nivel 4, repara el sistema y verás la revelación",
+                            "8. Si ves los mensajes de esperanza, ¡MISIÓN CUMPLIDA! ✓"
                         ],
-                        codigo: `} else if (nivelActual == 4) {
+                        codigo: `// Añade esto DENTRO de completarMision():
+} else if (nivelActual == 4) {
     game.showLongText("Espera... ¿Qué pasa? Una voz llena de esperanza...", DialogLayout.Full)
     game.showLongText("Somos nosotros. Tus nietos. Del año 2126.", DialogLayout.Full)
     game.showLongText("Construimos esta máquina para enviarte un mensaje: el futuro no está escrito. Si actúas ahora, todo puede cambiar.", DialogLayout.Full)
