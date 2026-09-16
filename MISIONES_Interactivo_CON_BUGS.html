@@ -326,6 +326,24 @@
             background: #c0392b;
         }
 
+        .acto-premio {
+            background: #fff9e6;
+            border: 2px solid #f39c12;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #d68910;
+        }
+
+        .acto-premio.obtenido {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #27ae60;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 1.8em;
@@ -385,6 +403,7 @@
                 emoji: "🔧",
                 critico: true,
                 xpTotal: 1000,
+                premio: "🍡 Marshmallows para toda la clase",
                 misiones: [
                     {
                         id: "bug-1",
@@ -556,6 +575,7 @@ function cargarNivel4 () {
                 nombre: "🌊 ACTO 1: EL AGUA",
                 emoji: "💧",
                 xpTotal: 550,
+                premio: "🍬 Gomitas Welch's para toda la clase",
                 misiones: [
                     {
                         id: "1-1",
@@ -603,6 +623,7 @@ function cargarNivel4 () {
                 nombre: "🌪️ ACTO 2: EL AIRE",
                 emoji: "💨",
                 xpTotal: 550,
+                premio: "🍫 Chocolates para toda la clase",
                 misiones: [
                     {
                         id: "2-1",
@@ -650,6 +671,7 @@ function cargarNivel4 () {
                 nombre: "🌳 ACTO 3: LA NATURALEZA",
                 emoji: "🌱",
                 xpTotal: 700,
+                premio: "🍕 Pizza + 💰 2000 colones para celebrar",
                 misiones: [
                     {
                         id: "3-1",
@@ -720,6 +742,7 @@ function cargarNivel4 () {
                         <span class="toggle">▼</span>
                     </div>
                     <div class="acto-content">
+                        ${acto.premio ? `<div class="acto-premio" id="premio-${actoKey}">🎁 PREMIO: ${acto.premio}</div>` : ''}
                         <div class="misiones" id="misiones-${actoKey}"></div>
                         <div class="acto-progress">
                             <div>Progreso: <strong id="progress-${actoKey}">0/0</strong></div>
@@ -815,6 +838,16 @@ function cargarNivel4 () {
                 if (progressEl) {
                     progressEl.textContent = `${actoCompleted}/${acto.misiones.length}`;
                     document.getElementById(`fill-${actoKey}`).style.width = actoPercentage + '%';
+                }
+
+                // Marcar premio como obtenido cuando el acto está 100% completo
+                const premioEl = document.getElementById(`premio-${actoKey}`);
+                if (premioEl) {
+                    if (actoPercentage === 100) {
+                        premioEl.classList.add('obtenido');
+                    } else {
+                        premioEl.classList.remove('obtenido');
+                    }
                 }
             });
 
