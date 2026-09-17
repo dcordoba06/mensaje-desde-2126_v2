@@ -11,3 +11,11 @@ Etiquetas de git para recuperar cualquier estado completo:
   git checkout respaldo-ale            -> commit de Ale  (a8b55e1)
   git checkout respaldo-cris           -> commit de Cris (780910c)
   git checkout respaldo-master-previo  -> master antes de reparar (f7d35cd)
+
+17/09/2026 - Preparacion para modo bloques
+  main.blocks.antes-de-vaciar   Bloques de Ale, tal como estaban en master
+
+Se vacio main.blocks a proposito. MakeCode reconstruye los bloques desde
+main.ts la primera vez que se abre la pestana "Bloques". Si se hubiera
+dejado el archivo viejo, MakeCode habria regenerado main.ts desde el y se
+habrian perdido los fondos de Cris y todas las correcciones.
